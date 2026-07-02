@@ -1,6 +1,6 @@
 # 03 — Modelo de negocio
 
-Estado: **v5, cerrada y aprobada.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`. La v1 aprobó la arquitectura de tres motores; la v2 añadió arquitectura económica, cuarto motor latente, Business Model Canvas, ciclo de vida del cliente y una auditoría de riesgos re-ejecutada; la v3 incorporó la regla de prioridad del motor D, cerró las tres preguntas pendientes y trasladó R9 (legal) a una fase propia del roadmap; la v4 corrigió la definición de los motores A y B para cubrir todo servicio futuro; la v5 ajusta la terminología para que esa corrección se lea como etapas internas de A y líneas internas de B, no como motores nuevos — la arquitectura sigue teniendo cuatro motores.
+Estado: **v6, cerrada y aprobada.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`. La v1 aprobó la arquitectura de tres motores; la v2 añadió arquitectura económica, cuarto motor latente, Business Model Canvas, ciclo de vida del cliente y una auditoría de riesgos re-ejecutada; la v3 incorporó la regla de prioridad del motor D, cerró las tres preguntas pendientes y trasladó R9 (legal) a una fase propia del roadmap; la v4 corrigió la definición de los motores A y B para cubrir todo servicio futuro; la v5 ajustó la terminología a etapas/líneas internas, no motores nuevos; la v6 añade R13 (incidencia crítica: `interemprex-dashboard` sin repositorio remoto) con su procedimiento de corrección, sin ejecutarlo todavía.
 
 ## Resumen ejecutivo
 
@@ -96,6 +96,7 @@ Sin datos históricos reales, la probabilidad se estima de forma cualitativa (Al
 3. **R3 — Financiero. Decisiones de precio tomadas sin conocer el coste real ni el punto de equilibrio.** El pricing de Fase 1 es razonado, pero no está validado contra datos de coste reales — eso es Fase 14.
 4. **R10 — Concentración de clientes. Con 2 proyectos piloto activos (bbabogados, costaflora), perder cualquiera de los dos representa una parte muy alta de la base actual.** Se diluye de forma natural según crezca el número de clientes.
 5. **R12 — Dependencia tecnológica. El fundador es el único desarrollador y mantenedor de todo el stack propio.** Sin continuidad documentada, coincide con la prueba de escalabilidad "el fundador no puede intervenir durante un mes" — aquí elevado a riesgo de continuidad de negocio, no solo de proceso.
+6. **R13 — Incidencia crítica de continuidad de negocio. `interemprex-dashboard` no tiene repositorio remoto en GitHub — existe únicamente en la máquina local.** Es el sistema que sostiene el motor de ingresos real (Motor B: clientes, pipeline, pagos vía Stripe, MRR). Si esa máquina se pierde, se corrompe o queda inaccesible, se pierde el código completo del CRM sin ninguna copia externa — no es un riesgo hipotético de "algún día", es el estado real verificado en `inventario-tecnologico.md`. Se relaciona con R12 (mismo origen: dependencia total de la máquina/persona del fundador) pero es un riesgo distinto: R12 es sobre *quién* mantiene el sistema, R13 es sobre *dónde* existe el sistema. Ver procedimiento (sin ejecutar todavía) más abajo.
 
 **Prioridad alta — impacto alto, probabilidad media o no verificada:**
 
@@ -121,6 +122,18 @@ No se fija una fecha porque hoy, con 2 clientes piloto, ningún disparador real 
 - **Disparador funcional**: si se decide activar el motor D para terceros, la migración deja de ser opcional — un producto vendido a otras empresas exige aislamiento de datos por tenant que un fichero SQLite único no garantiza con seguridad.
 - **Disparador de infraestructura**: si el dashboard se despliega en una plataforma sin disco persistente (el propio README de `leadfinder` ya advierte del mismo problema para su base SQLite), la migración pasa de mejora a requisito de funcionamiento.
 - **Disparador de carga de lectura**: si los informes de MRR/pipeline empiezan a tardar de forma perceptible por volumen histórico acumulado.
+
+### R13 — Procedimiento para incorporar `interemprex-dashboard` al ecosistema Git (no se ejecuta todavía)
+
+Por instrucción explícita: no se despliega ni se sube nada ahora. Se documenta únicamente el procedimiento, para ejecutarlo cuando corresponda:
+
+1. Verificar que `.gitignore` excluye `dev.db`, `.env` y cualquier credencial antes de tocar nada — el repositorio no debe subir datos reales de clientes ni secretos de Stripe.
+2. Crear el repositorio remoto en GitHub (privado, dado que contiene lógica de negocio y, potencialmente, estructura de datos de clientes reales).
+3. Añadir el remoto al repositorio git local ya existente (`interemprex-dashboard` ya es un repo git local, solo le falta el remoto — no hay que inicializar nada desde cero).
+4. Primer push, verificando antes con `git status` y una revisión manual de qué se va a subir (mismo cuidado que se aplicó al crear `optimizaci-n_int`).
+5. A partir de ahí, mismo hábito de commits frecuentes que el resto de repos del ecosistema.
+
+**Cuándo corresponde ejecutarlo**: no se fija una fecha — es una corrección de coste bajo y beneficio alto que no debería demorarse mucho, pero la decisión de cuándo es del usuario. Se recomienda no esperar a la Fase 11 (Tecnología) dado que el riesgo ya es real hoy, a diferencia de otras tareas de esa fase que dependen de disparadores futuros (como la migración de SQLite).
 
 ## Dependencias con otras fases
 
@@ -172,4 +185,4 @@ No se fija una fecha porque hoy, con 2 clientes piloto, ningún disparador real 
 
 **Qué documentos dependen de este**: `04-arquitectura-oferta.md` (hereda los motores directamente), y en el futuro Catálogo, Legal, Customer Journey, Sistema comercial, Operaciones, Tecnología y Finanzas — prácticamente todo el resto del roadmap parte de los motores definidos aquí.
 
-**Qué documentos deben revisarse si este cambia**: `04-arquitectura-oferta.md` de inmediato; el resto de fases futuras en cuanto existan, porque todas heredan la arquitectura de ingresos.
+**Qué documentos deben revisarse si este cambia**: `04-arquitectura-oferta.md` de inmediato; el resto de fases futuras en cuanto existan, porque todas heredan la arquitectura de ingresos; `inventario-tecnologico.md` si cambia el estado de R13 (cuando se ejecute el procedimiento de incorporar `interemprex-dashboard` a GitHub).

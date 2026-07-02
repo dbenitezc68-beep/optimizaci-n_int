@@ -16,7 +16,7 @@ Documento vivo, no una fase. Inventario oficial de todo lo técnico verificado h
 
 **Detectados, no analizados**: `moondial`, `sistema-gestor-cartera` — existen en el directorio raíz del monorepo, no se ha verificado su relación con INTEREMPREX. `sistema-gestor-cartera` coincide con la skill `gestor-cartera-deportiva.md`, que por su nombre parece un proyecto personal no relacionado. No se documentan en detalle porque no se ha confirmado que pertenezcan al alcance de este proyecto.
 
-**Riesgo detectado**: `interemprex-dashboard` — el sistema que sostiene el motor de ingresos real (B, operación continua, con Stripe) — no tiene remoto en GitHub. Es la única pieza crítica de negocio sin respaldo fuera de la máquina local.
+**Incidencia crítica de continuidad de negocio (R13, ver `03-modelo-negocio.md`)**: `interemprex-dashboard` — el sistema que sostiene el motor de ingresos real (B, operación continua, con Stripe) — no tiene remoto en GitHub. Es la única pieza crítica de negocio sin respaldo fuera de la máquina local. Procedimiento de corrección documentado, sin ejecutar todavía por instrucción explícita.
 
 ## Aplicaciones
 
