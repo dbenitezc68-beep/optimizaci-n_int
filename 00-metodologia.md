@@ -59,6 +59,16 @@ Todo documento de fase (a partir de `03-modelo-negocio.md`) termina con estas se
 7. Auditoría crítica
 8. Preguntas que necesitan aprobación
 
+## Control de cambios documentales (obligatorio desde el 2026-07-02)
+
+Además del formato anterior, **todo documento del repositorio** — de fase o de gobierno — cierra con tres apartados adicionales, en este orden, al final del todo:
+
+1. **Qué modifica** — qué decisión, regla o dato establece o cambia este documento.
+2. **Qué documentos dependen de este** — qué otros documentos, existentes o futuros, se apoyan en lo que aquí se fija.
+3. **Qué documentos deben revisarse si este cambia** — la lista concreta a repasar antes de aceptar una modificación de este documento.
+
+Esto es distinto de la sección "Dependencias con otras fases" del formato de fase: aquella describe dependencias de contenido de negocio: esta describe el grafo de documentos, para poder saber, ante cualquier cambio, qué más hay que revisar sin tener que releer todo el repositorio. `enterprise-blueprint.md` es la vista consolidada de este grafo a nivel de bloques estratégicos.
+
 ## Founder Dependency Index (FDI)
 
 Indicador permanente, activo desde la Fase 2, que mide cuánto depende cada proceso de INTEREMPREX de la intervención directa del fundador. El registro vivo de mediciones está en `fdi-registro.md` — este documento define la escala, aquel acumula los datos.
@@ -81,3 +91,11 @@ Indicador permanente, activo desde la Fase 2, que mide cuánto depende cada proc
 ## Nivel de exigencia
 
 Diseñar como si la empresa tuviera que seguir funcionando dentro de diez años sin rehacer su estructura. Buscar siempre la mejor solución disponible, no la primera que sea válida.
+
+---
+
+**Qué modifica**: define el proceso obligatorio de trabajo para todo el proyecto — rol, criterios de decisión, pruebas de escalabilidad, auditoría de cierre, FDI y formato de cada documento.
+
+**Qué documentos dependen de este**: todos los documentos del repositorio, sin excepción — es el documento de mayor autoridad sobre el proceso, al mismo nivel que `02-principios-fundacionales.md` sobre el contenido.
+
+**Qué documentos deben revisarse si este cambia**: todos los documentos de fase existentes (`01`, `02`, `03`, `04`...) para comprobar que siguen cumpliendo el formato y las reglas vigentes, y `enterprise-blueprint.md` si el cambio afecta a la cadena de bloques.

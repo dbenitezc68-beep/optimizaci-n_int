@@ -2,11 +2,12 @@
 
 Repositorio de documentación estratégica de INTEREMPREX. Aquí vive el plan de negocio, fase a fase, con las decisiones tomadas y el porqué de cada una. El código sigue viviendo en sus propios repos — este es el índice y la memoria de las decisiones, no el producto.
 
-Empieza por [`00-metodologia.md`](./00-metodologia.md) — rige cómo se construye cada documento de este repositorio, es de lectura obligatoria antes de cualquier fase.
+Empieza por [`00-metodologia.md`](./00-metodologia.md) — rige cómo se construye cada documento de este repositorio, es de lectura obligatoria antes de cualquier fase. Después, [`enterprise-blueprint.md`](./enterprise-blueprint.md) — el plano maestro que conecta cada bloque estratégico con el documento que lo desarrolla.
 
 **Documentos vivos** (no son fases, se actualizan de forma continua):
 - [`fdi-registro.md`](./fdi-registro.md) — Founder Dependency Index: cuánto depende cada proceso del fundador. Definición en `00-metodologia.md`.
 - [`duplicidad-paneles-gestion.md`](./duplicidad-paneles-gestion.md) — hechos sobre los dos paneles de gestión interna, sin resolución todavía (se decide en Fase 8).
+- [`auditoria-preventiva-leadfinder.md`](./auditoria-preventiva-leadfinder.md) — hechos sobre fuentes, licencias, almacenamiento, retención y accesos de datos en `leadfinder`, sin propuesta legal (entrada de hechos para Fase 5).
 
 ## Ecosistema real (verificado, no aspiracional)
 
@@ -27,8 +28,8 @@ Cada fase termina con aprobación explícita antes de empezar la siguiente. No s
 - [x] `00-metodologia.md` — metodología permanente de trabajo (proceso), incluye la definición del FDI
 - [x] **Fase 1 — Posicionamiento** → [`01-posicionamiento.md`](./01-posicionamiento.md)
 - [x] **Principios fundacionales** (constitución de contenido) → [`02-principios-fundacionales.md`](./02-principios-fundacionales.md) — aprobado por uso
-- [x] **Fase 2 — Modelo de negocio** → [`03-modelo-negocio.md`](./03-modelo-negocio.md) — aprobado (v3)
-- [ ] **Fase 3 — Arquitectura de la oferta** → [`04-arquitectura-oferta.md`](./04-arquitectura-oferta.md)
+- [x] **Fase 2 — Modelo de negocio** → [`03-modelo-negocio.md`](./03-modelo-negocio.md) — aprobado (v4)
+- [ ] **Fase 3 — Arquitectura de la oferta** → [`04-arquitectura-oferta.md`](./04-arquitectura-oferta.md) — pendiente de aprobación definitiva
 - [ ] Fase 4 — Catálogo de servicios
 - [ ] **Fase 5 — Legal y Cumplimiento** (nueva, insertada aquí a petición explícita del 2026-07-02) — RGPD, LOPDGDD, encargos de tratamiento, contratos, condiciones generales, privacidad, cookies, uso de IA, licencias, propiedad intelectual, scraping y fuentes de datos, riesgos regulatorios. Ver razonamiento de ubicación más abajo.
 - [ ] Fase 6 — Customer Journey
@@ -52,7 +53,11 @@ La exposición legal de `leadfinder` (scraping de datos de terceros) y de `inter
 
 ### Arquitectura Empresarial
 
-Antes de cerrar la Fase 8 (Operaciones) debe existir `arquitectura-empresarial.md`: un mapa de Empresa → Áreas → Procesos → Sistemas → Herramientas → Automatizaciones → Responsables → KPIs, en el que toda la documentación futura debe poder ubicarse. No se construye todavía — depende de que Áreas, Procesos y Sistemas estén definidos en las fases previas.
+Antes de cerrar la Fase 8 (Operaciones) debe existir `arquitectura-empresarial.md`: un mapa de Empresa → Áreas → Procesos → Sistemas → Herramientas → Automatizaciones → Responsables → KPIs, en el que toda la documentación futura debe poder ubicarse. No se construye todavía — depende de que Áreas, Procesos y Sistemas estén definidos en las fases previas. **No es lo mismo que `enterprise-blueprint.md`**: el blueprint mapea la cadena estratégica de documentos (Visión → ... → KPIs); `arquitectura-empresarial.md` mapeará la realidad organizativa (áreas, sistemas, responsables) — son complementarios, no duplicados.
+
+### Gap detectado: KPIs no tiene fase propia
+
+`enterprise-blueprint.md` termina la cadena en KPIs, pero el roadmap de 15 fases no incluye una fase dedicada — hoy los indicadores quedarían repartidos entre Operaciones, Sistema comercial y Finanzas. No se decide aquí si se añade una Fase 16 o si KPIs vive dentro de Finanzas. Pregunta abierta.
 
 ## Principio del proceso
 

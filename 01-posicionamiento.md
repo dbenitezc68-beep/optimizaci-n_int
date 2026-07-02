@@ -70,3 +70,11 @@ Tope real, gestionado en privado (no en la web): **3 clientes cerrados desde el 
 | Mercado horizontal en el mensaje, sin nicho de sector en el copy | Anclar a un sector (import/export, o el original del sitio) | La evidencia real actual (bbabogados, costaflora) no respalda ningún nicho concreto todavía; forzar uno sería inventar una tesis sin datos |
 | Descuento con tope real pero número no publicado | Publicar "primeros 3 clientes" | Publicar el número comunica "no tenemos clientes"; ocultarlo y mantener selección privada es más premium, siempre que el tope siga siendo real |
 | Quitar "Misiones completadas" con cifras inventadas | Mantenerlas como "ejemplo ilustrativo" con aviso pequeño | Riesgo de publicidad engañosa si un prospecto las lee como reales; más barato en confianza quitarlas que arriesgarse |
+
+---
+
+**Qué modifica**: fija el mensaje público de marca, el criterio de aceptación/rechazo de clientes, y sustituye la sección de resultados inventados por "Cómo trabajamos".
+
+**Qué documentos dependen de este**: `02-principios-fundacionales.md` (hereda el criterio de qué significa "premium"), `03-modelo-negocio.md` (hereda el rechazo a clientes sin continuidad), `04-arquitectura-oferta.md` (hereda "pensar en plataformas, no en servicios"), y la futura Fase 13 (Página web), que implementa este copy directamente.
+
+**Qué documentos deben revisarse si este cambia**: todos los anteriores — un cambio de posicionamiento obliga a revisar si el modelo de negocio, la arquitectura de la oferta y el futuro copy web siguen siendo coherentes con el nuevo mensaje.

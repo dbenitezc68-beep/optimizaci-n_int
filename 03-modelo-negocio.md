@@ -1,6 +1,6 @@
 # 03 — Modelo de negocio
 
-Estado: **v3, cerrada y aprobada.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`. La v1 aprobó la arquitectura de tres motores; la v2 añadió arquitectura económica, cuarto motor latente, Business Model Canvas, ciclo de vida del cliente y una auditoría de riesgos re-ejecutada; la v3 incorpora la regla de prioridad del motor D, cierra las tres preguntas pendientes y traslada R9 (legal) a una fase propia del roadmap.
+Estado: **v4, cerrada y aprobada.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`. La v1 aprobó la arquitectura de tres motores; la v2 añadió arquitectura económica, cuarto motor latente, Business Model Canvas, ciclo de vida del cliente y una auditoría de riesgos re-ejecutada; la v3 incorporó la regla de prioridad del motor D, cerró las tres preguntas pendientes y trasladó R9 (legal) a una fase propia del roadmap; la v4 corrige la definición de los motores A y B (sub-tipos A1/A2 y B1/B2) tras la verificación de cobertura exigida en Fase 3.
 
 ## Resumen ejecutivo
 
@@ -14,13 +14,21 @@ Se mantiene de la v1: **A. Implementación** (pago único, puerta de entrada), *
 
 **D. Plataforma/producto propio (latente, no comercial todavía).** Ver decisión 3.
 
+**Corrección (v4)**: la verificación de cobertura exigida en Fase 3 (ver `04-arquitectura-oferta.md`) encontró dos servicios que no encajaban sin ambigüedad en esta definición original. Se corrige aquí para que el modelo siga siendo válido para cualquier servicio futuro, no solo para los ya nombrados:
+
+- **Motor A pasa a tener dos sub-tipos**: **A1 — Diagnóstico/consultoría puntual** (pago único, bajo compromiso, filtra intención real) y **A2 — Implementación completa** (pago único, proyecto completo). La "consultoría/auditoría puntual" que en la v2 aparecía flotando fuera de los tres motores (en la tabla de arquitectura económica y en el Business Model Canvas) se corrige: siempre fue una variante de A, no una cuarta cosa. Es el mismo tipo de ingreso (pago único, entrada) con distinto alcance.
+- **Motor B pasa a tener dos sub-líneas**: **B1 — Operación técnica continua** (mantenimiento, monitorización, automatizaciones vivas, soporte de sistemas — la definición original) y **B2 — Gestión de crecimiento continua** (SEO, SEM, gestión de anuncios, email marketing — servicios recurrentes que no son "mantener lo que ya se construyó" sino trabajo estratégico continuo). Ambas son recurrentes y ambas son "el negocio real" en el sentido de Fase 2; se diferencian en si el trabajo es sobre los sistemas del cliente (B1) o sobre su visibilidad/captación (B2).
+
+Ningún motor nuevo se crea — se corrige la definición de A y B para que cubran, sin solape ni hueco, cualquier servicio que la Fase 4 (Catálogo) vaya a clasificar.
+
 ### 2. Arquitectura económica — cómo circula el dinero
 
 | Línea | Liquidez inmediata | Ingreso recurrente | Margen relativo | Fidelización | Abre nuevas oportunidades |
 |---|---|---|---|---|---|
-| Consultoría/auditoría puntual | Alta | No | Alto (bajo coste de entrega) | Baja por sí sola | Alta — filtra intención real antes de A |
-| A. Implementación | Alta (cobro al cierre/hitos) | No | Medio (intensivo en horas) | Baja por sí sola | Alta — es la puerta obligada hacia B |
-| B. Operación continua | Baja por cliente individual | **Sí — el motor real (MRR)** | Medio-alto (coste marginal decreciente al estandarizar) | Alta — aquí se construye la relación | Media — el uso diario revela cuellos de botella nuevos |
+| A1. Diagnóstico/consultoría puntual | Alta | No | Alto (bajo coste de entrega) | Baja por sí sola | Alta — filtra intención real antes de A2 |
+| A2. Implementación completa | Alta (cobro al cierre/hitos) | No | Medio (intensivo en horas) | Baja por sí sola | Alta — es la puerta obligada hacia B |
+| B1. Operación técnica continua | Baja por cliente individual | **Sí — el motor real (MRR)** | Medio-alto (coste marginal decreciente al estandarizar) | Alta — aquí se construye la relación | Media — el uso diario revela cuellos de botella nuevos |
+| B2. Gestión de crecimiento continua (SEO/Ads/Email) | Baja por cliente individual | **Sí — MRR** | Medio (trabajo estratégico continuo, menos apalancado en software que B1) | Alta — visibilidad y captación son valor percibido constante | Media-alta — detecta necesidades de A2/C en el propio negocio del cliente |
 | C. Automatización e IA a medida | Alta (hitos de proyecto) | Parcial (el soporte de lo entregado alimenta a B) | **Alto — el mayor, por apalancamiento en stack propio** | Media-alta — resuelve dolor visible | Alta — cada automatización revela la siguiente |
 | D. Plataforma propia (latente) | No a corto plazo | Sí, a largo plazo, si se activa | Muy alto potencial (coste marginal casi cero por cliente adicional) | No aplica todavía | Alta a largo plazo — abre un segmento de cliente nuevo (otras agencias/consultoras, no solo pymes) |
 
@@ -52,7 +60,7 @@ Coherente con `01-posicionamiento.md` y `02-principios-fundacionales.md`. Donde 
 - **Propuesta de valor**: software propio implementado directamente sobre los sistemas reales del cliente — no plantilla adaptada, no promesa sin respaldo. Prueba demostrable (dashboard, leadfinder) en vez de casos inventados.
 - **Canales**: leadfinder (pipeline propio), referidos desde clientes en motor B, web propia (pendiente de reescritura, Fase 12). El resto del mix de canales (redes, contenido, etc.) se define en Fase 12 — no se inventa aquí.
 - **Relación con clientes**: implementación directa y colaborativa, no consultoría de informe y adiós. Soporte continuo vía motor B. Transparencia explícita sobre qué parte del trabajo es automatización/IA y qué parte es trabajo humano (principio constitucional 4).
-- **Fuentes de ingresos**: los tres motores activos (A, B, C) más consultoría puntual. Motor D, latente.
+- **Fuentes de ingresos**: los tres motores activos (A —con sub-tipos A1 diagnóstico/A2 implementación—, B —con sub-líneas B1 técnica/B2 crecimiento—, C). Motor D, latente.
 - **Recursos clave**: el stack de software propio (dashboard, leadfinder), el conocimiento técnico del fundador, la prueba pública de capacidad técnica (una vez corregida la web).
 - **Actividades clave**: desarrollo y mantenimiento del stack propio, implementación en sistemas de cliente, prospección automatizada, soporte y monitorización recurrente.
 - **Socios clave**: **no hay socios estratégicos de negocio formalizados todavía** — dato real, no se inventa ninguno. Existen proveedores de infraestructura (Stripe para pagos, Vercel para hosting de al menos un cliente en producción, registrador de dominios), pero son proveedores técnicos, no alianzas estratégicas; no se presentan como lo mismo.
@@ -158,4 +166,12 @@ No se fija una fecha porque hoy, con 2 clientes piloto, ningún disparador real 
 4. **Resuelta** — motor D confirmado como latente por diseño, con la regla de prioridad (beneficio interno antes que venta) incorporada.
 5. **Resuelta** — Legal y Cumplimiento se convierte en fase propia (Fase 5 del roadmap), no se integra en Operaciones.
 6. **Resuelta** — R6 y R8 permanecen abiertas sin cambio técnico: R8 ya está documentada en `duplicidad-paneles-gestion.md` a la espera de Fase 8; R6 queda como punto de control para Fase 11.
-7. **Nueva**: la exposición legal de R9 (scraping de `leadfinder`, tratamiento de datos en el dashboard) ya es real hoy, no solo en el futuro orden del roadmap. ¿Quieres una verificación legal preliminar antes de que el pipeline de captación siga creciendo, o prefieres esperar a que Fase 5 llegue en su orden natural del roadmap?
+7. **Resuelta parcialmente** — se documentaron los hechos en `auditoria-preventiva-leadfinder.md` sin proponer solución legal, tal como se pidió. Sigue abierta la pregunta de si se adelanta una revisión legal real (no solo documental) antes de Fase 5.
+
+---
+
+**Qué modifica**: fija la arquitectura de ingresos (motores A1/A2, B1/B2, C, D latente), la arquitectura económica, el Business Model Canvas, el ciclo de vida del cliente y el mapa de riesgos priorizado de la empresa.
+
+**Qué documentos dependen de este**: `04-arquitectura-oferta.md` (hereda los motores directamente), y en el futuro Catálogo, Legal, Customer Journey, Sistema comercial, Operaciones, Tecnología y Finanzas — prácticamente todo el resto del roadmap parte de los motores definidos aquí.
+
+**Qué documentos deben revisarse si este cambia**: `04-arquitectura-oferta.md` de inmediato; el resto de fases futuras en cuanto existan, porque todas heredan la arquitectura de ingresos.

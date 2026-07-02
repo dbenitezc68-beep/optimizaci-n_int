@@ -70,7 +70,7 @@ Heredado y fijado desde la Fase 1, ahora como criterio permanente:
 
 ## 10. Cómo mediremos el éxito dentro de 5 años
 
-Aquí no se fija una cifra — poner un número de facturación ahora sería inventar un dato, exactamente lo que este documento prohíbe en el punto 2. Lo que sí se fija es la **forma** de medir, y las cifras reales se calculan en la Fase 13 (Finanzas) con datos reales de la empresa:
+Aquí no se fija una cifra — poner un número de facturación ahora sería inventar un dato, exactamente lo que este documento prohíbe en el punto 2. Lo que sí se fija es la **forma** de medir, y las cifras reales se calculan en la Fase 14 (Finanzas) con datos reales de la empresa:
 
 - Proporción de ingresos recurrentes (mantenimiento, suscripciones) frente a proyectos puntuales — cuánto del ingreso es predecible.
 - Proporción de trabajo interno cubierto por herramientas propias frente a horas humanas.
@@ -85,3 +85,11 @@ A partir de aquí, cada fase del roadmap debe, antes de cerrarse:
 1. Declarar qué depende de fases anteriores y qué decisiones de esas fases la condicionan.
 2. Justificar cada recomendación relevante desde los tres ángulos del punto 5.
 3. Señalar explícitamente si contradice algún principio de este documento — y si es así, decidir conscientemente si se cambia la decisión o se reescribe el principio, nunca ambas cosas en silencio.
+
+---
+
+**Qué modifica**: fija las reglas innegociables de la empresa — qué nunca hará, qué significa "premium", criterios de aceptación de cliente, y el método de decisión en cinco criterios (heredado y ampliado en `00-metodologia.md`).
+
+**Qué documentos dependen de este**: todos los documentos de fase, existentes y futuros — es la constitución, la máxima autoridad sobre contenido del proyecto.
+
+**Qué documentos deben revisarse si este cambia**: todos los documentos de fase existentes (`01`, `03`, `04`...) y `enterprise-blueprint.md` — cualquier cambio aquí puede invalidar decisiones ya tomadas en cascada.

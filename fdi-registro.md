@@ -11,8 +11,9 @@ Registro vivo del Founder Dependency Index. Escala y reglas definidas en [`00-me
 | Ejecución de un "proyecto tipo" de implementación (Motor A) | Exclusivo del fundador | 3 | Fase 2 — Modelo de negocio (riesgo R7) | No existe plantilla ni proceso escrito |
 | Generación de pipeline de leads (`leadfinder`) | Automatizado | 0 | Fase 0 — Análisis inicial | Ya corre con scheduler propio (`ENABLE_INPROCESS_SCHEDULER`), sin intervención habitual |
 | Sincronización de pagos y MRR (Stripe vía `interemprex-dashboard`) | Automatizado | 0 | Fase 0 — Análisis inicial | Webhooks gestionan el flujo sin intervención manual |
+| Comprensión global de cómo funciona la empresa (onboarding de una persona nueva) | Totalmente documentado | 1 | Fase 3 — Arquitectura de la oferta | Antes de `enterprise-blueprint.md` esto era "Exclusivo del fundador" (nadie más podía explicar el sistema completo); el blueprint lo documenta, aunque ejecutar cada pieza siga dependiendo de otros procesos con su propio nivel |
 
-**FDI medio actual (5 procesos registrados): 1,8 / 3.** Cifra orientativa — la muestra es pequeña y crecerá con cada fase que documente procesos nuevos. No se compara todavía con ningún objetivo numérico porque fijar uno ahora sería inventar una meta sin base histórica.
+**FDI medio actual (6 procesos registrados): 1,5 / 3.** Cifra orientativa — la muestra es pequeña y crecerá con cada fase que documente procesos nuevos. No se compara todavía con ningún objetivo numérico porque fijar uno ahora sería inventar una meta sin base histórica.
 
 ## Cómo se actualiza este registro
 
