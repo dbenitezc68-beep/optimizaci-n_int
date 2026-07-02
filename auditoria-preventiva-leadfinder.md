@@ -48,10 +48,20 @@ Son datos de **negocios**, no de personas a título individual — pero en el ca
 
 Ninguno de estos seis puntos se resuelve en este documento — quedan como entrada de hechos para cuando Fase 5 (Legal y Cumplimiento) comience.
 
+## Verificación de riesgo inmediato (2026-07-02) — solo lectura, ningún cambio de código
+
+Se comprobó directamente el archivo `.env` real de `leadfinder` (no el `.env.example`), leyendo solo las claves necesarias para responder tres preguntas concretas, sin exponer valores de otras claves (Stripe, Anthropic, etc.) que no venían al caso.
+
+1. **¿Sigue existiendo la credencial por defecto?** Sí, confirmado: `DASHBOARD_USERNAME=admin`, `DASHBOARD_PASSWORD=changeme` y `SECRET_KEY=cambia-esto-en-produccion` siguen siendo, los tres, el valor de ejemplo de `.env.example` — no se han cambiado.
+2. **¿Pertenece solo al entorno de desarrollo?** Todo indica que sí, por tres señales conjuntas: `DATABASE_URL` usa el esquema `sqlite` (no un Postgres remoto), `ENABLE_INPROCESS_SCHEDULER=false` (el recolector no corre de forma persistente en segundo plano), y no hay ninguna evidencia de que el servicio esté desplegado en Railway/Render — `railway.json` es configuración preparada, no prueba de despliegue activo.
+3. **¿Puede afectar a un entorno accesible?** Con la evidencia disponible, no hay ningún entorno accesible detectado hoy — el patrón completo apunta a un `leadfinder` que corre solo en local. Esto es una inferencia a partir de la configuración, no una certeza absoluta: no se puede descartar al 100% un despliegue pasado o puntual con esta misma configuración.
+
+**Conclusión — no se eleva como incidencia por encima del roadmap.** No hay evidencia de exposición real hoy, así que no se trata como emergencia. Pero es una corrección de coste cero (cambiar tres valores de un `.env`) que no debería esperar a la Fase 11 (Tecnología) si en algún momento se despliega `leadfinder` fuera de local — se registra como tarea de bajo esfuerzo / alta conveniencia, no como incidencia urgente, y se añade a `inventario-tecnologico.md`.
+
 ---
 
-**Qué modifica**: no modifica ninguna decisión previa — añade una capa de hechos verificados sobre `leadfinder` que no existía en ningún documento anterior.
+**Qué modifica**: no modifica ninguna decisión previa — añade una capa de hechos verificados sobre `leadfinder` que no existía en ningún documento anterior, incluida la verificación puntual de la credencial por defecto (2026-07-02).
 
-**Qué documentos dependen de este**: la futura Fase 5 (Legal y Cumplimiento) parte directamente de estos hechos. `03-modelo-negocio.md` referencia este documento desde el riesgo R9.
+**Qué documentos dependen de este**: la futura Fase 5 (Legal y Cumplimiento) parte directamente de estos hechos. `03-modelo-negocio.md` referencia este documento desde el riesgo R9. `inventario-tecnologico.md` registra la credencial por defecto como tarea pendiente de bajo esfuerzo.
 
-**Qué documentos deben revisarse si este cambia**: `03-modelo-negocio.md` (riesgo R9) y, cuando exista, el documento de Fase 5.
+**Qué documentos deben revisarse si este cambia**: `03-modelo-negocio.md` (riesgo R9), `inventario-tecnologico.md` y, cuando exista, el documento de Fase 5.

@@ -1,6 +1,6 @@
 # 04 — Arquitectura de la oferta
 
-Estado: **propuesto, pendiente de aprobación.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md` y `03-modelo-negocio.md`.
+Estado: **v2, cerrada y aprobada.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md` y `03-modelo-negocio.md`. La v1 fijó el empaquetado obligatorio, la reutilización modular y la verificación de cobertura; la v2 ajusta la terminología (etapas de Motor A, líneas de Motor B, no motores nuevos) e incorpora la re-auditoría final exigida antes del cierre.
 
 ## Resumen ejecutivo
 
@@ -32,14 +32,14 @@ Coherente con su estado latente (Fase 2): no se ofrece, no se menciona en el cat
 
 Se contrastó la arquitectura contra el universo completo de servicios mencionados a lo largo del proyecto (desarrollo web, SEO, SEM, Meta Ads, email marketing, automatización con n8n/Make/Power Automate, IA/agentes/chatbots/RAG, Power Query/Excel/dashboards/BI, ERP/CRM, integraciones API, scraping/lead generation, digitalización documental, portales/intranets/apps internas, hosting/cloud/dominios/correo/backups/monitorización/ciberseguridad básica, migraciones, GA/GTM/Search Console/CRO, landing pages/funnels, branding, consultoría/auditorías) para comprobar que cada uno se ubica sin ambigüedad en un único motor.
 
-**Dos no encajaban limpiamente y se corrigen aquí, con el ajuste ya aplicado también en `03-modelo-negocio.md` (v4) para que ambos documentos queden coherentes:**
+**Dos no encajaban limpiamente y se corrigen aquí, con el ajuste ya aplicado también en `03-modelo-negocio.md` (v5) para que ambos documentos queden coherentes:**
 
-- **Consultoría/auditoría puntual** aparecía en la v2 de Fase 2 flotando fuera de los tres motores (listada junto a ellos, no dentro de ninguno) — una inconsistencia real, no solo de redacción. Se corrige: es **A1**, una variante de bajo compromiso del motor A, no una cuarta categoría.
-- **Marketing recurrente (SEO, SEM, gestión de anuncios, email marketing)** es claramente recurrente (motor B por definición de Fase 2), pero la definición original de B ("mantenimiento, monitorización, automatizaciones vivas, soporte") describe mantener sistemas ya construidos — el trabajo estratégico continuo de marketing no es eso. Se corrige: **B2**, sub-línea de B distinta de B1 (operación técnica).
+- **Consultoría/auditoría puntual** aparecía en la v2 de Fase 2 flotando fuera de los tres motores (listada junto a ellos, no dentro de ninguno) — una inconsistencia real, no solo de redacción. Se corrige: es la **etapa Diagnóstico del Motor A**, una entrada de bajo compromiso, no una cuarta categoría.
+- **Marketing recurrente (SEO, SEM, gestión de anuncios, email marketing)** es claramente recurrente (motor B por definición de Fase 2), pero la definición original de B ("mantenimiento, monitorización, automatizaciones vivas, soporte") describe mantener sistemas ya construidos — el trabajo estratégico continuo de marketing no es eso. Se corrige: **línea Gestión del crecimiento del Motor B**, distinta de la línea Operación técnica.
 
-**El resto de servicios revisados encajan sin ambigüedad** una vez fijados A1/A2 y B1/B2: infraestructura (hosting, dominios, backups, monitorización, ciberseguridad básica) → B1. Migraciones y digitalización documental inicial → A2, con su mantenimiento posterior → B1. Automatización con n8n/Make/Power Automate, ERP/CRM a medida, integraciones API → C, con base modular reutilizable cuando sea posible (decisión 2). Branding → A2. GA/GTM/Search Console/CRO → parte de B2 (son las herramientas con las que se opera el motor, no un servicio aparte). Scraping/lead generation vendido como servicio a terceros (no el uso interno de `leadfinder`) sería, en el futuro, el primer candidato real de motor D — se anota como observación, no como decisión, porque D sigue latente.
+**El resto de servicios revisados encajan sin ambigüedad** una vez fijadas esas etapas y líneas: infraestructura (hosting, dominios, backups, monitorización, ciberseguridad básica) → Motor B, línea Operación técnica. Migraciones y digitalización documental inicial → Motor A, etapa Implementación, con su mantenimiento posterior → Motor B, línea Operación técnica. Automatización con n8n/Make/Power Automate, ERP/CRM a medida, integraciones API → Motor C, con base modular reutilizable cuando sea posible (decisión 2). Branding → Motor A, etapa Implementación. GA/GTM/Search Console/CRO → parte de la línea Gestión del crecimiento (son las herramientas con las que se opera esa línea, no un servicio aparte). Scraping/lead generation vendido como servicio a terceros (no el uso interno de `leadfinder`) sería, en el futuro, el primer candidato real de Motor D — se anota como observación, no como decisión, porque D sigue latente.
 
-Ningún servicio quedó sin motor ni en más de uno. La arquitectura, con la corrección de A1/A2 y B1/B2, cubre el universo completo revisado.
+Ningún servicio quedó sin motor ni en más de uno. La arquitectura, con Motor A (dos etapas) y Motor B (dos líneas), sigue teniendo cuatro motores y cubre el universo completo revisado.
 
 ## Decisiones descartadas
 
@@ -55,8 +55,8 @@ Ningún servicio quedó sin motor ni en más de uno. La arquitectura, con la cor
 
 ## Dependencias con otras fases
 
-- **Desde `03-modelo-negocio.md`**: hereda los motores A1/A2, B1/B2, C, D y la regla de que A debe convertir a B. Esta fase, a su vez, obligó a corregir esos motores en `03-modelo-negocio.md` v4 (decisión 5) — dependencia en ambos sentidos, ya resuelta y coherente en los dos documentos.
-- **Hacia Fase 4 (Catálogo de servicios)**: cada servicio debe encajar en un nivel dentro de un motor (incluyendo los sub-tipos A1/A2, B1/B2), y debe declarar si es de motor C con o sin base modular reutilizable.
+- **Desde `03-modelo-negocio.md`**: hereda los cuatro motores (A con etapas Diagnóstico/Implementación, B con líneas Operación técnica/Gestión del crecimiento, C, D) y la regla de que A debe convertir a B. Esta fase, a su vez, obligó a corregir la definición de A y B en `03-modelo-negocio.md` (decisión 1, v4-v5) — dependencia en ambos sentidos, ya resuelta y coherente en los dos documentos.
+- **Hacia Fase 4 (Catálogo de servicios)**: cada servicio debe encajar en un nivel dentro de un motor (incluyendo la etapa/línea que le corresponda dentro de A o B), y debe declarar si es de motor C con o sin base modular reutilizable.
 - **Hacia Fase 6 (Customer Journey)**: debe traducir el empaquetado obligatorio (decisión 1) en un discurso que no se perciba como venta forzada (riesgo 1).
 - **Hacia Fase 7 (Sistema comercial)**: debe codificar la decisión 1 como cláusula fija de contrato, no como criterio discrecional — es lo que efectivamente reduce el FDI del cierre de ventas.
 - **Hacia `fdi-registro.md`**: registra el efecto de las decisiones 1 y 2 sobre los procesos ya identificados como críticos en Fase 2.
@@ -75,29 +75,32 @@ Ningún servicio quedó sin motor ni en más de uno. La arquitectura, con la cor
 - **Riesgos**: tres identificados (percepción de venta forzada, sobre-estandarización, límite de la reutilización modular), ninguno de prioridad crítica.
 - **Deuda técnica**: ninguna nueva introducida aquí.
 - **Deuda operativa**: ninguna nueva — las decisiones de esta fase reducen deuda operativa futura.
-- **Complejidad innecesaria**: ninguna — los sub-tipos A1/A2 y B1/B2 son más simples que crear motores nuevos, y siguen siendo solo cuatro motores, no seis.
+- **Complejidad innecesaria**: ninguna — las etapas de A y las líneas de B son más simples que crear motores nuevos, y siguen siendo solo cuatro motores, no seis.
 - **Dependencias peligrosas**: ninguna nueva.
 - **Oportunidades de automatización**: la cláusula de empaquetado obligatorio (decisión 1) es candidata a plantilla automática de contrato en Fase 7.
 - **Oportunidades de estandarización**: la biblioteca de módulos reutilizables (decisión 2) es, en sí misma, el punto de partida técnico de un futuro motor D.
 
-### Re-auditoría del sistema completo (exigida antes de esta aprobación)
+### Re-auditoría final del sistema completo (las cinco condiciones de cierre exigidas)
 
-- **`enterprise-blueprint.md` sigue siendo coherente**: sí — se construyó después de esta corrección, ya refleja A1/A2, B1/B2 y el estado real de cada documento.
-- **No existen duplicidades nuevas**: confirmado. La única duplicidad conocida del sistema sigue siendo R8 (paneles de gestión), ya documentada y sin resolver por instrucción explícita — no relacionada con esta fase.
-- **El FDI mejora o permanece estable**: mejora. Las decisiones 1 y 2 mueven procesos ya registrados hacia niveles de menor dependencia; ninguna decisión de esta fase introduce un proceso nuevo "Exclusivo del fundador" sin contrapartida.
-- **El motor D sigue siendo estrictamente una capacidad interna**: confirmado. No aparece en la oferta pública (decisión 4), no se le asigna ningún servicio del universo revisado en la decisión 5, y la observación sobre "lead generation como servicio" se registra como posibilidad futura, no como decisión.
+1. **Todos los servicios futuros encajan exactamente en un motor**: confirmado. El universo completo revisado en la decisión 5 se ubica sin solape ni hueco en Motor A (etapas Diagnóstico/Implementación), Motor B (líneas Operación técnica/Gestión del crecimiento) o Motor C. Motor D no recibe ningún servicio — sigue latente por diseño.
+2. **`enterprise-blueprint.md` sigue siendo coherente**: sí. No describe el interior de cada motor, así que el ajuste de terminología no le afecta; además ya incorpora la resolución del gap de KPIs (`kpis.md`) sin contradecir nada de esta fase.
+3. **No existen duplicidades nuevas**: confirmado. La única duplicidad conocida sigue siendo R8 (paneles de gestión), ya documentada, sin relación con esta fase. `inventario-tecnologico.md` no reveló ninguna duplicidad de sistema adicional — sí reveló un hallazgo distinto (silo entre `leadfinder` e `interemprex-dashboard`), que es una falta de conexión, no una duplicidad.
+4. **El FDI mejora o permanece estable**: mejora. Las decisiones 1 y 2 mueven procesos ya registrados hacia niveles de menor dependencia (ver `fdi-registro.md`); ninguna decisión de esta fase introduce un proceso nuevo "Exclusivo del fundador" sin contrapartida.
+5. **El inventario tecnológico refleja todo lo descubierto hasta ahora**: sí — `inventario-tecnologico.md` y `capacidades-ia.md` se crearon en esta misma ronda, incorporando todos los hallazgos de Fase 0 a Fase 3 (repos, apps, dominios, bases de datos, APIs, la capacidad de IA de `leadfinder`, el silo entre sistemas, y la verificación de la credencial por defecto).
+
+Las cinco condiciones se cumplen. Fase 3 se cierra.
 
 ## Preguntas que necesitan aprobación
 
-1. ¿Apruebas el empaquetado obligatorio de A con un mínimo de B en el mismo contrato, en vez de como venta posterior?
-2. ¿Apruebas la regla de reutilización modular como criterio por defecto para motor C, aceptando que los proyectos sin ningún componente reutilizable tienen menor prioridad relativa?
-3. ¿Cuántos niveles de servicio quieres por motor (ej. dos: esencial/a medida, o tres: esencial/avanzado/a medida)? Esta decisión pertenece a Fase 4, pero condiciona cómo se redacta el Catálogo — mejor fijarla antes de escribirlo.
-4. ¿Apruebas la corrección de motores (A1/A2, B1/B2) encontrada en la verificación de cobertura, aplicada ya en ambos documentos?
+1. **Resuelta** — empaquetado obligatorio de A con un mínimo de B en el mismo contrato, aprobado dentro de la aprobación general de "decisiones estructurales incorporadas hasta ahora".
+2. **Resuelta** — reutilización modular como criterio por defecto para Motor C, aprobada en el mismo bloque.
+3. **Sigue abierta** — ¿cuántos niveles de servicio por motor (dos: esencial/a medida, o tres: esencial/avanzado/a medida)? No se resolvió en este mensaje. Pasa a Fase 4 como primera pregunta a responder antes de escribir el Catálogo.
+4. **Resuelta** — la corrección se documentó como etapas de Motor A (Diagnóstico/Implementación) y líneas de Motor B (Operación técnica/Gestión del crecimiento), no como motores nuevos, en ambos documentos.
 
 ---
 
-**Qué modifica**: fija las reglas de empaquetado entre motores (A incluye mínimo de B por contrato), la reutilización modular de C, la estructura de niveles de servicio, y corrige la definición de A y B para cubrir todo el universo de servicios revisado.
+**Qué modifica**: fija las reglas de empaquetado entre motores, la reutilización modular de Motor C, la estructura de niveles de servicio, y corrige — con terminología de etapas/líneas, no motores nuevos — la definición de A y B para cubrir todo el universo de servicios revisado.
 
 **Qué documentos dependen de este**: la futura Fase 4 (Catálogo), Fase 6 (Customer Journey) y Fase 7 (Sistema comercial) — las tres heredan directamente las reglas fijadas aquí.
 
-**Qué documentos deben revisarse si este cambia**: `03-modelo-negocio.md` (motores compartidos), y las tres fases futuras listadas arriba en cuanto existan.
+**Qué documentos deben revisarse si este cambia**: `03-modelo-negocio.md` (motores compartidos), `enterprise-blueprint.md` (bloque Arquitectura de la oferta) y las tres fases futuras listadas arriba en cuanto existan.

@@ -58,16 +58,16 @@ KPIs
 | 12 | Tecnología | *(futuro)* — ya tiene tareas asignadas: backups (R6), disparadores de SQLite (R5), base técnica del motor D | Automatizaciones, IA (qué stack las soporta), Modelo de negocio (motor D) | Pendiente |
 | 13 | Marketing | *(futuro)* | Visión (mensaje), Catálogo (qué se promociona), Customer Journey (embudo) | Pendiente |
 | 14 | Finanzas | *(futuro)* | Todos los bloques anteriores — es donde se calculan cifras reales de todo lo diseñado | Pendiente |
-| 15 | KPIs | **no existe todavía ni tiene fase asignada** | Operaciones (KPIs de proceso), Sistema comercial (KPIs comerciales), Finanzas (KPIs financieros) | **Gap detectado, ver más abajo** |
+| 15 | KPIs | [`kpis.md`](./kpis.md) — documento vivo, no fase numerada | Todos los bloques anteriores; cada fase añade solo los indicadores que le corresponden | Abierto — se actualiza en cada fase, 7 indicadores registrados hoy, 1 con dato real (FDI) |
 
 ## Capas de salida (no son bloques de decisión, son consecuencia de la cadena)
 
 - **Página web** (Fase 13 del roadmap): no aparece como bloque propio en esta cadena porque es un derivado — su contenido depende de prácticamente todos los bloques de arriba (Visión para el mensaje, Catálogo para lo que ofrece, Legal para privacidad/cookies, Marketing para el embudo). Por eso el roadmap la sitúa cerca del final: es una salida, no una decisión.
 - **Roadmap de ejecución** (Fase 15 del roadmap): tampoco es un bloque de contenido — es la secuenciación temporal de implementar todo lo anterior, no una decisión de diseño.
 
-## Gap detectado: KPIs no tiene fase propia
+## Gap de KPIs — resuelto
 
-El roadmap de 15 fases (`README.md`) no incluye una fase dedicada a "KPIs" — el usuario la pidió como último bloque de la cadena, pero hoy los indicadores quedarían distribuidos entre Operaciones, Sistema comercial y Finanzas sin que exista un documento que los consolide. No se decide aquí si se crea una fase 16 o si KPIs se resuelve como una sección transversal dentro de Finanzas — queda como pregunta abierta.
+El roadmap de 15 fases no incluye una fase dedicada a "KPIs". Se resolvió sin crear una Fase 16: `kpis.md` es un documento vivo (como `fdi-registro.md`) que cada fase alimenta con los indicadores que le corresponden, en vez de esperar a un cierre único. Ya tiene 7 indicadores registrados desde las fases existentes.
 
 ---
 
@@ -75,6 +75,6 @@ El roadmap de 15 fases (`README.md`) no incluye una fase dedicada a "KPIs" — e
 
 **Qué documentos dependen de este**: ninguno depende de su contenido (no fija reglas), pero todos los documentos futuros deben registrarse aquí al cerrarse, y toda persona nueva en el proyecto debería empezar por este documento después de `00-metodologia.md`.
 
-**Qué documentos deben revisarse si este cambia**: `README.md` (el roadmap debe mantenerse coherente con esta cadena).
+**Qué documentos deben revisarse si este cambia**: `README.md` (el roadmap debe mantenerse coherente con esta cadena), `kpis.md` (bloque 15) y `inventario-tecnologico.md` / `capacidades-ia.md` (documentos vivos referenciados desde varios bloques).
 
 **Qué documentos deben revisarse si cambia algún bloque de la cadena**: este documento — cada vez que una fase se cierre, se actualiza su fila en la tabla de arriba.
