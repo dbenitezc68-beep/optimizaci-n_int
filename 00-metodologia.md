@@ -59,6 +59,25 @@ Todo documento de fase (a partir de `03-modelo-negocio.md`) termina con estas se
 7. Auditoría crítica
 8. Preguntas que necesitan aprobación
 
+## Founder Dependency Index (FDI)
+
+Indicador permanente, activo desde la Fase 2, que mide cuánto depende cada proceso de INTEREMPREX de la intervención directa del fundador. El registro vivo de mediciones está en `fdi-registro.md` — este documento define la escala, aquel acumula los datos.
+
+**Niveles** (de mayor a menor dependencia):
+
+| Nivel | Descripción | Puntuación |
+|---|---|---|
+| Exclusivo del fundador | Solo el fundador puede ejecutarlo; no está escrito en ningún sitio | 3 |
+| Delegable con formación | Otra persona podría hacerlo, pero necesita que el fundador se lo enseñe directamente | 2 |
+| Totalmente documentado | Cualquier persona nueva podría ejecutarlo leyendo la documentación, sin que el fundador intervenga | 1 |
+| Automatizado | No requiere intervención humana en su ejecución habitual | 0 |
+
+**Reglas de uso:**
+
+- Todo proceso que se documente a partir de aquí se clasifica en uno de estos cuatro niveles, dentro del documento de la fase donde aparece, y se añade como fila nueva en `fdi-registro.md`.
+- Toda recomendación relevante declara explícitamente si mejora, empeora o no afecta el FDI del proceso que toca. "Mejora" significa mover un proceso hacia una puntuación más baja (más automatizado o más documentado, menos dependiente del fundador).
+- El objetivo es que el FDI medio de la empresa descienda de forma progresiva, fase a fase. No se exige llegar a 0 en todos los procesos — pero cualquier decisión que empeore el FDI de un proceso sin justificar por qué compensa en otro criterio, se señala explícitamente en la auditoría crítica de esa fase.
+
 ## Nivel de exigencia
 
 Diseñar como si la empresa tuviera que seguir funcionando dentro de diez años sin rehacer su estructura. Buscar siempre la mejor solución disponible, no la primera que sea válida.
