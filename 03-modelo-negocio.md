@@ -1,77 +1,154 @@
 # 03 — Modelo de negocio
 
-Estado: **propuesto, pendiente de aprobación.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`.
+Estado: **v2, ampliado tras aprobación de la dirección general.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`. La v1 aprobó la arquitectura de tres motores; esta versión añade arquitectura económica, cuarto motor latente, Business Model Canvas, ciclo de vida del cliente y una auditoría de riesgos re-ejecutada.
 
 ## Resumen ejecutivo
 
-INTEREMPREX no vende una lista de servicios independientes. Vende acceso a un sistema con tres motores conectados: **Implementación** (entrada, pago único), **Operación continua** (el motor real de ingresos, recurrente) y **Automatización e IA a medida** (el motor de mayor margen, apalancado en el stack propio). Cada motor alimenta al siguiente: un proyecto de implementación que no desemboca en operación continua es, por definición, una venta fallida — no genera el ingreso predecible que sostiene una empresa tecnológica en vez de una agencia de horas facturables (principio 2 de la constitución).
+INTEREMPREX no vende una lista de servicios independientes. Vende acceso a un sistema con tres motores activos — **Implementación** (entrada, pago único), **Operación continua** (el motor real de ingresos, recurrente) y **Automatización e IA a medida** (mayor margen, apalancado en stack propio) — más un **cuarto motor latente**: la posibilidad de que las herramientas internas evolucionen a producto comercializable, diseñado desde ya en la arquitectura aunque no se explote todavía. El dinero entra por liquidez inmediata (proyectos, consultoría puntual), se estabiliza en recurrencia (operación continua) y se multiplica en margen (automatización a medida) a medida que la relación con el cliente madura durante varios años, no varios meses.
 
 ## Decisiones tomadas
 
-### 1. Arquitectura de ingresos: tres motores, no un catálogo plano
+### 1. Arquitectura de ingresos: tres motores activos, uno latente
 
-- **A. Implementación** (pago único) — la puerta de entrada: web, primer proyecto de automatización, primera integración. Diseñado explícitamente para desembocar en el motor B, no como venta autoconclusiva.
-- **B. Operación continua** (recurrente, facturado vía Stripe desde `interemprex-dashboard`) — mantenimiento, monitorización, automatizaciones vivas, soporte. Este es el negocio real: ingreso predecible, no proyecto puntual.
-- **C. Automatización e IA a medida** (por proyecto o por hora) — la línea de mayor margen porque se apalanca directamente en herramientas ya construidas (`leadfinder`, `interemprex-dashboard`) en vez de partir de cero cada vez.
+Se mantiene de la v1: **A. Implementación** (pago único, puerta de entrada), **B. Operación continua** (recurrente, el negocio real), **C. Automatización e IA a medida** (mayor margen). Se añade:
 
-Justificación en los cinco criterios: valor para el cliente (resuelve el problema completo, no un fragmento), rentabilidad (B y C tienen coste marginal decreciente por cliente adicional), escalabilidad (B no depende de horas humanas 1:1 si se automatiza bien — ver riesgos), automatización (los tres motores están diseñados para reducir trabajo manual repetido), simplicidad operativa (tres motores son más fáciles de operar y explicar que 40 líneas de servicio sueltas). Cumple los cinco, no solo tres.
+**D. Plataforma/producto propio (latente, no comercial todavía).** Ver decisión 3.
 
-### 2. Motor A nunca es el objetivo, siempre es el medio
+### 2. Arquitectura económica — cómo circula el dinero
 
-Ningún proyecto de implementación se vende sin evaluar su conversión a motor B en el mismo proceso comercial (Fase 6 lo define en detalle). Esto ya estaba implícito en `01-posicionamiento.md` ("qué clientes rechazamos: el proyecto de encargo único sin intención de continuidad") — aquí se convierte en regla estructural del modelo de ingresos, no solo en criterio de filtrado de clientes.
+| Línea | Liquidez inmediata | Ingreso recurrente | Margen relativo | Fidelización | Abre nuevas oportunidades |
+|---|---|---|---|---|---|
+| Consultoría/auditoría puntual | Alta | No | Alto (bajo coste de entrega) | Baja por sí sola | Alta — filtra intención real antes de A |
+| A. Implementación | Alta (cobro al cierre/hitos) | No | Medio (intensivo en horas) | Baja por sí sola | Alta — es la puerta obligada hacia B |
+| B. Operación continua | Baja por cliente individual | **Sí — el motor real (MRR)** | Medio-alto (coste marginal decreciente al estandarizar) | Alta — aquí se construye la relación | Media — el uso diario revela cuellos de botella nuevos |
+| C. Automatización e IA a medida | Alta (hitos de proyecto) | Parcial (el soporte de lo entregado alimenta a B) | **Alto — el mayor, por apalancamiento en stack propio** | Media-alta — resuelve dolor visible | Alta — cada automatización revela la siguiente |
+| D. Plataforma propia (latente) | No a corto plazo | Sí, a largo plazo, si se activa | Muy alto potencial (coste marginal casi cero por cliente adicional) | No aplica todavía | Alta a largo plazo — abre un segmento de cliente nuevo (otras agencias/consultoras, no solo pymes) |
 
-### 3. Consultoría/auditoría puntual como puerta de entrada alternativa
+**Flujo completo, de captación a renovación:** leadfinder o referido capta el prospecto → consultoría puntual o venta directa de A actúa como filtro real de intención (criterio de Fase 1: sin acceso a sistemas, no hay trato) → A entrega resultado tangible y ancla el precio, con tarifa de lanzamiento si aplica → en el mismo proceso comercial, no como venta separada posterior, se activa B → durante B, el uso real del sistema (no una campaña de upsell) revela el siguiente cuello de botella → ese cuello de botella se vende como C, con el margen más alto porque reutiliza herramientas ya construidas → lo entregado en C generalmente necesita soporte, que vuelve a engordar B → con el tiempo, el patrón de casos reales resueltos en B y C es lo que, eventualmente, podría justificar activar D.
 
-Para prospectos que no están listos para comprometerse a una implementación completa: consultoría o auditoría de pago único, alto margen, bajo compromiso. Filtra intención real antes de invertir tiempo de implementación completa. Alimenta al motor A, no lo sustituye.
+No se incluyen aquí porcentajes de conversión entre etapas, duración media del ciclo ni volumen de ingreso por línea — son cifras que no existen todavía y que corresponden a la Fase 13 (Finanzas) con datos reales, no a esta fase.
 
-### 4. El propio stack (`interemprex-dashboard`, `leadfinder`) se mantiene como herramienta interna, no como producto vendible, por ahora
+### 3. Motor D — Plataforma/producto propio, diseñado ahora, explotado después
 
-Existe la opción futura de productizar el CRM interno o el motor de prospección como oferta independiente (SaaS vendible a otras agencias, por ejemplo). No se decide aquí: es una opción a evaluar en fases posteriores con datos reales de uso interno, no una línea de ingreso que se declare hoy sin validar. Declararla ahora sería inventar un producto que todavía no existe como oferta — contradice el principio 2 de la constitución.
+Se evalúa si debe incorporarse un cuarto motor relacionado con productizar `interemprex-dashboard` o `leadfinder`. Aplicando los cinco criterios de `00-metodologia.md`:
+
+- **Valor para el cliente**: indirecto hoy (el cliente de INTEREMPREX se beneficia de que estas herramientas mejoren con cada proyecto). Directo en el futuro si se vende a terceros (otras agencias o consultoras pequeñas con el mismo problema de falta de tooling propio).
+- **Rentabilidad**: potencial muy alto a largo plazo (coste marginal por cliente adicional cercano a cero), pero nulo a corto plazo y con coste de oportunidad real si se invierte tiempo de desarrollo en funcionalidades de producto en vez de en clientes de pago actuales.
+- **Escalabilidad**: es el único motor con escalabilidad no ligada a horas humanas — encaja de forma natural con las pruebas de "500 clientes" y "varios países", pero solo si la base técnica se diseña bien desde ahora.
+- **Automatización**: es la expresión máxima del principio constitucional 7 — no es una automatización para un cliente, es la automatización convertida en el producto mismo.
+- **Simplicidad operativa**: aquí falla. Mantener un producto para terceros exige soporte, documentación, seguridad y roadmap de producto que hoy no existen como capacidad operativa.
+
+Cumple bien tres de cinco (valor futuro, rentabilidad futura, escalabilidad, automatización) y falla uno con claridad (simplicidad operativa a corto plazo). Conclusión: **no se activa como motor de ingresos ahora.** Activarlo hoy, sin casos de uso demostrados con clientes reales, repetiría el error ya corregido en Fase 1: vender una promesa en vez de una prueba. Pero **se diseña la arquitectura técnica pensando en esta posibilidad** (separación de datos por cliente, capacidad de aislar información, arquitectura preparada para multi-tenencia) — es una decisión de arquitectura de software que se ejecuta en Fase 10, no una línea de ingreso activa hoy. Condición objetiva para activarlo: cuando el uso interno con varios clientes reales demuestre valor consistente **y** exista capacidad operativa real para dar soporte a un producto — no antes.
+
+### 4. Business Model Canvas
+
+Coherente con `01-posicionamiento.md` y `02-principios-fundacionales.md`. Donde no existe dato real, se marca explícitamente como pendiente en vez de inventarlo.
+
+- **Segmentos de clientes**: pymes españolas con procesos operativos manuales, sin digitalizar, con capacidad de pago sostenible y voluntad de dar acceso real a sus sistemas. Sin nicho de sector cerrado en el mensaje público (decisión de Fase 1); foco táctico de prospección se decide en Fase 6.
+- **Propuesta de valor**: software propio implementado directamente sobre los sistemas reales del cliente — no plantilla adaptada, no promesa sin respaldo. Prueba demostrable (dashboard, leadfinder) en vez de casos inventados.
+- **Canales**: leadfinder (pipeline propio), referidos desde clientes en motor B, web propia (pendiente de reescritura, Fase 12). El resto del mix de canales (redes, contenido, etc.) se define en Fase 11 — no se inventa aquí.
+- **Relación con clientes**: implementación directa y colaborativa, no consultoría de informe y adiós. Soporte continuo vía motor B. Transparencia explícita sobre qué parte del trabajo es automatización/IA y qué parte es trabajo humano (principio constitucional 4).
+- **Fuentes de ingresos**: los tres motores activos (A, B, C) más consultoría puntual. Motor D, latente.
+- **Recursos clave**: el stack de software propio (dashboard, leadfinder), el conocimiento técnico del fundador, la prueba pública de capacidad técnica (una vez corregida la web).
+- **Actividades clave**: desarrollo y mantenimiento del stack propio, implementación en sistemas de cliente, prospección automatizada, soporte y monitorización recurrente.
+- **Socios clave**: **no hay socios estratégicos de negocio formalizados todavía** — dato real, no se inventa ninguno. Existen proveedores de infraestructura (Stripe para pagos, Vercel para hosting de al menos un cliente en producción, registrador de dominios), pero son proveedores técnicos, no alianzas estratégicas; no se presentan como lo mismo.
+- **Estructura de costes**: sin datos reales de coste (herramientas, tiempo, suscripciones de terceros) no se puede fijar ninguna cifra. Lo que sí se puede describir es la naturaleza: mayoritariamente tiempo del fundador, coste marginal bajo en herramientas ya construidas y amortizadas, costes variables de infraestructura (hosting, comisiones de Stripe). El cálculo real se hace en Fase 13.
+
+### 5. Ciclo de vida económico del cliente (0–5 años)
+
+Diseñado como relación de largo plazo, no como proyecto puntual — coherente con el rechazo de Fase 1 a clientes sin intención de continuidad.
+
+- **Mes 0 — Captación**: vía leadfinder o entrada por consultoría/auditoría puntual. Se aplica el filtro de aceptación de Fase 1 antes de cotizar nada.
+- **Mes 0-1 — Conversión inicial (motor A)**: cierre del proyecto de implementación, con tarifa de lanzamiento si el cliente entra dentro del tope vigente (Fase 1). Liquidez inmediata.
+- **Mes 1-2 — Transición a recurrencia (punto de mayor riesgo de fuga)**: activación de motor B en el mismo proceso comercial, no como venta separada posterior. Si no se convierte aquí, el cliente se pierde como fuente de ingreso recurrente — es el mecanismo exacto del riesgo R1 (ver auditoría de riesgos).
+- **Mes 2-12 — Consolidación**: soporte activo, primeras detecciones de cuellos de botella nuevos vía uso real del sistema. Posible primera venta de motor C si aparece una necesidad clara.
+- **Año 1 — Primera revisión de condiciones**: si hubo tarifa de lanzamiento, aquí es donde se pasa a tarifa estándar (el tope temporal fijado en Fase 1 se cumple, no se prorroga en silencio). Punto de fricción gestionado con transparencia explícita, no con sorpresa en la factura.
+- **Año 2-3 — Expansión**: nuevas líneas de motor C según el crecimiento real del cliente, posible ampliación del alcance de motor B. Si D estuviera activo para entonces, es el punto natural para ofrecer funcionalidad de plataforma sin coste de desarrollo adicional por cliente.
+- **Año 3-5 — Madurez**: riesgo de que el cliente perciba el sistema como "ya optimizado" e intente reducir el motor B — se mitiga manteniendo valor visible (informes, nuevas automatizaciones), no dejando el mantenimiento en piloto automático silencioso. Si la relación llega sana a este punto, es candidato a caso de éxito público real (con permiso explícito del cliente) — la prueba social que hoy no existe todavía de forma honesta.
+
+No se incluyen cifras de LTV o CAC en euros — es el mapa estructural del ciclo, no el modelo numérico, que corresponde a Fase 13.
 
 ## Decisiones descartadas
 
-- **Catálogo plano de 40+ servicios independientes** (como se listaba en la petición inicial del proyecto): descartado por contradecir el criterio de simplicidad operativa y el principio constitucional de "pensar en plataformas, no en servicios". Cada servicio de ese listado debe encajar dentro de uno de los tres motores en la Fase 4 (Catálogo) — no coexistir como líneas sueltas.
-- **Modelo basado en horas facturables como ingreso principal**: descartado porque no supera la prueba de escalabilidad de 500 clientes (ingreso ligado linealmente a horas humanas, sin apalancamiento de software) y contradice el principio constitucional 7 (automatizar antes de contratar).
-- **Productizar el CRM/leadfinder como oferta pública ya**: descartado por ahora — no hay validación de que funcione fuera del uso interno, y afirmarlo como línea de ingreso sería un dato inventado.
+- Catálogo plano de 40+ servicios independientes (mantenido de v1, confirmado por la aprobación recibida).
+- Modelo basado en horas facturables como ingreso principal (mantenido de v1).
+- **Activar el motor D comercialmente ya**: descartado — no cumple simplicidad operativa a corto plazo y repetiría el error de vender promesa sin prueba (ver decisión 3).
+- **Fijar una fecha arbitraria para migrar la base de datos**: descartado explícitamente a petición del usuario. Sustituido por criterios objetivos de disparo (ver riesgo tecnológico R5 y su plan de transición, abajo).
 
-## Riesgos detectados
+## Riesgos detectados (ampliado y priorizado por impacto y probabilidad)
 
-1. **Colapso a agencia de horas si el motor A no convierte a B.** Si el pipeline se llena de proyectos puntuales sin continuidad, el modelo deja de ser una empresa tecnológica con ingreso recurrente y pasa a ser exactamente lo que la constitución prohíbe en su punto 2. Mitigación: la conversión A→B se mide como métrica central desde la Fase 6.
-2. **Deuda técnica que bloquea la prueba de escalabilidad de 50 empleados / 500 clientes.** `interemprex-dashboard` usa SQLite y su propio README lo declara explícitamente "pensado para uso local/single-tenant". El motor B (operación continua, el ingreso real) no puede escalar a cientos de clientes sobre esa base sin migrar a Postgres multi-tenant. Se documenta aquí porque es un riesgo de modelo de negocio, no solo de tecnología: el ingreso recurrente que sostiene la empresa depende de una base de datos que hoy no soporta el volumen que el propio modelo aspira a alcanzar.
-3. **Punto único de fallo en el cierre comercial.** Nada en el proyecto indica que exista hoy un proceso de venta que no dependa del fundador interviniendo personalmente. Falla la prueba de escalabilidad "el fundador no puede intervenir durante un mes".
-4. **Motor B, tal como está definido, no supera la prueba de 500 clientes si el soporte es manual 1:1.** Para que la operación continua sea rentable a escala, el mantenimiento y soporte deben apoyarse en monitorización y alertas automatizadas, no en revisión periódica humana. Esto no se resuelve en esta fase — se declara como dependencia hacia Fase 7.
+Sin datos históricos reales, la probabilidad se estima de forma cualitativa (Alta/Media/Baja), no numérica — asignar un porcentaje falso de probabilidad sería inventar precisión que no existe.
+
+**Prioridad crítica — impacto alto, probabilidad alta, son la situación actual, no un escenario futuro:**
+
+1. **R1 — Comercial. Colapso a agencia de horas si el motor A no convierte a B.** Sin proceso comercial formal (Fase 6 pendiente), el criterio de rechazo de Fase 1 no basta por sí solo.
+2. **R2 — Comercial/operativo. Dependencia total del fundador en el cierre de ventas.** No existe hoy ningún proceso de venta que no requiera su intervención directa.
+3. **R3 — Financiero. Decisiones de precio tomadas sin conocer el coste real ni el punto de equilibrio.** El pricing de Fase 1 es razonado, pero no está validado contra datos de coste reales — eso es Fase 13.
+4. **R10 — Concentración de clientes. Con 2 proyectos piloto activos (bbabogados, costaflora), perder cualquiera de los dos representa una parte muy alta de la base actual.** Se diluye de forma natural según crezca el número de clientes.
+5. **R12 — Dependencia tecnológica. El fundador es el único desarrollador y mantenedor de todo el stack propio.** Sin continuidad documentada, coincide con la prueba de escalabilidad "el fundador no puede intervenir durante un mes" — aquí elevado a riesgo de continuidad de negocio, no solo de proceso.
+
+**Prioridad alta — impacto alto, probabilidad media o no verificada:**
+
+6. **R5 — Tecnológico. Base de datos SQLite / single-tenant en `interemprex-dashboard`.** Ver plan de transición con criterios objetivos, abajo.
+7. **R6 — Tecnológico/operativo. Sin evidencia de estrategia de backup o continuidad para el dashboard.** No se ha encontrado documentación de copias de seguridad automatizadas para los datos de clientes, pipeline y pagos — a diferencia del panel de cumplimiento (`gestion-interemprex`), que sí tiene una copia de seguridad simple documentada. Probabilidad no verificada, impacto alto si ocurriera (pérdida de datos de clientes y pagos). Pendiente de confirmar en Fase 10.
+8. **R9 — Legal. Cumplimiento no auditado en profundidad**: la web tiene política de privacidad, pero no se ha revisado el tratamiento real de datos en el dashboard, ni la base legal de que `leadfinder` recopile datos de negocios de terceros vía scraping de OpenStreetMap. Impacto alto (sanciones AEPD), probabilidad media. **Gap detectado en el roadmap**: el reordenamiento de fases aprobado no conserva una fase dedicada a "Documentación y cumplimiento legal" (existía en el planteamiento original, no en el orden de 14 fases vigente). Se marca como pregunta abierta, no se decide aquí.
+
+**Prioridad media:**
+
+9. **R4 — Financiero. Que la tarifa de lanzamiento se convierta de facto en permanente por falta de disciplina** en aplicar el tope ya fijado en Fase 1.
+10. **R8 — Operativo. Duplicidad de sistemas de gestión interna**: `interemprex-dashboard` (CRM completo, en uso) y `dashboard-interemprex.html` / `interemprex.json` (panel de cumplimiento, vacío desde su creación) cubren propósitos parcialmente solapados sin una diferenciación de uso decidida. Ya se detectó en el análisis inicial (Fase 0) y sigue sin resolverse.
+11. **R11 — Dependencia tecnológica de terceros.** Stripe (pagos del motor B), Overpass/OpenStreetMap (única fuente de datos de leadfinder — cambios en su política de acceso afectan directamente a la prospección), Vercel (hosting de al menos un cliente en producción). Impacto medio-alto si alguno cambia condiciones; probabilidad baja-media a corto plazo, real a 5 años.
+
+**Prioridad baja (mitigada, seguir vigilando):**
+
+12. **R7 — Operativo. Sin proceso documentado de ejecución de un "proyecto tipo".** Ya identificado en v1, dependencia hacia Fase 7.
+
+### R5 — Plan de transición de SQLite con criterios objetivos (no fecha)
+
+No se fija una fecha porque hoy, con 2 clientes piloto, ningún disparador real está activo. Se define el criterio, y la responsabilidad de vigilarlo recae en Fase 10, con revisión obligatoria al cierre de cualquier fase que aumente el volumen de clientes (especialmente Fase 6):
+
+- **Disparador de concurrencia**: iniciar la migración cuando se prevea de forma sostenida más de una escritura simultánea en ventanas de segundos (varios webhooks de Stripe o actualizaciones de pipeline al mismo tiempo) — SQLite limita la escritura concurrente por diseño, no es una cuestión de volumen total de filas.
+- **Disparador funcional**: si se decide activar el motor D para terceros, la migración deja de ser opcional — un producto vendido a otras empresas exige aislamiento de datos por tenant que un fichero SQLite único no garantiza con seguridad.
+- **Disparador de infraestructura**: si el dashboard se despliega en una plataforma sin disco persistente (el propio README de `leadfinder` ya advierte del mismo problema para su base SQLite), la migración pasa de mejora a requisito de funcionamiento.
+- **Disparador de carga de lectura**: si los informes de MRR/pipeline empiezan a tardar de forma perceptible por volumen histórico acumulado.
 
 ## Dependencias con otras fases
 
-- **Desde `01-posicionamiento.md`**: el criterio "rechazar clientes sin intención de continuidad" es la defensa del modelo contra el riesgo 1.
-- **Desde `02-principios-fundacionales.md`**: principios 1, 2, 5, 7 y 10 aplican directamente a la arquitectura de motores.
-- **Hacia Fase 3 (Arquitectura de la oferta)**: debe encajar cada servicio dentro de los motores A/B/C, no como lista independiente.
-- **Hacia Fase 4 (Catálogo de servicios)**: hereda la obligación de consolidar el listado disperso original dentro de los tres motores.
-- **Hacia Fase 6 (Sistema comercial)**: debe resolver el riesgo 3 (dependencia del fundador) y definir cómo se mide la conversión A→B.
-- **Hacia Fase 7 (Operaciones)**: debe definir el proceso de ejecución de un proyecto tipo para que sea delegable, y el modelo de soporte automatizado para el motor B (riesgo 4).
-- **Hacia Fase 10 (Tecnología)**: debe decidir cuándo migrar `interemprex-dashboard` a una base de datos multi-tenant (riesgo 2).
-- **Hacia Fase 13 (Finanzas)**: aquí no se fija ninguna cifra de margen, precio interno o coste por hora — se fija solo el orden relativo de rentabilidad esperado (C > B > A, por apalancamiento decreciente en horas humanas). Las cifras reales se calculan en Fase 13 con datos reales del fundador, tal como exige el principio 10 de la constitución.
+- **Desde `01-posicionamiento.md`**: el criterio de rechazo a clientes sin continuidad protege contra R1; el tope temporal de la tarifa de lanzamiento es la base del ciclo de vida del cliente en el Año 1.
+- **Desde `02-principios-fundacionales.md`**: principios 1, 2, 4, 5, 7, 8 y 10 aplican directamente.
+- **Hacia Fase 3 (Arquitectura de la oferta)** y **Fase 4 (Catálogo)**: heredan la clasificación de cada servicio dentro de los motores A/B/C.
+- **Hacia Fase 6 (Sistema comercial)**: debe resolver R1 y R2 (proceso de venta y de conversión A→B que no dependa solo del fundador).
+- **Hacia Fase 7 (Operaciones)**: debe resolver R7 (proceso delegable) y decidir el destino de la duplicidad R8 (los dos paneles de gestión).
+- **Hacia Fase 10 (Tecnología)**: debe vigilar los disparadores de R5, verificar R6 (backups) y diseñar la base técnica de R12 (continuidad sin el fundador) y de un eventual motor D.
+- **Hacia Fase 13 (Finanzas)**: calcula las cifras reales de margen, LTV, CAC y resuelve R3 y R4 con datos reales.
+- **Gap detectado hacia el roadmap general**: R9 (legal) no tiene fase dedicada en el orden de 14 fases vigente. Queda como pregunta abierta.
 
 ## Tareas futuras
 
-- Definir en Fase 6 la métrica y el proceso de conversión de motor A a motor B.
-- Evaluar en Fase 10 el coste y momento de migrar el dashboard a Postgres multi-tenant.
-- Evaluar en fase posterior (no antes de tener datos de uso interno reales) si `interemprex-dashboard` o `leadfinder` se productizan como oferta independiente.
-- Diseñar en Fase 7 un modelo de soporte para el motor B que no dependa de revisión manual 1:1 por cliente.
+- Definir en Fase 6 el proceso y la métrica de conversión A→B, y reducir la dependencia del fundador en el cierre.
+- Verificar en Fase 10 la existencia real de backups del dashboard (R6) y vigilar los disparadores de migración de SQLite (R5).
+- Decidir en Fase 7 si los dos paneles de gestión interna (R8) se consolidan, se diferencian explícitamente, o se elimina uno.
+- Evaluar, no antes de tener datos de uso interno reales, si se activa el motor D.
+- Decidir si se crea una fase específica de "Legal y cumplimiento" o se integra en Fase 7 (R9).
 
-## Auditoría crítica
+## Auditoría crítica (re-ejecutada sobre la v2 completa)
 
-- **Contradicciones con documentación previa:** ninguna detectada. El modelo refuerza `01-posicionamiento.md` y `02-principios-fundacionales.md` sin contradecirlos.
-- **Duplicidades:** ninguna — es la primera vez que se define la arquitectura de ingresos.
-- **Deuda técnica:** confirmada (riesgo 2, base de datos single-tenant).
-- **Deuda operativa:** confirmada (riesgo 3, sin proceso de venta documentado; no existe todavía un proceso escrito de "cómo se ejecuta un proyecto tipo").
-- **Complejidad innecesaria:** detectada en el catálogo original de 40+ servicios; se resuelve consolidándolo en Fase 4.
-- **Dependencias peligrosas:** el cierre comercial depende al 100% del fundador (riesgo 3).
-- **Oportunidades de automatización:** alertas de monitorización para el motor B en vez de revisión manual (riesgo 4); scoring de conversión A→B dentro del propio dashboard.
-- **Oportunidades de estandarización:** plantillar el "proyecto tipo" de implementación para que sea ejecutable por alguien distinto del fundador.
+- **Contradicciones con documentación previa**: ninguna detectada. La v2 refuerza `01-posicionamiento.md` y `02-principios-fundacionales.md`; el motor D respeta el principio 8 (no adoptar tecnología/producto de moda sin necesidad real) al mantenerse latente en vez de activarse.
+- **Duplicidades**: una detectada y ya documentada como riesgo (R8, los dos paneles de gestión). No es nueva, ya existía desde la Fase 0; aquí se formaliza como riesgo con prioridad media en vez de quedar como nota suelta.
+- **Riesgos**: ampliados de 4 a 12, categorizados y priorizados (ver arriba). Los cinco de prioridad crítica son la situación actual de la empresa, no proyecciones.
+- **Deuda técnica**: R5 (SQLite, con plan de transición por criterios objetivos) y R6 (backups no verificados).
+- **Deuda operativa**: R2, R7, R8.
+- **Complejidad innecesaria**: ninguna nueva; el catálogo disperso original sigue pendiente de resolver en Fase 4.
+- **Dependencias peligrosas**: R2, R11, R12 — dos de tres dependen del fundador como punto único de fallo, una de terceros (Stripe, Overpass, Vercel).
+- **Oportunidades de automatización**: detección automática de cuellos de botella dentro de B (para alimentar C) sin depender de que el fundador la note manualmente; alertas de monitorización en vez de revisión pasiva.
+- **Oportunidades de estandarización**: plantillar el "proyecto tipo" (R7); definir un protocolo único de qué panel de gestión usar para qué (R8).
+- **Coherencia con la constitución**: verificada punto por punto. No inventa datos (costes, socios, LTV se marcan explícitamente como pendientes). Motor D no se vende sin probarlo primero (principio 1 y 8). Ningún cliente se acepta sin cumplir los criterios de Fase 1 (principio 9 de la constitución, heredado).
 
 ## Preguntas que necesitan aprobación
 
-1. ¿Confirmas los tres motores (Implementación / Operación continua / Automatización e IA a medida) como arquitectura de ingresos, sustituyendo al catálogo plano de 40+ servicios del planteamiento inicial?
-2. ¿Autorizas que la Fase 4 (Catálogo de servicios) reduzca y consolide ese listado original dentro de estos tres motores, en vez de mantener cada servicio como línea independiente?
-3. La migración del dashboard a base de datos multi-tenant (riesgo 2): ¿la tratamos como tarea normal de la Fase 10 (Tecnología), o quieres elevarla de prioridad antes de seguir añadiendo clientes reales al sistema actual?
+1. **Resuelta** — arquitectura de tres motores confirmada por la dirección general ya aprobada en este mensaje.
+2. **Resuelta** — consolidación del catálogo en Fase 4 queda pendiente de ejecutar, no de aprobar de nuevo.
+3. **Resuelta** — el plan de transición de SQLite por criterios objetivos sustituye a la pregunta de fecha.
+4. ¿Confirmas el motor D como **latente por diseño, no comercial**, con la condición objetiva descrita en la decisión 3, o prefieres que ni siquiera se prepare la arquitectura para ello todavía?
+5. Sobre el gap detectado (R9): ¿creamos una fase dedicada de "Legal y cumplimiento", o la integramos dentro de Fase 7 (Operaciones)?
+6. Sobre R6 (backups no verificados) y R8 (duplicidad de paneles de gestión): ¿se adelantan como verificación urgente ahora, o esperan a sus fases correspondientes (10 y 7)?
