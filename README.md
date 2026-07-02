@@ -14,22 +14,34 @@ Repositorio de documentación estratégica de INTEREMPREX. Aquí vive el plan de
 
 ## Roadmap por fases
 
+Orden fijado el 2026-07-02: la web es consecuencia de la estrategia, no la estrategia en sí — por eso "Página web" se mueve al final, justo antes de Finanzas y Roadmap de ejecución. No se toca `interemprex/index.html` hasta cerrar Posicionamiento, Modelo de negocio, Arquitectura de la oferta, Catálogo de servicios y Customer Journey como mínimo.
+
 Cada fase termina con aprobación explícita antes de empezar la siguiente. No se avanza fase sin cerrar la anterior.
 
 - [x] **Fase 1 — Posicionamiento** → [`01-posicionamiento.md`](./01-posicionamiento.md)
+- [ ] **Principios fundacionales** (constitución, no cuenta como fase numerada) → [`02-principios-fundacionales.md`](./02-principios-fundacionales.md) — propuesto, pendiente de aprobación
 - [ ] Fase 2 — Modelo de negocio
-- [ ] Fase 3 — Catálogo de servicios
-- [ ] Fase 4 — Procesos internos
-- [ ] Fase 5 — Automatizaciones
-- [ ] Fase 6 — IA
-- [ ] Fase 7 — Tecnología
-- [ ] Fase 8 — Página web
-- [ ] Fase 9 — Marketing
-- [ ] Fase 10 — Ventas
-- [ ] Fase 11 — Documentación
-- [ ] Fase 12 — Escalabilidad
+- [ ] Fase 3 — Arquitectura de la oferta
+- [ ] Fase 4 — Catálogo de servicios
+- [ ] Fase 5 — Customer Journey
+- [ ] Fase 6 — Sistema comercial
+- [ ] Fase 7 — Operaciones
+- [ ] Fase 8 — Automatizaciones
+- [ ] Fase 9 — IA
+- [ ] Fase 10 — Tecnología
+- [ ] Fase 11 — Marketing
+- [ ] Fase 12 — Página web
 - [ ] Fase 13 — Finanzas
 - [ ] Fase 14 — Roadmap de ejecución
+
+## Metodología a partir de la Fase 2
+
+Nivel de exigencia elevado desde aquí: no se documentan listas de ideas, se diseña un sistema empresarial donde cada pieza encaja con las demás. Cada fase debe, antes de cerrarse:
+
+1. **Declarar dependencias** — qué decisiones de fases anteriores la condicionan, y qué de esta fase condiciona a las siguientes.
+2. **Cuestionar la escalabilidad** — señalar explícitamente cualquier decisión que limite crecer de 1 a 100 clientes, aunque funcione bien con el primero.
+3. **Justificar cada recomendación relevante desde tres ángulos**: valor para el cliente, rentabilidad para INTEREMPREX, y posibilidad de automatización. Si una opción no compite bien en al menos dos de los tres, se descarta.
+4. **Contrastarla contra `02-principios-fundacionales.md`** — si contradice un principio, se decide conscientemente cambiar la decisión o reescribir el principio; nunca se ignora en silencio.
 
 ## Principio del proceso
 
