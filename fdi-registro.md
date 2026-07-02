@@ -12,8 +12,9 @@ Registro vivo del Founder Dependency Index. Escala y reglas definidas en [`00-me
 | Generación de pipeline de leads (`leadfinder`) | Automatizado | 0 | Fase 0 — Análisis inicial | Ya corre con scheduler propio (`ENABLE_INPROCESS_SCHEDULER`), sin intervención habitual |
 | Sincronización de pagos y MRR (Stripe vía `interemprex-dashboard`) | Automatizado | 0 | Fase 0 — Análisis inicial | Webhooks gestionan el flujo sin intervención manual |
 | Comprensión global de cómo funciona la empresa (onboarding de una persona nueva) | Totalmente documentado | 1 | Fase 3 — Arquitectura de la oferta | Antes de `enterprise-blueprint.md` esto era "Exclusivo del fundador" (nadie más podía explicar el sistema completo); el blueprint lo documenta, aunque ejecutar cada pieza siga dependiendo de otros procesos con su propio nivel |
+| Saber qué servicio se vende, a qué nivel y por qué precio | Totalmente documentado | 1 | Fase 4 — Catálogo de servicios | Antes de `05-catalogo-servicios.md` esto vivía solo en la cabeza del fundador (qué se puede vender hoy y qué no); ahora está escrito y es la fuente única de verdad |
 
-**FDI medio actual (6 procesos registrados): 1,5 / 3.** Cifra orientativa — la muestra es pequeña y crecerá con cada fase que documente procesos nuevos. No se compara todavía con ningún objetivo numérico porque fijar uno ahora sería inventar una meta sin base histórica.
+**FDI medio actual (7 procesos registrados): 1,43 / 3.** Cifra orientativa — la muestra es pequeña y crecerá con cada fase que documente procesos nuevos. No se compara todavía con ningún objetivo numérico porque fijar uno ahora sería inventar una meta sin base histórica.
 
 ## Cómo se actualiza este registro
 

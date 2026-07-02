@@ -48,7 +48,7 @@ KPIs
 | 2 | Constitución | `02-principios-fundacionales.md` | Visión | Cerrado (autoridad transversal, ver arriba) |
 | 3 | Modelo de negocio | `03-modelo-negocio.md` (v4) | Visión, Constitución | Cerrado |
 | 4 | Arquitectura de la oferta | `04-arquitectura-oferta.md` | Modelo de negocio | Pendiente de aprobación definitiva |
-| 5 | Catálogo | *(futuro, `05-catalogo-servicios.md`)* | Arquitectura de la oferta | Pendiente |
+| 5 | Catálogo | [`05-catalogo-servicios.md`](./05-catalogo-servicios.md) — apoyado en `capacidades-core.md` | Arquitectura de la oferta | Pendiente de aprobación definitiva |
 | 6 | Legal | *(futuro, `06-legal-cumplimiento.md`)* — hechos preliminares ya en `auditoria-preventiva-leadfinder.md` | Catálogo (licencias/IP), Modelo de negocio (qué datos maneja cada motor) | Pendiente — auditoría de hechos de LeadFinder ya iniciada |
 | 7 | Customer Journey | *(futuro)* | Arquitectura de la oferta (empaquetado), Legal (consentimientos/contratos en el journey) | Pendiente |
 | 8 | Sistema comercial | *(futuro)* | Customer Journey, Arquitectura de la oferta (cláusula de empaquetado), Legal (contratos) | Pendiente |

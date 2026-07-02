@@ -9,6 +9,8 @@ Empieza por [`00-metodologia.md`](./00-metodologia.md) — rige cómo se constru
 - [`kpis.md`](./kpis.md) — registro oficial de indicadores de toda la empresa; cada fase añade solo los suyos. Resuelve el bloque KPIs de `enterprise-blueprint.md` sin necesidad de una fase 16.
 - [`inventario-tecnologico.md`](./inventario-tecnologico.md) — inventario oficial: repos, apps, dominios, bases de datos, APIs, proveedores, credenciales (solo referencia), dependencias entre sistemas.
 - [`capacidades-ia.md`](./capacidades-ia.md) — registro de toda capacidad de IA detectada en el código, dónde está, qué modelo usa, y si está integrada en la oferta.
+- [`capacidades-core.md`](./capacidades-core.md) — inventario de capacidades reales (tecnología/conocimiento ya construido); todo servicio del catálogo debe apoyarse en una o varias.
+- [`flywheel-comercial.md`](./flywheel-comercial.md) — estado objetivo del flujo comercial completo (LeadFinder → ... → Nuevas oportunidades), contrastado eslabón a eslabón contra lo que existe hoy.
 - [`duplicidad-paneles-gestion.md`](./duplicidad-paneles-gestion.md) — hechos sobre los dos paneles de gestión interna, sin resolución todavía (se decide en Fase 8).
 - [`auditoria-preventiva-leadfinder.md`](./auditoria-preventiva-leadfinder.md) — hechos sobre fuentes, licencias, almacenamiento, retención y accesos de datos en `leadfinder`, sin propuesta legal (entrada de hechos para Fase 5). Incluye verificación puntual de una credencial por defecto (2026-07-02).
 
@@ -33,7 +35,7 @@ Cada fase termina con aprobación explícita antes de empezar la siguiente. No s
 - [x] **Principios fundacionales** (constitución de contenido) → [`02-principios-fundacionales.md`](./02-principios-fundacionales.md) — aprobado por uso
 - [x] **Fase 2 — Modelo de negocio** → [`03-modelo-negocio.md`](./03-modelo-negocio.md) — aprobado (v5)
 - [x] **Fase 3 — Arquitectura de la oferta** → [`04-arquitectura-oferta.md`](./04-arquitectura-oferta.md) — aprobado (v2)
-- [ ] Fase 4 — Catálogo de servicios — primera decisión pendiente: cuántos niveles de servicio por motor (ver pregunta 3 de `04-arquitectura-oferta.md`)
+- [ ] **Fase 4 — Catálogo de servicios** → [`05-catalogo-servicios.md`](./05-catalogo-servicios.md) — pendiente de aprobación definitiva; hallazgo: la línea "Gestión del crecimiento" de Motor B no tiene capacidad Core completa todavía
 - [ ] **Fase 5 — Legal y Cumplimiento** (nueva, insertada aquí a petición explícita del 2026-07-02) — RGPD, LOPDGDD, encargos de tratamiento, contratos, condiciones generales, privacidad, cookies, uso de IA, licencias, propiedad intelectual, scraping y fuentes de datos, riesgos regulatorios. Ver razonamiento de ubicación más abajo.
 - [ ] Fase 6 — Customer Journey
 - [ ] Fase 7 — Sistema comercial
