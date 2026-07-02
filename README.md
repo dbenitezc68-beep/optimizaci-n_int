@@ -2,6 +2,8 @@
 
 Repositorio de documentación estratégica de INTEREMPREX. Aquí vive el plan de negocio, fase a fase, con las decisiones tomadas y el porqué de cada una. El código sigue viviendo en sus propios repos — este es el índice y la memoria de las decisiones, no el producto.
 
+Empieza por [`00-metodologia.md`](./00-metodologia.md) — rige cómo se construye cada documento de este repositorio, es de lectura obligatoria antes de cualquier fase.
+
 ## Ecosistema real (verificado, no aspiracional)
 
 | Repo | Qué es | Estado |
@@ -18,9 +20,10 @@ Orden fijado el 2026-07-02: la web es consecuencia de la estrategia, no la estra
 
 Cada fase termina con aprobación explícita antes de empezar la siguiente. No se avanza fase sin cerrar la anterior.
 
+- [x] `00-metodologia.md` — metodología permanente de trabajo (proceso)
 - [x] **Fase 1 — Posicionamiento** → [`01-posicionamiento.md`](./01-posicionamiento.md)
-- [ ] **Principios fundacionales** (constitución, no cuenta como fase numerada) → [`02-principios-fundacionales.md`](./02-principios-fundacionales.md) — propuesto, pendiente de aprobación
-- [ ] Fase 2 — Modelo de negocio
+- [x] **Principios fundacionales** (constitución de contenido) → [`02-principios-fundacionales.md`](./02-principios-fundacionales.md) — aprobado por uso: el usuario construye la metodología y la Fase 2 directamente sobre él sin objeciones
+- [ ] **Fase 2 — Modelo de negocio** → [`03-modelo-negocio.md`](./03-modelo-negocio.md) — propuesto, pendiente de aprobación
 - [ ] Fase 3 — Arquitectura de la oferta
 - [ ] Fase 4 — Catálogo de servicios
 - [ ] Fase 5 — Customer Journey
@@ -34,14 +37,7 @@ Cada fase termina con aprobación explícita antes de empezar la siguiente. No s
 - [ ] Fase 13 — Finanzas
 - [ ] Fase 14 — Roadmap de ejecución
 
-## Metodología a partir de la Fase 2
-
-Nivel de exigencia elevado desde aquí: no se documentan listas de ideas, se diseña un sistema empresarial donde cada pieza encaja con las demás. Cada fase debe, antes de cerrarse:
-
-1. **Declarar dependencias** — qué decisiones de fases anteriores la condicionan, y qué de esta fase condiciona a las siguientes.
-2. **Cuestionar la escalabilidad** — señalar explícitamente cualquier decisión que limite crecer de 1 a 100 clientes, aunque funcione bien con el primero.
-3. **Justificar cada recomendación relevante desde tres ángulos**: valor para el cliente, rentabilidad para INTEREMPREX, y posibilidad de automatización. Si una opción no compite bien en al menos dos de los tres, se descarta.
-4. **Contrastarla contra `02-principios-fundacionales.md`** — si contradice un principio, se decide conscientemente cambiar la decisión o reescribir el principio; nunca se ignora en silencio.
+La numeración de archivo no coincide 1:1 con el número de fase: `00` y `02` son documentos de gobierno (proceso y constitución), no fases del negocio en sí. Ver [`00-metodologia.md`](./00-metodologia.md) para el formato obligatorio que sigue cada fase a partir de aquí.
 
 ## Principio del proceso
 
