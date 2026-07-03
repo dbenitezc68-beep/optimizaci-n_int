@@ -57,5 +57,10 @@ npm run build        # build de producción
 npm run start        # servidor de producción
 npm run lint         # ESLint
 npm run db:seed      # crear/asegurar el usuario admin
+npm run db:backup    # backup verificado de la base de datos en backups/
 npm run db:studio    # Prisma Studio (explorar la base de datos)
 ```
+
+## Backups
+
+`npm run db:backup` crea una copia consistente de la base de datos (API de backup online de SQLite, segura aunque la app esté en marcha), verifica su integridad (`PRAGMA integrity_check`) y conserva las últimas 14 copias en `backups/` (fuera de git). La carpeta vive en el mismo disco que la base: copia periódicamente su contenido a otro medio (nube o disco externo) para tener un backup real ante fallo de disco.

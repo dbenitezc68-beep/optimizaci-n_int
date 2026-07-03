@@ -2,39 +2,41 @@
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/auth";
-import type { LeadStage } from "@/generated/prisma/client";
+import { LEAD_STAGES } from "@/lib/domain";
+import {
+  optionalEmail,
+  optionalEurosToCents,
+  optionalText,
+  parseForm,
+  redirectWithError,
+  requiredText,
+  tryMutation,
+} from "@/lib/forms";
 
-const STAGES: LeadStage[] = [
-  "NEW",
-  "CONTACTED",
-  "PROPOSAL",
-  "NEGOTIATION",
-  "WON",
-  "LOST",
-];
+const leadSchema = z.object({
+  name: requiredText("El nombre es obligatorio"),
+  company: optionalText,
+  email: optionalEmail,
+  phone: optionalText,
+  source: optionalText,
+  notes: optionalText,
+  value: optionalEurosToCents("El valor estimado debe ser un número mayor que 0"),
+});
 
 export async function createLeadAction(formData: FormData) {
   await requireUser();
-  const name = String(formData.get("name") ?? "").trim();
-  if (!name) {
-    redirect("/dashboard/pipeline/new?error=El nombre es obligatorio");
-  }
+  const parsed = parseForm(leadSchema, formData);
+  if (!parsed.ok) redirectWithError("/dashboard/pipeline/new", parsed.error);
 
-  const valueEuros = formData.get("value");
-
-  await prisma.lead.create({
-    data: {
-      name,
-      company: String(formData.get("company") ?? "").trim() || null,
-      email: String(formData.get("email") ?? "").trim() || null,
-      phone: String(formData.get("phone") ?? "").trim() || null,
-      source: String(formData.get("source") ?? "").trim() || null,
-      notes: String(formData.get("notes") ?? "").trim() || null,
-      valueCents: valueEuros ? Math.round(Number(valueEuros) * 100) : null,
-    },
-  });
+  const { value, ...data } = parsed.data;
+  await tryMutation(
+    () => prisma.lead.create({ data: { ...data, valueCents: value } }),
+    "/dashboard/pipeline/new",
+    "No se pudo crear el lead. Inténtalo de nuevo."
+  );
 
   revalidatePath("/dashboard/pipeline");
   revalidatePath("/dashboard");
@@ -46,10 +48,19 @@ export async function updateLeadStageAction(
   formData: FormData
 ) {
   await requireUser();
-  const stage = String(formData.get("stage") ?? "") as LeadStage;
-  if (!STAGES.includes(stage)) return;
+  const stage = String(formData.get("stage") ?? "");
+  if (!(LEAD_STAGES as readonly string[]).includes(stage)) return;
 
-  await prisma.lead.update({ where: { id: leadId }, data: { stage } });
+  await tryMutation(
+    () =>
+      prisma.lead.update({
+        where: { id: leadId },
+        data: { stage: stage as (typeof LEAD_STAGES)[number] },
+      }),
+    "/dashboard/pipeline",
+    "No se pudo cambiar la etapa del lead."
+  );
+
   revalidatePath("/dashboard/pipeline");
   revalidatePath("/dashboard");
 }
@@ -66,23 +77,33 @@ export async function convertLeadToClientAction(formData: FormData) {
     redirect(`/dashboard/clients/${lead.convertedClientId}`);
   }
 
-  const client = await prisma.client.create({
-    data: {
-      name: lead.name,
-      company: lead.company,
-      email: lead.email,
-      phone: lead.phone,
-      notes: lead.notes,
-    },
-  });
-
-  await prisma.lead.update({
-    where: { id: leadId },
-    data: { stage: "WON", convertedClientId: client.id },
-  });
+  // Transacción: sin ella, un fallo al marcar el lead dejaría un cliente
+  // huérfano y el lead volvería a convertirse en el siguiente intento.
+  const client = await tryMutation(
+    () =>
+      prisma.$transaction(async (tx) => {
+        const created = await tx.client.create({
+          data: {
+            name: lead.name,
+            company: lead.company,
+            email: lead.email,
+            phone: lead.phone,
+            notes: lead.notes,
+          },
+        });
+        await tx.lead.update({
+          where: { id: leadId },
+          data: { stage: "WON", convertedClientId: created.id },
+        });
+        return created;
+      }),
+    "/dashboard/pipeline",
+    "No se pudo convertir el lead en cliente. Inténtalo de nuevo."
+  );
 
   revalidatePath("/dashboard/pipeline");
   revalidatePath("/dashboard/clients");
+  revalidatePath("/dashboard");
   redirect(`/dashboard/clients/${client.id}`);
 }
 
@@ -91,6 +112,12 @@ export async function deleteLeadAction(formData: FormData) {
   const leadId = String(formData.get("leadId") ?? "");
   if (!leadId) return;
 
-  await prisma.lead.delete({ where: { id: leadId } });
+  await tryMutation(
+    () => prisma.lead.delete({ where: { id: leadId } }),
+    "/dashboard/pipeline",
+    "No se pudo eliminar el lead."
+  );
+
   revalidatePath("/dashboard/pipeline");
+  revalidatePath("/dashboard");
 }
