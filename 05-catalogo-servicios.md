@@ -1,112 +1,241 @@
-# 05 — Catálogo de servicios
+# 05 — Catálogo de servicios (arquitectura comercial)
 
-Estado: **propuesto, pendiente de aprobación.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`, `03-modelo-negocio.md` y `04-arquitectura-oferta.md`. Cada servicio cita la capacidad Core (`capacidades-core.md`) que lo sostiene — ninguno se lista sin una.
+Estado: **propuesto, pendiente de aprobación.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`, `03-modelo-negocio.md`, `04-arquitectura-oferta.md` y `capacidades-core.md`. No es un listado de servicios — es una arquitectura: cada servicio responde diez preguntas obligatorias, ninguno existe aislado de una capacidad Core, un proceso del flywheel y una vía de crecimiento hacia otro servicio.
 
 ## Resumen ejecutivo
 
-El catálogo se organiza por motor (A, B con sus dos líneas, C), y dentro de cada uno en tres niveles por evolución del cliente, no por tamaño de factura. Aplicar la regla de "una capacidad Core por servicio" con rigor sacó a la luz un hueco que no era visible antes: **la línea Gestión del crecimiento de Motor B (SEO/SEM/Ads/Email) solo tiene una capacidad real construida — SEO técnico — y es parcial.** El resto de esa línea se marca como pendiente de construir, no como oferta activa. Es exactamente el tipo de sobre-promesa que `02-principios-fundacionales.md` prohíbe.
+Diseñar el catálogo con esta rigurosidad reconfirma el hallazgo de la versión anterior — la línea Gestión del crecimiento de Motor B solo tiene capacidad parcial — y añade una capa nueva: cada servicio queda conectado explícitamente al flywheel empresarial (qué eslabón activa) y al FDI (qué automatización aprovecha o qué proceso sigue dependiendo del fundador). La arquitectura resultante se validó contra seis perspectivas y contra seis escenarios de escala (10 y 50 empleados, 500 clientes, operación internacional, múltiples equipos, productos derivados de Motor D) antes de pedir aprobación.
 
 ## Decisiones tomadas
 
-### 1. Niveles de servicio: se adopta la propuesta, con un ajuste de vocabulario para Motor A
+### 1. Niveles de servicio — reconfirmados, justificados desde cinco ángulos nuevos
 
-Se valida la propuesta de tres niveles por evolución del cliente — **resolver un problema concreto → optimizar procesos existentes → transformar el funcionamiento del negocio** — contra la alternativa de niveles por tamaño/precio (esencial/avanzado/enterprise). La propuesta gana en los cinco criterios: valor para el cliente (el nivel le dice dónde está su negocio, no solo cuánto paga), rentabilidad (no compite por ser "el barato", compite por resolver el problema correcto), escalabilidad (el mismo marco sirve para cualquier tamaño de cliente futuro), automatización (indiferente a este criterio, no lo mejora ni lo empeora), simplicidad operativa (tres niveles con propósito narrativo son tan simples de operar como tres niveles por precio). Además, **coincide casi exactamente con el ciclo de vida del cliente ya aprobado en Fase 2**: Nivel 1 ≈ Mes 0-1 (conversión inicial), Nivel 2 ≈ Mes 2-12/Año 1 (consolidación), Nivel 3 ≈ Año 2-3 (expansión). No es una coincidencia forzada — es la misma lógica aplicada dos veces, lo cual es una señal de coherencia real, no de casualidad.
+Se vuelve a cuestionar el modelo de tres niveles (resolver → optimizar → transformar) antes de adoptarlo en esta versión, ahora contra los cinco ángulos pedidos:
 
-**Ajuste necesario**: el vocabulario literal "optimizar procesos existentes" no encaja en Motor A, porque Motor A siempre construye algo nuevo — nunca optimiza algo que ya existe (eso es, por definición, el trabajo de Motor B). Aplicar la frase tal cual a Motor A produciría una descripción falsa. Se mantiene la misma filosofía (alcance creciente de transformación) con vocabulario adaptado a lo que Motor A realmente hace — ver la tabla de Motor A más abajo. En Motor B y Motor C, donde el trabajo sí es sobre sistemas/procesos ya existentes del cliente, el vocabulario original se mantiene sin cambios porque describe con precisión lo que ocurre.
+- **Experiencia del cliente**: los niveles narran el propio progreso del cliente, no una lista de funcionalidades — un cliente en Nivel 1 entiende que está resolviendo un problema puntual, no que "le falta comprar más cosas".
+- **Simplicidad comercial**: tres niveles por motor (más el caso especial de Gestión del crecimiento) son fáciles de explicar en una conversación de venta; una matriz de funcionalidades no lo es.
+- **Rentabilidad**: el Nivel 3 de cada motor concentra el mayor margen relativo (mayor compromiso, más capacidades combinadas), coherente con la arquitectura económica de `03-modelo-negocio.md`.
+- **Escalabilidad**: la misma lógica de tres niveles funciona igual con 2 clientes que con 500 — no depende del tamaño de la empresa, depende de dónde está el cliente en su propio recorrido.
+- **Reutilización de capacidades**: cada nivel superior no es "otra cosa" — es más profundidad de las mismas capacidades Core (ver detalle por servicio, abajo). Esto es lo que impide que subir de nivel signifique inventar un servicio nuevo cada vez.
 
-### 2. Motor A — etapa Diagnóstico (entrada, sin nivel)
+No se encontró una estructura mejor. Se mantiene el ajuste de vocabulario ya adoptado para Motor A (que construye, no optimiza) de la versión anterior.
 
-| Servicio | Descripción para el cliente | Capacidad Core | Precio | Tiempo de ejecución | Coste interno / margen |
-|---|---|---|---|---|---|
-| Diagnóstico inicial | Revisión de tu operativa y tus sistemas actuales; te decimos con claridad qué se puede mejorar y cómo, antes de comprometerte a nada. | Método de diagnóstico ya descrito en `01-posicionamiento.md` (Diagnóstico → Diseño → Implementación → Optimización); no es una capacidad técnica, es proceso y conocimiento del fundador. | Sin precio de mercado equivalente ya fijado para "diagnóstico general" (distinto de la "Auditoría SEO" de `precios-y-packs.md`, que sí lo tiene: 1.275 €). Pendiente de fijar. | Sin datos históricos — estimación pendiente hasta tener proyectos reales cerrados. | Pendiente — depende de coste/hora real (Fase 14). |
+### 2. Arquitectura por servicio — Motor A, etapa Diagnóstico (entrada, sin nivel)
 
-### 3. Motor A — etapa Implementación (tres niveles, vocabulario adaptado)
+**Diagnóstico inicial**
+- Problema empresarial que resuelve: el negocio no sabe con precisión qué digitalizar primero ni por qué.
+- Capacidades Core: método de diagnóstico descrito en `01-posicionamiento.md` (Diagnóstico → Diseño → Implementación → Optimización) — es proceso y conocimiento, no una capacidad técnica de `capacidades-core.md`.
+- Procesos internos que activa: entrada al flywheel, antes del eslabón "Propuesta".
+- Entregables: informe breve de qué mejorar y por dónde empezar.
+- Automatizaciones que aprovecha: ninguna todavía.
+- KPIs que mejora: candidato a alimentar la futura tasa de conversión Diagnóstico → Motor A (no existe todavía en `kpis.md`, se añade en tareas futuras).
+- Otros servicios que habilita: cualquier nivel de Motor A, según lo que revele el diagnóstico.
+- Upselling: no aplica — es el punto de entrada, no hay nada "antes".
+- Cross-selling: no aplica por el mismo motivo.
+- Nivel de servicio: sin nivel — es la puerta, no una etapa de evolución.
+- Precio: sin equivalente de mercado fijado para "diagnóstico general" (distinto de la Auditoría SEO de `precios-y-packs.md`, 1.275 €). Pendiente de fijar con datos reales.
 
-| Nivel | Qué resuelve | Servicio | Capacidad Core | Precio (tarifa de lanzamiento vigente, Fase 1) |
-|---|---|---|---|---|
-| 1 — Cubrir la ausencia de presencia digital | El negocio no tiene web, o la que tiene no representa lo que hace. | Landing page | Capacidad 1 (Desarrollo web a medida) | 750 € |
-| 2 — Cubrir la necesidad digital completa | El negocio necesita una presencia completa: información, contacto, y en su caso venta online. | Web corporativa o tienda online estándar, con SEO técnico | Capacidad 1 + Capacidad 6 (SEO técnico estructurado) | 1.125 € (corporativa) / 2.625 € (tienda estándar) |
-| 3 — Construir la infraestructura digital central | El negocio necesita una plataforma a medida que sea el centro de su operación digital, no un sitio más. | Tienda online avanzada o plataforma a medida | Capacidad 1 + Capacidad 6 | 7.500 € (tienda avanzada) — a medida más allá de eso, cotización caso a caso |
+### 3. Arquitectura por servicio — Motor A, etapa Implementación
 
-Tiempo de ejecución y coste interno/margen: mismos huecos que en Diagnóstico — sin datos históricos reales, no se inventan.
+**Nivel 1 — Landing page** (cubrir la ausencia de presencia digital)
+- Problema: el negocio no tiene web, o la que tiene no lo representa.
+- Capacidades Core: 1 (Desarrollo web a medida).
+- Procesos que activa: eslabón "Implementación" del flywheel.
+- Entregables: sitio de una página, publicado, con SEO técnico básico.
+- Automatizaciones: ninguna todavía (capacidad 1 sin starter kit).
+- KPIs: sin indicador propio todavía — candidato a "tiempo de entrega" cuando haya datos históricos.
+- Habilita: Motor B Nivel 1 (empaquetado obligatorio, `04-arquitectura-oferta.md`).
+- Upselling: hacia Nivel 2/3 si el negocio crece.
+- Cross-selling: ninguno inmediato — es la entrada.
+- Precio: 750 € (tarifa de lanzamiento vigente).
 
-### 4. Motor B — línea Operación técnica (tres niveles, vocabulario sin cambios)
+**Nivel 2 — Web corporativa o tienda online estándar, con SEO técnico** (cubrir la necesidad digital completa)
+- Problema: el negocio necesita presencia completa, información y en su caso venta online.
+- Capacidades Core: 1 + 6 (SEO técnico estructurado).
+- Procesos que activa: "Implementación", con base para "Operación continua" más rica que el Nivel 1.
+- Entregables: sitio multi-página o tienda estándar, con JSON-LD, sitemap y robots.txt.
+- Automatizaciones: ninguna en la construcción; capacidad 6 es candidata a checklist reutilizable.
+- KPIs: mismo hueco que Nivel 1.
+- Habilita: Motor B Nivel 2, y Motor C si el negocio necesita automatizar un proceso de venta.
+- Upselling: hacia Nivel 3 si el negocio escala a plataforma compleja.
+- Cross-selling: Motor B línea Gestión del crecimiento Nivel 1 (mantenimiento SEO técnico), ya que el sitio nace con la base técnica que esa línea necesita.
+- Precio: 1.125 € (corporativa) / 2.625 € (tienda estándar).
 
-Aquí la propuesta original encaja sin ajuste: Motor B opera sobre sistemas que ya existen, así que "optimizar procesos existentes" describe exactamente lo que ocurre.
+**Nivel 3 — Tienda avanzada o plataforma a medida** (construir la infraestructura digital central)
+- Problema: el negocio necesita que su plataforma digital sea el centro de la operación, no un sitio más.
+- Capacidades Core: 1 + 6.
+- Procesos que activa: "Implementación" a mayor escala; suele preceder a un ciclo de vida de cliente más largo (Año 2-3, `03-modelo-negocio.md`).
+- Entregables: plataforma a medida (tienda avanzada o portal), con SEO técnico completo.
+- Automatizaciones: ninguna nueva — mismo límite que Nivel 2.
+- KPIs: mismo hueco.
+- Habilita: Motor C con mayor probabilidad (una plataforma compleja casi siempre revela procesos automatizables).
+- Upselling: hacia Motor C Nivel 2/3 directamente, más que hacia "un nivel más" de A, que ya es el techo.
+- Cross-selling: Motor B Nivel 3 (partner técnico continuo) — coherente con el nivel de compromiso.
+- Precio: 7.500 € (tienda avanzada); a medida más allá de eso, cotización caso a caso, sin techo de mercado equivalente que citar con honestidad.
 
-| Nivel | Qué resuelve | Servicio | Capacidad Core | Precio |
-|---|---|---|---|---|
-| 1 — Resolver un problema concreto | El sitio/sistema necesita que algo se arregle cuando falla. | Mantenimiento Básico | Capacidad 1 | 38 €/mes |
-| 2 — Optimizar procesos existentes | El sitio/sistema necesita mejoras continuas, no solo arreglos. | Mantenimiento Intermedio | Capacidad 1 + Capacidad 5 (pagos/facturación recurrente automatizada) | 79 €/mes |
-| 3 — Transformar el funcionamiento | El negocio quiere un partner técnico continuo, no un proveedor que arregla cosas. | Mantenimiento Avanzado | Capacidad 1 + Capacidad 5 + Capacidad 6 | 128 €/mes |
+### 4. Arquitectura por servicio — Motor B, línea Operación técnica
 
-### 5. Motor B — línea Gestión del crecimiento (capacidad parcial — hallazgo de esta fase)
+**Nivel 1 — Mantenimiento Básico** (resolver un problema concreto)
+- Problema: el sitio/sistema necesita que algo se arregle cuando falla.
+- Capacidades Core: 1.
+- Procesos que activa: eslabón "Operación continua".
+- Entregables: soporte reactivo, sin SLA formal todavía.
+- Automatizaciones: ninguna — es soporte manual por diseño en este nivel.
+- KPIs: alimenta directamente "% de ingresos recurrentes" de `kpis.md`.
+- Habilita: nada nuevo por sí solo — es continuidad de Motor A.
+- Upselling: hacia Nivel 2 si el cliente pide mejoras, no solo arreglos.
+- Cross-selling: ninguno a este nivel.
+- Precio: 38 €/mes.
 
-**Solo Nivel 1 tiene una capacidad Core real detrás, y es parcial.** Capacidad 6 (SEO técnico estructurado) cubre marcado semántico, sitemap y salud técnica — no cubre investigación de palabras clave, calendario de contenido, construcción de enlaces, ni gestión de campañas de pago, que es lo que un "SEO Local" o "Gestión Ads" completo de `precios-y-packs.md` implica.
+**Nivel 2 — Mantenimiento Intermedio** (optimizar procesos existentes)
+- Problema: el sitio/sistema necesita mejoras continuas, no solo arreglos.
+- Capacidades Core: 1 + 5 (pagos/facturación recurrente automatizada).
+- Procesos que activa: "Operación continua", con cobro ya automatizado vía Stripe.
+- Entregables: mantenimiento + mejoras periódicas.
+- Automatizaciones: cobro recurrente ya automatizado (capacidad 5).
+- KPIs: mismo indicador que Nivel 1, con mayor peso.
+- Habilita: detección de necesidades de Motor C (el "uso diario revela cuellos de botella", `03-modelo-negocio.md`).
+- Upselling: hacia Nivel 3.
+- Cross-selling: Motor C Nivel 1 si aparece una tarea automatizable puntual.
+- Precio: 79 €/mes.
 
-| Nivel | Servicio | Estado real |
-|---|---|---|
-| 1 | Mantenimiento SEO técnico (mantener el marcado semántico, sitemap y salud técnica al día) | **Vendible hoy** — Capacidad 6 lo sostiene, con alcance limitado a lo técnico. |
-| 2 | SEO Local / Gestión Ads Básica completos (contenido, palabras clave, campañas) | **No vendible todavía** — sin capacidad Core. Requiere construir la capacidad (herramientas, proceso, o alianza) antes de ofrecerlo como servicio con compromiso de resultado. |
-| 3 | SEO Crecimiento / Gestión Ads con Estrategia / Email marketing | **No vendible todavía** — mismo motivo. |
+**Nivel 3 — Mantenimiento Avanzado** (transformar el funcionamiento)
+- Problema: el negocio quiere un partner técnico continuo, no un proveedor que arregla cosas.
+- Capacidades Core: 1 + 5 + 6.
+- Procesos que activa: "Operación continua" con SEO técnico mantenido activamente.
+- Entregables: mantenimiento + automatizaciones vivas + SEO técnico al día.
+- Automatizaciones: capacidad 5 ya automatizada; candidato a incorporar capacidad 4 (IA aplicada) si se replica el patrón de `leadfinder`.
+- KPIs: mismo indicador, mayor peso; candidato natural a medir retención (`kpis.md`).
+- Habilita: Motor C Nivel 2/3 con mayor probabilidad que los niveles anteriores.
+- Upselling: no aplica — es el techo de la línea.
+- Cross-selling: Motor B línea Gestión del crecimiento Nivel 1.
+- Precio: 128 €/mes.
 
-No se fija precio para los niveles 2 y 3 porque no son una oferta activa — están en `precios-y-packs.md` como referencia de mercado, no como algo que INTEREMPREX pueda entregar hoy con la misma seriedad que el resto del catálogo.
+### 5. Arquitectura por servicio — Motor B, línea Gestión del crecimiento (capacidad parcial)
 
-### 6. Motor C — Automatización e IA a medida (tres niveles)
+**Nivel 1 — Mantenimiento SEO técnico** (único nivel vendible hoy)
+- Problema: el sitio pierde salud técnica de SEO con el tiempo si nadie la mantiene.
+- Capacidades Core: 6, en su alcance limitado (marcado semántico, sitemap, salud técnica — no contenido, no palabras clave, no enlaces).
+- Procesos que activa: "Operación continua", variante de crecimiento.
+- Entregables: revisión periódica de JSON-LD, sitemap, robots.txt.
+- Automatizaciones: ninguna — capacidad 6 no tiene checklist automatizado todavía.
+- KPIs: mismo indicador de recurrencia que la línea técnica.
+- Habilita: nada por encima — es el techo real de esta línea hoy.
+- Upselling: **bloqueado** — no existe Nivel 2/3 vendible (ver abajo).
+- Cross-selling: ninguno nuevo respecto a la línea técnica.
+- Precio: sin precio de mercado equivalente exacto en `precios-y-packs.md` para este alcance reducido — sería incorrecto usar el precio de "SEO Local" completo (413 €/mes) para un servicio que no incluye contenido ni palabras clave. Pendiente de fijar un precio propio y honesto para este alcance.
 
-| Nivel | Qué resuelve | Servicio | Capacidad Core | Precio |
-|---|---|---|---|---|
-| 1 — Resolver un problema concreto | Una tarea repetitiva concreta se puede automatizar (ej. clasificar, resumir o puntuar registros con IA). | Automatización puntual con IA | Capacidad 4 (Automatización con IA aplicada), replicando el patrón ya construido en `leadfinder` | 41-105 €/h según complejidad |
-| 2 — Optimizar un proceso existente | Un proceso completo del cliente necesita un sistema propio que lo gestione (no solo una tarea suelta). | Panel/sistema de gestión a medida para un proceso | Capacidad 2 (CRM propio, como plantilla de patrón) + Capacidad 4 | 7.125 € (proyecto de automatización completo) |
-| 3 — Transformar la operación | El negocio quiere rediseñar cómo opera, con automatización extensiva e IA integrada de principio a fin. | Rediseño operativo con automatización e IA | Capacidad 2 + Capacidad 4 + Capacidad 5 (si incluye pagos/suscripciones) | Cotización caso a caso, con base en tarifa horaria de 105 €/h — sin techo de mercado equivalente que citar honestamente |
+**Niveles 2 y 3 — SEO Local/Crecimiento completos, Gestión Ads, Email marketing** — **no vendibles todavía.** Sin capacidad Core que cubra investigación de palabras clave, contenido, construcción de enlaces o gestión de campañas de pago. Aparecen en `precios-y-packs.md` como referencia de mercado, no como oferta activa. Se mantiene la misma conclusión de la versión anterior del catálogo, reforzada aquí con la pregunta explícita de "qué capacidad Core usa" — la respuesta honesta es "ninguna todavía".
+
+### 6. Arquitectura por servicio — Motor C, Automatización e IA a medida
+
+**Nivel 1 — Automatización puntual con IA** (resolver un problema concreto)
+- Problema: una tarea repetitiva concreta se puede automatizar (clasificar, resumir, puntuar registros).
+- Capacidades Core: 4 (Automatización con IA aplicada), replicando el patrón de `leadfinder`.
+- Procesos que activa: eslabón "Automatización" del flywheel.
+- Entregables: una automatización puntual funcionando sobre el proceso del cliente.
+- Automatizaciones que aprovecha: el patrón ya construido (llamar a Claude sobre un registro estructurado).
+- KPIs: candidato a alimentar "% de proyectos de Motor C con base modular reutilizable" de `kpis.md`.
+- Habilita: Nivel 2 si el cliente quiere extender la automatización a todo un proceso.
+- Upselling: hacia Nivel 2.
+- Cross-selling: Motor B Nivel 2/3 (la automatización entregada necesita soporte).
+- Precio: 41-105 €/h según complejidad.
+
+**Nivel 2 — Panel/sistema de gestión a medida para un proceso** (optimizar un proceso existente)
+- Problema: un proceso completo del cliente necesita un sistema propio, no una tarea suelta automatizada.
+- Capacidades Core: 2 (CRM propio, como patrón replicable) + 4.
+- Procesos que activa: "Automatización", con posible retroalimentación al eslabón "Mejora de capacidades" si el patrón construido es reutilizable para otro cliente.
+- Entregables: panel/sistema a medida.
+- Automatizaciones: reutiliza el patrón de capacidad 2 (gestión de datos estructurados en un panel).
+- KPIs: mismo indicador que Nivel 1, con mayor peso.
+- Habilita: Nivel 3 si el negocio quiere extender el sistema a toda la operación.
+- Upselling: hacia Nivel 3.
+- Cross-selling: Motor B Nivel 3.
+- Precio: 7.125 € (proyecto de automatización completo).
+
+**Nivel 3 — Rediseño operativo con automatización e IA** (transformar la operación)
+- Problema: el negocio quiere rediseñar cómo opera, con automatización extensiva de principio a fin.
+- Capacidades Core: 2 + 4 + 5 (si incluye pagos/suscripciones).
+- Procesos que activa: "Automatización" a máxima profundidad; es el nivel con mayor probabilidad de alimentar "Mejora de capacidades" de vuelta (un sistema grande a medida suele revelar mejoras aplicables a `capacidades-core.md`).
+- Entregables: sistema operativo a medida, con automatización e IA integradas.
+- Automatizaciones: combinación de capacidades 2, 4 y 5.
+- KPIs: mismo indicador, mayor peso.
+- Habilita: posible caso de éxito público (si el cliente lo permite) — alimenta "Nuevas oportunidades" del flywheel.
+- Upselling: no aplica — es el techo del motor de mayor margen.
+- Cross-selling: ninguno adicional — a este nivel el cliente ya está en varios motores a la vez.
+- Precio: cotización caso a caso, con base en tarifa horaria de 105 €/h — sin techo de mercado equivalente que citar honestamente.
 
 ## Decisiones descartadas
 
-- **Niveles por tamaño/precio (esencial/avanzado/enterprise)**: descartado en decisión 1 — no aporta narrativa de valor, solo tamaño de factura.
-- **Vender Gestión del crecimiento Niveles 2-3 como oferta activa hoy**: descartado — sin capacidad Core, sería repetir el error de las métricas inventadas de Fase 1, esta vez como promesa de servicio en vez de como cifra falsa.
-- **Forzar el vocabulario "optimizar procesos existentes" también en Motor A**: descartado — produciría una descripción incorrecta de lo que Motor A hace.
+- Niveles por tamaño/precio: descartado, mismo motivo que la versión anterior, ahora reforzado por los cinco ángulos de la decisión 1.
+- Vender Gestión del crecimiento Niveles 2-3 como oferta activa: descartado — confirmado de nuevo tras aplicar la pregunta "qué capacidad Core usa" a cada servicio.
+- Fijar el precio de "Mantenimiento SEO técnico" (línea de crecimiento, Nivel 1) igual al de "SEO Local" completo de `precios-y-packs.md`: descartado — sería cobrar por un alcance que no se entrega.
 
 ## Riesgos detectados
 
-1. **Riesgo de venta accidental de Gestión del crecimiento Niveles 2-3** si en el futuro alguien (incluido el propio fundador, bajo presión comercial) los ofrece sin tener la capacidad construida. Mitigación: quedan marcados explícitamente como no vendibles en este documento, que es fuente única de verdad.
-2. **Riesgo de que "Diagnóstico" sin precio fijo genere inconsistencia comercial** (cada cliente cotizado de forma distinta sin criterio). Pendiente de resolver con datos reales, no se improvisa aquí.
-3. **Motor A Nivel 3 sin techo de precio claro** (plataformas a medida grandes) — mismo patrón que Motor C Nivel 3. Es honesto (no hay dos proyectos iguales), pero exige disciplina en Fase 7 (Sistema comercial) para que "cotización caso a caso" no se convierta en precio arbitrario sin criterio.
+1. Mismo riesgo que la versión anterior sobre "Diagnóstico" sin precio fijo — persiste, pendiente de Fase 7 con datos reales.
+2. Mismo riesgo sobre Motor A y C Nivel 3 sin techo de precio claro — persiste, exige disciplina en cotización.
+3. **Nuevo**: el eslabón "Mejora de capacidades" del flywheel, citado varias veces aquí como destino de retroalimentación, no tiene todavía ningún mecanismo real (`flywheel-comercial.md` ya lo registra como el tramo más débil) — las menciones en este catálogo son aspiracionales hasta que Fase 8 lo resuelva.
 
 ## Dependencias con otras fases
 
-- **Desde `04-arquitectura-oferta.md`**: hereda la estructura de niveles y la regla de que cada motor cubre su universo de servicios sin solape.
-- **Desde `capacidades-core.md`**: cada servicio cita su capacidad — es la fuente de verdad de qué es vendible hoy.
-- **Desde `01-posicionamiento.md`**: el método de Diagnóstico y la tarifa de lanzamiento vigente.
-- **Hacia Fase 6 (Customer Journey)**: los tres niveles, alineados con el ciclo de vida del cliente, son la base de cómo se diseña el recorrido.
-- **Hacia Fase 7 (Sistema comercial)**: debe resolver el precio de Diagnóstico y la disciplina de cotización caso a caso (riesgos 2 y 3).
-- **Hacia Fase 9 (Automatizaciones) y Fase 12 (Marketing)**: deben decidir si se construye la capacidad que falta para activar Gestión del crecimiento Niveles 2-3, o si esa línea se retira del roadmap comercial.
-- **Hacia `kpis.md`**: candidato a nuevo indicador — "% de servicios del catálogo con capacidad Core completa vs. parcial/pendiente" (hoy: 6 de 8 líneas de servicio con capacidad completa; Gestión del crecimiento Niveles 2-3, parcial/pendiente).
+- **Desde `capacidades-core.md`**: cada servicio hereda directamente su capacidad, su impacto en FDI y su vía de producto futuro.
+- **Desde `flywheel-comercial.md`**: cada servicio se ancla a un eslabón concreto del ciclo de valor.
+- **Hacia Fase 6 (Customer Journey)**: los niveles y las vías de upselling/cross-selling de cada servicio son la base del recorrido.
+- **Hacia Fase 7 (Sistema comercial)**: precios pendientes (Diagnóstico, SEO técnico de mantenimiento, cotizaciones caso a caso).
+- **Hacia Fase 8 (Operaciones)**: debe construir el mecanismo de "Mejora de capacidades" que este catálogo asume como destino de aprendizaje.
+- **Hacia Fase 9/12**: decidir si se construye la capacidad de Gestión del crecimiento completa.
+- **Hacia `kpis.md`**: nuevo indicador candidato — tasa de conversión Diagnóstico → Motor A.
 
 ## Tareas futuras
 
-- Fase 7 debe fijar un precio de Diagnóstico basado en horas reales estimadas, no en una analogía forzada con la Auditoría SEO.
-- Fase 9/12 deben decidir si se invierte en construir la capacidad de SEO/SEM/Ads completa, o si Motor B se queda solo con la línea técnica más el SEO técnico limitado.
-- Fase 14 debe rellenar coste interno, margen y tiempo de ejecución con datos reales en cuanto existan proyectos cerrados que medir.
+- Fijar precio de Diagnóstico y de Mantenimiento SEO técnico con datos reales, no por analogía.
+- Añadir a `kpis.md` el indicador de conversión Diagnóstico → Motor A.
+- Decidir en Fase 8 el mecanismo de "Mejora de capacidades".
+- Decidir en Fase 9/12 si se invierte en la capacidad de Gestión del crecimiento completa.
 
-## Auditoría crítica
+## Validación arquitectónica (los siete puntos exigidos)
 
-- **Ningún servicio existe sin apoyarse en capacidades Core**: verificado en cada tabla. Donde la capacidad es parcial o inexistente (Gestión del crecimiento Niveles 2-3), se marca explícitamente como no vendible en vez de listarse como si lo fuera.
-- **Ningún servicio pertenece a más de un motor sin justificación**: un caso limítrofe — la Capacidad 6 (SEO técnico) participa en Motor A (como parte de la entrega inicial) y en Motor B (como mantenimiento posterior). Justificación: son momentos distintos de la relación con el cliente (entrega única vs. mantenimiento continuo), no el mismo ingreso contado dos veces — mismo patrón ya aceptado en Fase 3 para migraciones/digitalización documental.
-- **El FDI no aumenta**: ninguna decisión de esta fase crea un proceso nuevo dependiente del fundador. Al contrario: escribir qué servicio corresponde a qué nivel y motor mueve "qué vendemos y por qué" de conocimiento tácito a documento — se registra en `fdi-registro.md` como mejora.
-- **El catálogo sigue siendo comprensible para un cliente no técnico**: cada servicio tiene una descripción en lenguaje llano ("qué resuelve"), separada de la capacidad técnica que lo sostiene (que es información interna, no de cara al cliente).
-- **Complejidad detectada y ya simplificada antes de pedir aprobación**: la línea Gestión del crecimiento se redujo de tres niveles completos a "un nivel vendible + dos marcados como pendientes", en vez de fingir que los tres están listos. Es la simplificación honesta, no la cómoda.
-- **Duplicidades**: ninguna nueva.
+1. **Todos los servicios nacen de capacidades Core**: sí, verificado servicio a servicio arriba. Excepción declarada explícitamente: Diagnóstico se apoya en método/conocimiento, no en una capacidad técnica — se anota como tal, no se fuerza a encajar donde no encaja.
+2. **Todas las capacidades tienen utilidad real**: sí — las 6 capacidades de `capacidades-core.md` se usan al menos una vez cada una en este catálogo; ninguna quedó sin servicio que la use.
+3. **Ningún servicio queda fuera de los motores**: confirmado, mismo resultado que la verificación de cobertura de Fase 3, ahora con más detalle por servicio.
+4. **Ningún servicio duplica otro**: confirmado. El único solape (capacidad 6 en Motor A y en Motor B-crecimiento) está justificado como momentos distintos de la relación, no como el mismo ingreso contado dos veces.
+5. **El catálogo puede crecer sin rehacer la arquitectura**: sí — un servicio nuevo solo necesita citar una capacidad Core existente (o declarar una nueva) y encajar en un nivel; no exige rediseñar motores ni niveles.
+6. **El FDI mejora o permanece estable**: mejora — escribir esta arquitectura mueve "qué vendemos, con qué capacidad y por qué nivel" de conocimiento tácito a documento (mismo mecanismo que la versión anterior, ahora con más profundidad).
+7. **La comprensión para un cliente no técnico sigue siendo alta**: cada servicio tiene un "problema que resuelve" en lenguaje llano, separado de las capacidades técnicas (información interna). El detalle de las 10 preguntas es para uso interno, no para mostrar al cliente tal cual.
+
+## Prueba de escala a diez años
+
+- **10 empleados**: la arquitectura (motor × nivel × capacidad) no depende del tamaño del equipo — aguanta. Lo que no aguanta todavía es que cada capacidad tiene FDI alto; esto no es un fallo de esta fase, es la razón de ser de la Fase 9.
+- **50 empleados**: la línea Gestión del crecimiento incompleta se vuelve más costosa de no resolver cuanto más crece la empresa — mismo hallazgo, mayor urgencia relativa a esa escala.
+- **500 clientes activos**: la arquitectura del catálogo aguanta; lo que no aguanta a esa escala son R5 (CRM single-tenant) y la ausencia de soporte automatizado en Motor B — riesgos ya registrados en `03-modelo-negocio.md`, no nuevos.
+- **Operaciones internacionales**: el catálogo es agnóstico de geografía salvo el precio en euros — aguanta en estructura, no en cifras (Fase 14).
+- **Múltiples equipos de trabajo**: la separación por motor (A/B/C) se presta de forma natural a equipos especializados por motor — señal positiva, no un rediseño necesario.
+- **Productos derivados de Motor D**: el catálogo deja a D fuera deliberadamente; si se activa, encajaría como un motor más con su propio nivel 1-2-3 siguiendo el mismo patrón — extensible sin rediseño.
+
+**Conclusión de la prueba de escala**: la arquitectura del catálogo supera las seis pruebas. Las capacidades individuales, no la arquitectura, son lo que hoy no aguantaría esa escala — y eso ya está registrado como trabajo de fases futuras, no oculto.
+
+## Auditoría final (seis perspectivas)
+
+- **Estrategia empresarial**: coherente con `01-posicionamiento.md` y `02-principios-fundacionales.md` — el catálogo vende lo que la empresa realmente puede demostrar, no una lista de aspiraciones.
+- **Experiencia del cliente**: los niveles narran progreso, no precio; las descripciones en lenguaje llano se mantienen separadas del detalle técnico.
+- **Rentabilidad**: el orden de margen relativo (C > B > A) se mantiene consistente con `03-modelo-negocio.md`; los precios citados son reales de `precios-y-packs.md`, no inventados.
+- **Escalabilidad**: superó la prueba de diez años arriba.
+- **Automatización**: cada servicio declara qué automatización aprovecha o la ausencia de ella — no se da por hecho ninguna automatización que no exista.
+- **Mantenibilidad del sistema**: la arquitectura es aditiva (un servicio nuevo no rompe los existentes) y cada documento de origen (`capacidades-core.md`, `flywheel-comercial.md`) queda citado, así que un cambio en la base se puede rastrear hasta cada servicio afectado.
+
+No se encontró una solución objetivamente mejor que la planteada — se simplificó donde correspondía (Gestión del crecimiento reducida a lo realmente vendible) en vez de forzar una arquitectura más grande de la que hay evidencia para sostener.
 
 ## Preguntas que necesitan aprobación
 
-1. ¿Apruebas el ajuste de vocabulario para Motor A (niveles por alcance de construcción, no literalmente "optimizar procesos existentes")?
-2. ¿Confirmas que Gestión del crecimiento Niveles 2-3 se retiran de la oferta activa hasta construir la capacidad, en vez de venderse ya con el riesgo de no poder cumplir la promesa?
-3. ¿Prioridad de construir esa capacidad (SEO/SEM/Ads/Email completo) — se aborda en Fase 9 (Automatizaciones), en Fase 12 (Marketing), o se deja fuera del alcance por ahora?
+1. ¿Apruebas la arquitectura completa (10 preguntas por servicio) tal como queda, incluida la retirada de Gestión del crecimiento Niveles 2-3 de la oferta activa?
+2. ¿Prioridad de construir la capacidad de Gestión del crecimiento completa — Fase 9, Fase 12, o fuera de alcance por ahora?
+3. ¿Autorizas fijar el precio de Diagnóstico y de Mantenimiento SEO técnico en Fase 7, con datos reales, en vez de en este documento?
 
 ---
 
-**Qué modifica**: define el catálogo de servicios activo, con cada servicio ligado a una capacidad Core real, organizado en tres niveles por evolución del cliente dentro de cada motor.
+**Qué modifica**: define la arquitectura comercial completa — cada servicio, su capacidad Core, su nivel, su lugar en el flywheel, y sus vías de upselling/cross-selling.
 
-**Qué documentos dependen de este**: Fase 6 (Customer Journey), Fase 7 (Sistema comercial), Fase 9 (Automatizaciones), Fase 11 (Marketing) y Fase 14 (Finanzas) — todas heredan qué se vende y en qué nivel.
+**Qué documentos dependen de este**: Fase 6 (Customer Journey), Fase 7 (Sistema comercial), Fase 8 (Operaciones), Fase 9 (Automatizaciones), Fase 12 (Marketing) y Fase 14 (Finanzas).
 
-**Qué documentos deben revisarse si este cambia**: `capacidades-core.md` (si cambia qué está construido), `04-arquitectura-oferta.md` (si cambia la estructura de motores/niveles) y `kpis.md` (indicador de cobertura de capacidades).
+**Qué documentos deben revisarse si este cambia**: `capacidades-core.md`, `flywheel-comercial.md`, `04-arquitectura-oferta.md` y `kpis.md`.

@@ -16,6 +16,7 @@ Documento vivo, no una fase — así lo decidió el usuario en vez de crear una 
 | Retención / renovación de clientes | Si los clientes se quedan más allá del primer año o del fin de la tarifa de lanzamiento | % de clientes que renuevan tras la revisión de Año 1 del ciclo de vida | `02-principios-fundacionales.md` (punto 10), `03-modelo-negocio.md` (ciclo de vida, Año 1) | Sin datos — ningún cliente ha llegado todavía a ese punto (proyectos piloto recientes) |
 | % de proyectos de Motor C con base modular reutilizable | Si el motor de mayor margen se está construyendo sobre módulos reutilizables o desde cero cada vez (decisión 2 de Fase 3) | Proyectos de Motor C que reutilizan un módulo existente del stack propio ÷ total de proyectos de Motor C | `04-arquitectura-oferta.md` | Sin datos — Motor C sin proyectos ejecutados registrados todavía |
 | % de líneas de servicio del catálogo con capacidad Core completa | Si el catálogo vende lo que realmente puede entregar, o promete más de lo construido | Líneas de servicio con capacidad Core completa ÷ total de líneas del catálogo | `05-catalogo-servicios.md` | **6 de 8 líneas con capacidad completa hoy** (Gestión del crecimiento Niveles 2-3 son las dos sin capacidad completa) |
+| Tasa de conversión Diagnóstico → Motor A | Si la puerta de entrada de menor compromiso convierte a proyectos reales | Clientes que contratan Motor A tras un Diagnóstico ÷ Diagnósticos realizados | `05-catalogo-servicios.md` | Sin datos — ningún Diagnóstico registrado como servicio formal todavía |
 
 ## Cómo se actualiza este registro
 
