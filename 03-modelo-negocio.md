@@ -1,6 +1,6 @@
 # 03 — Modelo de negocio
 
-Estado: **v6, cerrada y aprobada.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`. La v1 aprobó la arquitectura de tres motores; la v2 añadió arquitectura económica, cuarto motor latente, Business Model Canvas, ciclo de vida del cliente y una auditoría de riesgos re-ejecutada; la v3 incorporó la regla de prioridad del motor D, cerró las tres preguntas pendientes y trasladó R9 (legal) a una fase propia del roadmap; la v4 corrigió la definición de los motores A y B para cubrir todo servicio futuro; la v5 ajustó la terminología a etapas/líneas internas, no motores nuevos; la v6 añade R13 (incidencia crítica: `interemprex-dashboard` sin repositorio remoto) con su procedimiento de corrección, sin ejecutarlo todavía.
+Estado: **v7, cerrada y aprobada.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`. La v1 aprobó la arquitectura de tres motores; la v2 añadió arquitectura económica, cuarto motor latente, Business Model Canvas, ciclo de vida del cliente y una auditoría de riesgos re-ejecutada; la v3 incorporó la regla de prioridad del motor D, cerró las tres preguntas pendientes y trasladó R9 (legal) a una fase propia del roadmap; la v4 corrigió la definición de los motores A y B para cubrir todo servicio futuro; la v5 ajustó la terminología a etapas/líneas internas, no motores nuevos; la v6 añadió R13 (incidencia crítica: `interemprex-dashboard` sin repositorio remoto) con su procedimiento de corrección; la v7 clasifica formalmente el impacto de R13, registra sus consecuencias de continuidad y sustituye la recomendación temporal por criterios objetivos de ejecución.
 
 ## Resumen ejecutivo
 
@@ -133,7 +133,36 @@ Por instrucción explícita: no se despliega ni se sube nada ahora. Se documenta
 4. Primer push, verificando antes con `git status` y una revisión manual de qué se va a subir (mismo cuidado que se aplicó al crear `optimizaci-n_int`).
 5. A partir de ahí, mismo hábito de commits frecuentes que el resto de repos del ecosistema.
 
-**Cuándo corresponde ejecutarlo**: no se fija una fecha — es una corrección de coste bajo y beneficio alto que no debería demorarse mucho, pero la decisión de cuándo es del usuario. Se recomienda no esperar a la Fase 11 (Tecnología) dado que el riesgo ya es real hoy, a diferencia de otras tareas de esa fase que dependen de disparadores futuros (como la migración de SQLite).
+### R13 — Clasificación de impacto
+
+**Impacto: Crítico. Probabilidad: no cuantificable con datos reales (depende de fallos de hardware/almacenamiento, no de un patrón de negocio), pero la exposición es permanente mientras no se corrija** — a diferencia de otros riesgos de esta lista, R13 no depende de que crezca el volumen de clientes: existe desde el primer commit y no se atenúa con el tiempo, solo con la corrección.
+
+### R13 — Consecuencias para la continuidad del negocio si se materializa
+
+- Pérdida completa del código del CRM: clientes, pipeline, tareas e historial de pagos — no del dinero en sí (eso lo custodia Stripe), pero sí de toda la capa de gestión y del propio software que es una de las capacidades Core de la empresa (`capacidades-core.md`, capacidad 2).
+- Pérdida del propio motor de ingresos operativo mientras se reconstruye: Motor B queda sin herramienta de gestión hasta rehacer el sistema desde cero, no desde una copia.
+- Coincide directamente con la prueba de escalabilidad "el fundador no puede intervenir durante un mes" (`00-metodologia.md`): si el fallo ocurre precisamente cuando el fundador no puede intervenir, no hay ni sistema ni nadie que lo reconstruya.
+
+### R13 — Procedimiento futuro (no ejecutar todavía)
+
+Por instrucción explícita: no se despliega ni se sube nada ahora. Se documenta únicamente el procedimiento, para ejecutarlo cuando corresponda:
+
+1. Verificar que `.gitignore` excluye `dev.db`, `.env` y cualquier credencial antes de tocar nada — el repositorio no debe subir datos reales de clientes ni secretos de Stripe.
+2. Crear el repositorio remoto en GitHub (privado, dado que contiene lógica de negocio y, potencialmente, estructura de datos de clientes reales).
+3. Añadir el remoto al repositorio git local ya existente (`interemprex-dashboard` ya es un repo git local, solo le falta el remoto — no hay que inicializar nada desde cero).
+4. Primer push, verificando antes con `git status` y una revisión manual de qué se va a subir (mismo cuidado que se aplicó al crear `optimizaci-n_int`).
+5. A partir de ahí, mismo hábito de commits frecuentes que el resto de repos del ecosistema.
+
+### R13 — Criterios objetivos que determinan cuándo debe ejecutarse (no una fecha)
+
+Mismo estilo que los disparadores de migración de SQLite (R5) — condiciones, no calendario:
+
+- **Disparador de datos reales en riesgo**: en cuanto el CRM contenga el primer cliente de pago real con historial de facturación (no solo datos de prueba), el coste de perderlo deja de ser hipotético.
+- **Disparador de ausencia del fundador**: antes de cualquier periodo previsto en que el fundador no vaya a poder intervenir (viaje, indisponibilidad), si no hay ya una copia fuera de la máquina local.
+- **Disparador de volumen**: mismo criterio que R5 — a más clientes activos en el CRM, mayor el coste de una pérdida total; no debería superarse un puñado de clientes reales sin haber corregido esto.
+- **Disparador inmediato**: cualquier señal de fallo de hardware o almacenamiento en la máquina local, sea cual sea el volumen de datos en ese momento.
+
+Con la evidencia disponible hoy (proyectos piloto, sin facturación real confirmada en el CRM todavía), ningún disparador está activo — pero el primero de los cuatro puede activarse en cualquier momento sin previo aviso, a diferencia de R5, cuyos disparadores son más predecibles.
 
 ## Dependencias con otras fases
 
