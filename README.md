@@ -19,10 +19,9 @@ npm run db:seed             # crea el usuario admin inicial
 npm run dev
 ```
 
-Usuario inicial (cámbialo en producción, o define `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` antes de seedear):
+Usuario inicial: el seed crea `admin@interemprex.com` con una **contraseña aleatoria que se imprime una única vez por consola** (guárdala en tu gestor de contraseñas). Puedes fijar otras credenciales definiendo `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` antes de seedear, y cambiar la contraseña en cualquier momento desde **Ajustes** (al cambiarla se cierran las sesiones del resto de dispositivos).
 
-- **Email:** `admin@interemprex.com`
-- **Contraseña:** `interemprex2026`
+El login limita los intentos fallidos (5 por IP+email cada 15 minutos).
 
 ## Conectar Stripe
 

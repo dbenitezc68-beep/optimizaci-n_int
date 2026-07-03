@@ -35,14 +35,19 @@ export async function destroySession() {
   cookieStore.delete(COOKIE_NAME);
 }
 
-export async function getSessionUserId(): Promise<string | null> {
+export type Session = { userId: string; issuedAt: Date };
+
+export async function getSession(): Promise<Session | null> {
   const cookieStore = await cookies();
   const token = cookieStore.get(COOKIE_NAME)?.value;
   if (!token) return null;
 
   try {
     const { payload } = await jwtVerify(token, getSecretKey());
-    return typeof payload.userId === "string" ? payload.userId : null;
+    if (typeof payload.userId !== "string" || typeof payload.iat !== "number") {
+      return null;
+    }
+    return { userId: payload.userId, issuedAt: new Date(payload.iat * 1000) };
   } catch {
     return null;
   }

@@ -1,8 +1,14 @@
 import { prisma } from "@/lib/prisma";
-import { Card, PageHeader, Badge } from "@/components/ui";
+import { Card, PageHeader, Badge, Button, inputClass, labelClass } from "@/components/ui";
 import { isStripeConfigured, isWebhookConfigured } from "@/lib/stripe";
+import { changePasswordAction } from "./actions";
 
-export default async function SettingsPage() {
+export default async function SettingsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string; success?: string }>;
+}) {
+  const { error, success } = await searchParams;
   const configured = isStripeConfigured();
   const webhookConfigured = isWebhookConfigured();
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -15,8 +21,71 @@ export default async function SettingsPage() {
     <div>
       <PageHeader
         title="Ajustes"
-        description="Estado de la integración con Stripe y eventos recibidos."
+        description="Cuenta, integración con Stripe y eventos recibidos."
       />
+
+      <Card className="mb-6">
+        <h2 className="mb-4 text-sm font-semibold text-slate-200">
+          Cambiar contraseña
+        </h2>
+        {error && (
+          <p className="mb-4 rounded-lg border border-red-500/25 bg-red-500/10 px-3.5 py-2.5 text-sm text-red-300">
+            {error}
+          </p>
+        )}
+        {success && (
+          <p className="mb-4 rounded-lg border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-2.5 text-sm text-emerald-300">
+            {success}
+          </p>
+        )}
+        <form action={changePasswordAction} className="max-w-md space-y-4">
+          <div className="space-y-1.5">
+            <label className={labelClass} htmlFor="currentPassword">
+              Contraseña actual
+            </label>
+            <input
+              id="currentPassword"
+              name="currentPassword"
+              type="password"
+              autoComplete="current-password"
+              required
+              className={inputClass}
+            />
+          </div>
+          <div className="space-y-1.5">
+            <label className={labelClass} htmlFor="newPassword">
+              Nueva contraseña (mínimo 10 caracteres)
+            </label>
+            <input
+              id="newPassword"
+              name="newPassword"
+              type="password"
+              autoComplete="new-password"
+              required
+              minLength={10}
+              className={inputClass}
+            />
+          </div>
+          <div className="space-y-1.5">
+            <label className={labelClass} htmlFor="confirmPassword">
+              Repite la nueva contraseña
+            </label>
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              autoComplete="new-password"
+              required
+              minLength={10}
+              className={inputClass}
+            />
+          </div>
+          <p className="text-xs text-slate-500">
+            Al cambiarla se cerrará la sesión en el resto de dispositivos.
+          </p>
+          <Button type="submit">Actualizar contraseña</Button>
+        </form>
+      </Card>
 
       <Card className="mb-6">
         <h2 className="mb-4 text-sm font-semibold text-slate-200">
