@@ -1,0 +1,210 @@
+// Prisma schema for the INTEREMPREX management dashboard
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(MEMBER)
+  createdAt    DateTime @default(now())
+
+  tasks Task[] @relation("AssignedTasks")
+}
+
+enum ProjectStatus {
+  PLANNED
+  IN_PROGRESS
+  PAUSED
+  COMPLETED
+  CANCELLED
+}
+
+enum LeadStage {
+  NEW
+  CONTACTED
+  PROPOSAL
+  NEGOTIATION
+  WON
+  LOST
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  TRIALING
+  PAST_DUE
+  CANCELED
+  INCOMPLETE
+}
+
+model Client {
+  id              String   @id @default(cuid())
+  name            String
+  company         String?
+  email           String?
+  phone           String?
+  country         String?
+  notes           String?
+  stripeCustomerId String? @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  projects      Project[]
+  tasks         Task[]
+  leads         Lead[]
+  payments      Payment[]
+  subscriptions Subscription[]
+  invoices      Invoice[]
+  paymentLinks  PaymentLink[]
+}
+
+model Project {
+  id          String        @id @default(cuid())
+  name        String
+  description String?
+  status      ProjectStatus @default(PLANNED)
+  budgetCents Int?
+  startDate   DateTime?
+  endDate     DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  clientId String
+  client   Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  tasks Task[]
+}
+
+model Lead {
+  id          String    @id @default(cuid())
+  name        String
+  company     String?
+  email       String?
+  phone       String?
+  source      String?
+  stage       LeadStage @default(NEW)
+  valueCents  Int?
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  convertedClientId String?
+  convertedClient   Client? @relation(fields: [convertedClientId], references: [id])
+}
+
+model Task {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  status      TaskStatus @default(TODO)
+  dueDate     DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  clientId String?
+  client   Client? @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  assigneeId String?
+  assignee   User?   @relation("AssignedTasks", fields: [assigneeId], references: [id])
+}
+
+model Payment {
+  id                    String        @id @default(cuid())
+  stripePaymentIntentId String?       @unique
+  stripeChargeId        String?       @unique
+  amountCents           Int
+  currency              String        @default("eur")
+  status                PaymentStatus @default(PENDING)
+  description           String?
+  createdAt             DateTime      @default(now())
+  paidAt                DateTime?
+
+  clientId String?
+  client   Client? @relation(fields: [clientId], references: [id])
+}
+
+model Subscription {
+  id                   String             @id @default(cuid())
+  stripeSubscriptionId String             @unique
+  status               SubscriptionStatus @default(ACTIVE)
+  planName             String?
+  amountCents          Int
+  currency             String             @default("eur")
+  interval             String             @default("month")
+  currentPeriodEnd     DateTime?
+  canceledAt           DateTime?
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+
+  clientId String?
+  client   Client? @relation(fields: [clientId], references: [id])
+}
+
+model Invoice {
+  id               String    @id @default(cuid())
+  stripeInvoiceId  String    @unique
+  amountDueCents   Int
+  amountPaidCents  Int       @default(0)
+  currency         String    @default("eur")
+  status           String
+  hostedInvoiceUrl String?
+  pdfUrl           String?
+  dueDate          DateTime?
+  paidAt           DateTime?
+  createdAt        DateTime  @default(now())
+
+  clientId String?
+  client   Client? @relation(fields: [clientId], references: [id])
+}
+
+model PaymentLink {
+  id                  String   @id @default(cuid())
+  stripePaymentLinkId String   @unique
+  url                 String
+  description         String?
+  amountCents         Int
+  currency            String   @default("eur")
+  active              Boolean  @default(true)
+  createdAt           DateTime @default(now())
+
+  clientId String?
+  client   Client? @relation(fields: [clientId], references: [id])
+}
+
+model WebhookEvent {
+  id            String   @id @default(cuid())
+  stripeEventId String   @unique
+  type          String
+  payload       String
+  createdAt     DateTime @default(now())
+}

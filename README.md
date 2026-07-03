@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# INTEREMPREX — Panel de gestión
 
-## Getting Started
+Dashboard interno para INTEREMPREX: clientes, procesos, pipeline de ventas, tareas y pagos (Stripe) en un solo sitio.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, TypeScript, Tailwind v4)
+- Prisma 7 + SQLite (adaptador `@prisma/adapter-better-sqlite3`)
+- Autenticación propia por sesión firmada (JWT en cookie httpOnly, `jose` + `bcryptjs`)
+- Stripe (sincronización, webhooks, links de pago, métricas de MRR)
+
+## Primeros pasos
 
 ```bash
+npm install
+cp .env.example .env        # y edita los valores
+npx prisma migrate deploy   # crea la base de datos SQLite
+npm run db:seed             # crea el usuario admin inicial
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Usuario inicial (cámbialo en producción, o define `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` antes de seedear):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Email:** `admin@interemprex.com`
+- **Contraseña:** `interemprex2026`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Conectar Stripe
 
-## Learn More
+1. Copia tu clave secreta desde **Stripe Dashboard → Developers → API keys** y pégala en `STRIPE_SECRET_KEY` dentro de `.env`.
+2. Para probar webhooks en local, instala el [Stripe CLI](https://stripe.com/docs/stripe-cli) y ejecuta:
+   ```bash
+   stripe listen --forward-to http://localhost:3000/api/stripe/webhook
+   ```
+   Copia el `whsec_...` que te da en `STRIPE_WEBHOOK_SECRET`.
+3. En producción, crea un endpoint de webhook en el Dashboard de Stripe apuntando a `https://tu-dominio.com/api/stripe/webhook` y copia su secreto firmante.
+4. Reinicia el servidor tras editar `.env`.
 
-To learn more about Next.js, take a look at the following resources:
+Desde **Ajustes** en el panel puedes ver si las claves están configuradas y los últimos eventos de Stripe recibidos.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Qué incluye
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Clientes**: ficha con contacto, notas, procesos, tareas y pagos asociados.
+- **Procesos**: proyectos/servicios por cliente con estado, presupuesto y fechas.
+- **Pipeline**: leads por etapa (nuevo → contactado → propuesta → negociación → ganado/perdido), con conversión directa a cliente.
+- **Tareas**: tareas internas asociables a cliente y/o proceso.
+- **Pagos**: sincronización manual con Stripe (pagos, suscripciones, facturas), creación de links de pago desde el panel, y MRR/ingresos calculados automáticamente en el resumen.
+- **Webhooks**: `/api/stripe/webhook` mantiene los datos al día en tiempo real (pagos, suscripciones, facturas).
 
-## Deploy on Vercel
+## Base de datos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+SQLite por defecto (`dev.db`), pensado para uso local/single-tenant. Para producción en una plataforma sin disco persistente, cambia el `datasource` de `prisma/schema.prisma` a Postgres y actualiza `DATABASE_URL` — el resto del código no depende del motor de base de datos.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Comandos
+
+```bash
+npm run dev          # desarrollo
+npm run build        # build de producción
+npm run start        # servidor de producción
+npm run lint         # ESLint
+npm run db:seed      # crear/asegurar el usuario admin
+npm run db:studio    # Prisma Studio (explorar la base de datos)
+```
