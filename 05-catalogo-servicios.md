@@ -1,6 +1,6 @@
 # 05 — Catálogo de servicios (arquitectura comercial)
 
-Estado: **propuesto, pendiente de aprobación.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`, `03-modelo-negocio.md`, `04-arquitectura-oferta.md` y `capacidades-core.md`. No es un listado de servicios — es una arquitectura: cada servicio responde diez preguntas obligatorias, ninguno existe aislado de una capacidad Core, un proceso del flywheel y una vía de crecimiento hacia otro servicio.
+Estado: **v2, cerrada y aprobada — estándar permanente.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`, `03-modelo-negocio.md`, `04-arquitectura-oferta.md` y `capacidades-core.md`. No es un listado de servicios — es una arquitectura: cada servicio responde diez preguntas obligatorias, ninguno existe aislado de una capacidad Core, un proceso del flywheel y una vía de crecimiento hacia otro servicio. La v2 incorpora cuatro mejoras estructurales permanentes al sistema documental completo (`priorizacion.md`, BCI, cadena de dependencia en `capacidades-core.md`, `modelo-precios.md`) y cierra con la re-auditoría exigida antes de la aprobación definitiva.
 
 ## Resumen ejecutivo
 
@@ -226,16 +226,27 @@ No se encontró una estructura mejor. Se mantiene el ajuste de vocabulario ya ad
 
 No se encontró una solución objetivamente mejor que la planteada — se simplificó donde correspondía (Gestión del crecimiento reducida a lo realmente vendible) en vez de forzar una arquitectura más grande de la que hay evidencia para sostener.
 
+## Re-auditoría tras las cuatro mejoras estructurales (exigida antes del cierre definitivo)
+
+1. **`priorizacion.md`**: consolida 12 elementos ya detectados en fases anteriores bajo un criterio único de 5 dimensiones. No introduce ningún hallazgo nuevo — reorganiza lo que ya existía disperso, que es exactamente su propósito.
+2. **BCI**: aplicado a las 6 capacidades Core, 4 sistemas y 2 procesos. Confirma con un ángulo distinto (impacto de pérdida temporal, no probabilidad de fallo) lo que R13 ya señalaba: las capacidades 2 y 5, ambas en `interemprex-dashboard`, son el punto de mayor criticidad de toda la empresa.
+3. **Cadena de dependencia**: el mapa resultante (3→1→6, y 2↔5 con 4 orbitando) es coherente con todo lo ya documentado — no contradice ningún motor, ningún servicio, ningún riesgo.
+4. **`modelo-precios.md`**: no fija ninguna cifra, así que no contradice ningún precio ya citado de `precios-y-packs.md` en este catálogo — los sustituirá cuando Fase 14 tenga datos reales, no antes.
+
+**¿La arquitectura sigue siendo coherente?** Sí — las cuatro mejoras son aditivas (documentan ángulos nuevos sobre lo ya construido) y ninguna requiere cambiar una decisión ya tomada en `03-modelo-negocio.md`, `04-arquitectura-oferta.md` o en las secciones anteriores de este documento.
+
+**¿Alguna nueva dependencia aumenta el FDI innecesariamente?** No — al contrario: las cuatro mejoras mueven tres procesos más de tácito a documentado (priorizar, calcular precio, clasificar criticidad), registrados en `fdi-registro.md`. El FDI medio de la empresa baja de 1,43 a 1,33 sobre 3 con esta ronda.
+
 ## Preguntas que necesitan aprobación
 
-1. ¿Apruebas la arquitectura completa (10 preguntas por servicio) tal como queda, incluida la retirada de Gestión del crecimiento Niveles 2-3 de la oferta activa?
-2. ¿Prioridad de construir la capacidad de Gestión del crecimiento completa — Fase 9, Fase 12, o fuera de alcance por ahora?
-3. ¿Autorizas fijar el precio de Diagnóstico y de Mantenimiento SEO técnico en Fase 7, con datos reales, en vez de en este documento?
+1. **Resuelta** — arquitectura completa (10 preguntas por servicio) aprobada, incluida la retirada de Gestión del crecimiento Niveles 2-3 de la oferta activa.
+2. **Sigue abierta** — prioridad de construir la capacidad de Gestión del crecimiento completa: Fase 9, Fase 12, o fuera de alcance por ahora. Ahora tiene una entrada formal en `priorizacion.md` (prioridad media) para no perderse.
+3. **Resuelta** — los precios pendientes (Diagnóstico, Mantenimiento SEO técnico) se fijan en Fase 7/14 usando `modelo-precios.md`, no por comparación de mercado aislada.
 
 ---
 
 **Qué modifica**: define la arquitectura comercial completa — cada servicio, su capacidad Core, su nivel, su lugar en el flywheel, y sus vías de upselling/cross-selling.
 
-**Qué documentos dependen de este**: Fase 6 (Customer Journey), Fase 7 (Sistema comercial), Fase 8 (Operaciones), Fase 9 (Automatizaciones), Fase 12 (Marketing) y Fase 14 (Finanzas).
+**Qué documentos dependen de este**: Fase 6 (Customer Journey), Fase 7 (Sistema comercial), Fase 8 (Operaciones), Fase 9 (Automatizaciones), Fase 12 (Marketing) y Fase 14 (Finanzas). `modelo-precios.md` se aplicará sobre los precios pendientes de este documento.
 
-**Qué documentos deben revisarse si este cambia**: `capacidades-core.md`, `flywheel-comercial.md`, `04-arquitectura-oferta.md` y `kpis.md`.
+**Qué documentos deben revisarse si este cambia**: `capacidades-core.md`, `flywheel-comercial.md`, `04-arquitectura-oferta.md`, `kpis.md`, `priorizacion.md` y `modelo-precios.md`.

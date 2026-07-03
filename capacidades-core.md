@@ -17,6 +17,8 @@ No es un catálogo de servicios — es el inventario oficial de **capacidades re
 - **Potencial de automatización**: medio — un starter kit reutilizable reduciría tiempo de entrega y FDI; no existe todavía.
 - **Impacto estratégico**: es la capacidad de mayor volumen de uso (3 de 3 proyectos la usan) — cualquier mejora aquí (plantilla base, checklist) se multiplica por cada cliente nuevo de Motor A.
 - **Posibilidad futura de producto**: baja como producto independiente — el valor está en la ejecución a medida, no en algo empaquetable y revendible tal cual.
+- **BCI**: 3 — ver justificación en `bci-registro.md`.
+- **Cadena de dependencia**: no depende de ninguna otra capacidad Core. Alimenta a la capacidad 6 (el SEO técnico se aplica sobre lo que esta capacidad construye). Procesos que dependen de ella: Motor A completo (ambas etapas), indirectamente Motor B (no hay nada que mantener sin un sitio construido primero). Si desaparece: Motor A se detiene por completo; Motor B pierde su única fuente de clientes nuevos, aunque sigue operando con los ya activos.
 
 ### 2. CRM / gestión comercial propia
 
@@ -31,6 +33,8 @@ No es un catálogo de servicios — es el inventario oficial de **capacidades re
 - **Potencial de automatización**: alto en su función (sincroniza pagos solo, vía webhooks); bajo en su propio mantenimiento.
 - **Impacto estratégico**: es la capacidad de mayor riesgo de continuidad (R13) y, a la vez, la prueba central de la promesa de posicionamiento "empresa de tecnología, no agencia" (`01-posicionamiento.md`).
 - **Posibilidad futura de producto**: alta — es el candidato más claro a Motor D si se decide productizar, precisamente porque ya resuelve un problema que cualquier agencia pequeña tiene (gestión de clientes/pagos sin herramientas de pago de terceros).
+- **BCI**: **5** — la más alta del inventario, ver justificación en `bci-registro.md`.
+- **Cadena de dependencia**: no depende de otra capacidad Core, pero contiene y alimenta a la capacidad 5 (los pagos viven dentro de este sistema). Procesos que dependen de ella: pipeline, gestión de clientes, MRR, prácticamente toda la administración de Motor B. Si desaparece: se pierde visibilidad total de clientes, pipeline y pagos — efecto dominó directo sobre Motor B entero y sobre cualquier plan de productizar Motor D, que depende de este mismo código para existir. Es la capacidad cuya pérdida coincide exactamente con R13.
 
 ### 3. Prospección automatizada (scraping + scoring)
 
@@ -45,6 +49,8 @@ No es un catálogo de servicios — es el inventario oficial de **capacidades re
 - **Potencial de automatización**: ya alto en operación — el eslabón débil es la conexión manual al CRM (ver `flywheel-comercial.md`).
 - **Impacto estratégico**: es la única capacidad que genera pipeline sin coste marginal por lead — el activo más apalancado de toda la empresa hoy.
 - **Posibilidad futura de producto**: media-alta — venderla como servicio de generación de leads a otras agencias/consultoras es la observación ya registrada en `04-arquitectura-oferta.md`, sin decisión tomada.
+- **BCI**: 3-4 — ver justificación en `bci-registro.md`.
+- **Cadena de dependencia**: no depende de otra capacidad Core. Alimenta indirectamente a la capacidad 1 (sin leads, no hay a quién vender Motor A) — hoy esa alimentación es manual, no automática (silo registrado en `flywheel-comercial.md`). Procesos que dependen de ella: el primer eslabón completo del flywheel. Si desaparece: se corta la entrada de pipeline propio; la empresa pasaría a depender al 100% de referidos e inbound, sin alternativa construida hoy.
 
 ### 4. Automatización con IA aplicada
 
@@ -59,6 +65,8 @@ No es un catálogo de servicios — es el inventario oficial de **capacidades re
 - **Potencial de automatización**: es automatización en sí misma; el potencial está en replicar el patrón a otros procesos del negocio.
 - **Impacto estratégico**: es la capacidad con mayor potencial de margen (Motor C) por unidad de esfuerzo, precisamente porque el patrón ya existe y solo hay que adaptarlo, no inventarlo cada vez.
 - **Posibilidad futura de producto**: media — el patrón en sí (auditoría de registros con IA) podría generalizarse a un módulo del CRM ofrecible a clientes, no solo a leads internos.
+- **BCI**: 2 — ver justificación en `bci-registro.md`.
+- **Cadena de dependencia**: no depende de otra capacidad Core; usa la capacidad 3 como fuente de datos (los leads que audita). No alimenta todavía a ninguna otra capacidad de forma sistemática. Procesos que dependen de ella: hoy, solo el scoring/auditoría de leads dentro de `leadfinder`. Si desaparece: pérdida mínima hoy (uso no confirmado en producción), pero bloquea la vía más directa hacia un Motor C más rico.
 
 ### 5. Integración de pagos y facturación recurrente
 
@@ -73,6 +81,8 @@ No es un catálogo de servicios — es el inventario oficial de **capacidades re
 - **Potencial de automatización**: ya alto.
 - **Impacto estratégico**: es la capacidad que convierte el Modelo de negocio (Fase 2, en papel) en un sistema que factura de verdad — sin ella, "Motor B" sería solo una idea.
 - **Posibilidad futura de producto**: baja — es infraestructura interna, no algo que tenga sentido vender por separado.
+- **BCI**: **5** — ver justificación en `bci-registro.md`.
+- **Cadena de dependencia**: depende de la capacidad 2 (vive dentro del CRM, no es un sistema aparte). No alimenta a ninguna otra capacidad — es terminal. Procesos que dependen de ella: todo el cobro de Motor B, y el propio indicador de MRR en `kpis.md`. Si desaparece: Motor B deja de facturar automáticamente, vuelta a facturación manual — mismo efecto dominó que la capacidad 2, con la que comparte sistema físico.
 
 ### 6. SEO técnico estructurado
 
@@ -87,6 +97,8 @@ No es un catálogo de servicios — es el inventario oficial de **capacidades re
 - **Potencial de automatización**: medio-alto — candidato claro a checklist reutilizable.
 - **Impacto estratégico**: es la única capacidad real que sostiene, aunque sea parcialmente, la línea Gestión del crecimiento de Motor B — sin ella esa línea no tendría ninguna capacidad detrás, ni siquiera parcial.
 - **Posibilidad futura de producto**: baja — es un componente técnico de otras entregas, no un producto independiente.
+- **BCI**: 2 — ver justificación en `bci-registro.md`.
+- **Cadena de dependencia**: depende de la capacidad 1 (se aplica sobre lo que esa capacidad construye). No alimenta a ninguna otra capacidad Core, aunque sostiene parcialmente la línea Gestión del crecimiento de Motor B (`05-catalogo-servicios.md`). Si desaparece: pérdida de calidad técnica en entregas nuevas y en la línea de crecimiento parcial — no detiene la operación, degrada la calidad.
 
 ## Capacidades pendientes de construir (mencionadas como ambición, sin evidencia de código)
 
@@ -103,10 +115,14 @@ Estas líneas aparecían en el planteamiento original del proyecto. **No hay evi
 
 Todo servicio debe citar qué capacidad o capacidades Core lo sostienen, qué proceso del flywheel activa, y qué impacto tiene sobre el FDI de la empresa. Un servicio sin ninguna capacidad Core detrás no entra en el catálogo como oferta activa — entra, si acaso, en una sección aparte de "líneas futuras" explícitamente marcada como no vendible todavía.
 
+## Efecto dominó — lectura conjunta de la cadena de dependencia
+
+Con los seis bloques de "Cadena de dependencia" ya definidos, el mapa completo es: **3 (Prospección) → 1 (Desarrollo web) → 6 (SEO técnico)**, y en paralelo **2 (CRM) ↔ 5 (Pagos)**, con **4 (IA)** orbitando cerca de 2 y de un futuro Motor C más integrado. Los dos nodos de mayor BCI (2 y 5) son el mismo sistema físico (`interemprex-dashboard`) — es la razón por la que R13 se clasificó como incidencia crítica en `03-modelo-negocio.md`: no es un riesgo aislado, es el punto donde confluyen las dos capacidades de mayor impacto de toda la empresa.
+
 ---
 
-**Qué modifica**: no fija decisiones de negocio — es el inventario de capacidades reales, la base obligatoria sobre la que se construye toda la arquitectura comercial (`05-catalogo-servicios.md`).
+**Qué modifica**: no fija decisiones de negocio — es el inventario de capacidades reales, la base obligatoria sobre la que se construye toda la arquitectura comercial (`05-catalogo-servicios.md`), ahora con BCI y cadena de dependencia por capacidad.
 
-**Qué documentos dependen de este**: `05-catalogo-servicios.md` depende directamente — cada servicio debe referenciar una capacidad de aquí. `flywheel-comercial.md` referencia las capacidades 1, 2, 3 y 5 desde sus eslabones. `enterprise-blueprint.md` cita este documento como el eslabón "Mejora de capacidades" del ciclo de valor.
+**Qué documentos dependen de este**: `05-catalogo-servicios.md` depende directamente — cada servicio debe referenciar una capacidad de aquí. `flywheel-comercial.md` referencia las capacidades 1, 2, 3 y 5 desde sus eslabones. `enterprise-blueprint.md` cita este documento como el eslabón "Mejora de capacidades" del ciclo de valor. `priorizacion.md` usa la cadena de dependencia como una de sus dimensiones.
 
-**Qué documentos deben revisarse si este cambia**: `inventario-tecnologico.md` (mismo universo técnico, distinta vista), `05-catalogo-servicios.md` y `flywheel-comercial.md`.
+**Qué documentos deben revisarse si este cambia**: `inventario-tecnologico.md` (mismo universo técnico, distinta vista), `05-catalogo-servicios.md`, `flywheel-comercial.md`, `bci-registro.md` y `priorizacion.md`.

@@ -13,8 +13,10 @@ Registro vivo del Founder Dependency Index. Escala y reglas definidas en [`00-me
 | Sincronización de pagos y MRR (Stripe vía `interemprex-dashboard`) | Automatizado | 0 | Fase 0 — Análisis inicial | Webhooks gestionan el flujo sin intervención manual |
 | Comprensión global de cómo funciona la empresa (onboarding de una persona nueva) | Totalmente documentado | 1 | Fase 3 — Arquitectura de la oferta | Antes de `enterprise-blueprint.md` esto era "Exclusivo del fundador" (nadie más podía explicar el sistema completo); el blueprint lo documenta, aunque ejecutar cada pieza siga dependiendo de otros procesos con su propio nivel |
 | Saber qué servicio se vende, a qué nivel y por qué precio | Totalmente documentado | 1 | Fase 4 — Catálogo de servicios | Antes de `05-catalogo-servicios.md` esto vivía solo en la cabeza del fundador (qué se puede vender hoy y qué no); ahora está escrito y es la fuente única de verdad |
+| Decidir qué incidencia/mejora/riesgo se atiende primero | Totalmente documentado | 1 | Fase 4 — mejoras estructurales | Antes de `priorizacion.md` esta decisión era intuitiva y solo del fundador; ahora sigue un criterio de 5 dimensiones escrito y consultable |
+| Calcular el precio de un servicio nuevo o una cotización caso a caso | Totalmente documentado | 1 | Fase 4 — mejoras estructurales | Antes de `modelo-precios.md` esto era criterio personal del fundador; ahora es un procedimiento de 8 pasos, aunque las cifras finales sigan pendientes de datos reales (Fase 14) |
 
-**FDI medio actual (7 procesos registrados): 1,43 / 3.** Cifra orientativa — la muestra es pequeña y crecerá con cada fase que documente procesos nuevos. No se compara todavía con ningún objetivo numérico porque fijar uno ahora sería inventar una meta sin base histórica.
+**FDI medio actual (9 procesos registrados): 1,33 / 3.** Cifra orientativa — la muestra es pequeña y crecerá con cada fase que documente procesos nuevos. No se compara todavía con ningún objetivo numérico porque fijar uno ahora sería inventar una meta sin base histórica.
 
 ## Cómo se actualiza este registro
 

@@ -13,6 +13,9 @@ Empieza por [`00-metodologia.md`](./00-metodologia.md) — rige cómo se constru
 - [`flywheel-comercial.md`](./flywheel-comercial.md) — estado objetivo del flujo comercial completo (LeadFinder → ... → Nuevas oportunidades), contrastado eslabón a eslabón contra lo que existe hoy.
 - [`duplicidad-paneles-gestion.md`](./duplicidad-paneles-gestion.md) — hechos sobre los dos paneles de gestión interna, sin resolución todavía (se decide en Fase 8).
 - [`auditoria-preventiva-leadfinder.md`](./auditoria-preventiva-leadfinder.md) — hechos sobre fuentes, licencias, almacenamiento, retención y accesos de datos en `leadfinder`, sin propuesta legal (entrada de hechos para Fase 5). Incluye verificación puntual de una credencial por defecto (2026-07-02).
+- [`bci-registro.md`](./bci-registro.md) — Business Criticality Index: impacto de la pérdida temporal de cada capacidad, sistema o proceso. Complementario al FDI. Definición en `00-metodologia.md`.
+- [`priorizacion.md`](./priorizacion.md) — toda incidencia/deuda técnica/riesgo clasificado en 5 dimensiones (impacto, esfuerzo, urgencia, dependencia, riesgo de no actuar); consolida lo detectado en fases anteriores.
+- [`modelo-precios.md`](./modelo-precios.md) — el procedimiento de 8 factores para calcular precios (no cifras); se aplica en Fase 7 y Fase 14.
 
 ## Ecosistema real (verificado, no aspiracional)
 
@@ -33,9 +36,9 @@ Cada fase termina con aprobación explícita antes de empezar la siguiente. No s
 - [x] `00-metodologia.md` — metodología permanente de trabajo (proceso), incluye la definición del FDI
 - [x] **Fase 1 — Posicionamiento** → [`01-posicionamiento.md`](./01-posicionamiento.md)
 - [x] **Principios fundacionales** (constitución de contenido) → [`02-principios-fundacionales.md`](./02-principios-fundacionales.md) — aprobado por uso
-- [x] **Fase 2 — Modelo de negocio** → [`03-modelo-negocio.md`](./03-modelo-negocio.md) — aprobado (v5)
+- [x] **Fase 2 — Modelo de negocio** → [`03-modelo-negocio.md`](./03-modelo-negocio.md) — aprobado (v7)
 - [x] **Fase 3 — Arquitectura de la oferta** → [`04-arquitectura-oferta.md`](./04-arquitectura-oferta.md) — aprobado (v2)
-- [ ] **Fase 4 — Catálogo de servicios (arquitectura comercial)** → [`05-catalogo-servicios.md`](./05-catalogo-servicios.md) — pendiente de aprobación definitiva; cada servicio responde 10 preguntas obligatorias (capacidad Core, proceso del flywheel, entregables, automatización, KPIs, upsell/cross-sell, nivel); hallazgo confirmado: "Gestión del crecimiento" de Motor B solo tiene capacidad parcial
+- [x] **Fase 4 — Catálogo de servicios (arquitectura comercial)** → [`05-catalogo-servicios.md`](./05-catalogo-servicios.md) — aprobado (v2), estándar permanente; cada servicio responde 10 preguntas obligatorias; hallazgo confirmado: "Gestión del crecimiento" de Motor B solo tiene capacidad parcial; pendiente abierta en `priorizacion.md`: cuándo construir esa capacidad
 - [ ] **Fase 5 — Legal y Cumplimiento** (nueva, insertada aquí a petición explícita del 2026-07-02) — RGPD, LOPDGDD, encargos de tratamiento, contratos, condiciones generales, privacidad, cookies, uso de IA, licencias, propiedad intelectual, scraping y fuentes de datos, riesgos regulatorios. Ver razonamiento de ubicación más abajo.
 - [ ] Fase 6 — Customer Journey
 - [ ] Fase 7 — Sistema comercial

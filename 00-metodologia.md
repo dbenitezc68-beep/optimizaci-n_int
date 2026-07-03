@@ -88,13 +88,33 @@ Indicador permanente, activo desde la Fase 2, que mide cuánto depende cada proc
 - Toda recomendación relevante declara explícitamente si mejora, empeora o no afecta el FDI del proceso que toca. "Mejora" significa mover un proceso hacia una puntuación más baja (más automatizado o más documentado, menos dependiente del fundador).
 - El objetivo es que el FDI medio de la empresa descienda de forma progresiva, fase a fase. No se exige llegar a 0 en todos los procesos — pero cualquier decisión que empeore el FDI de un proceso sin justificar por qué compensa en otro criterio, se señala explícitamente en la auditoría crítica de esa fase.
 
+## Business Criticality Index (BCI)
+
+Indicador permanente, complementario al FDI, activo desde la Fase 4. Mientras el FDI mide *de quién* depende un proceso, el BCI mide *cuánto importa* si esa capacidad, sistema o proceso deja de funcionar temporalmente — son preguntas distintas: algo puede tener FDI bajo (ya automatizado) y BCI alto (crítico si falla), o al revés. El registro vivo vive en `bci-registro.md`.
+
+**Escala (1 a 5), representa el impacto de la pérdida temporal:**
+
+| Valor | Significado |
+|---|---|
+| 1 | Impacto mínimo — apenas se nota |
+| 2 | Impacto menor — molestia operativa |
+| 3 | Impacto moderado — afecta la operación pero no la detiene |
+| 4 | Impacto grave — detiene una función central temporalmente |
+| 5 | Impacto crítico — pone en riesgo la continuidad del negocio |
+
+**Reglas de uso**: todo elemento nuevo de `capacidades-core.md`, todo sistema de `inventario-tecnologico.md` y todo proceso relevante recibe un BCI justificado en una frase — nunca un número sin argumento. El BCI no sustituye a la clasificación de riesgo de `03-modelo-negocio.md`; la complementa desde el ángulo de "qué pasa si esto falla", no "qué probabilidad hay de que falle".
+
+## Sistema de priorización
+
+Documento permanente: `priorizacion.md`. A partir de la Fase 4, toda incidencia, deuda técnica, mejora o riesgo detectado se clasifica en cinco dimensiones (impacto, esfuerzo, urgencia, dependencia, riesgo de no actuar), cada una Alta/Media/Baja salvo que exista un dato real que permita mayor precisión. El objetivo es que ninguna decisión de qué atender primero se tome solo por intuición — incluida la del propio proceso de trabajo de esta metodología.
+
 ## Nivel de exigencia
 
 Diseñar como si la empresa tuviera que seguir funcionando dentro de diez años sin rehacer su estructura. Buscar siempre la mejor solución disponible, no la primera que sea válida.
 
 ---
 
-**Qué modifica**: define el proceso obligatorio de trabajo para todo el proyecto — rol, criterios de decisión, pruebas de escalabilidad, auditoría de cierre, FDI y formato de cada documento.
+**Qué modifica**: define el proceso obligatorio de trabajo para todo el proyecto — rol, criterios de decisión, pruebas de escalabilidad, auditoría de cierre, FDI, BCI, sistema de priorización y formato de cada documento.
 
 **Qué documentos dependen de este**: todos los documentos del repositorio, sin excepción — es el documento de mayor autoridad sobre el proceso, al mismo nivel que `02-principios-fundacionales.md` sobre el contenido.
 
