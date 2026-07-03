@@ -43,6 +43,30 @@ export async function createLeadAction(formData: FormData) {
   redirect("/dashboard/pipeline");
 }
 
+export async function updateLeadAction(leadId: string, formData: FormData) {
+  await requireUser();
+  const parsed = parseForm(leadSchema, formData);
+  if (!parsed.ok) {
+    redirectWithError(`/dashboard/pipeline/${leadId}/edit`, parsed.error);
+  }
+
+  const { value, ...data } = parsed.data;
+  await tryMutation(
+    () =>
+      prisma.lead.update({
+        where: { id: leadId },
+        data: { ...data, valueCents: value },
+      }),
+    `/dashboard/pipeline/${leadId}/edit`,
+    "No se pudo guardar el lead. Inténtalo de nuevo."
+  );
+
+  revalidatePath("/dashboard/pipeline");
+  revalidatePath(`/dashboard/pipeline/${leadId}`);
+  revalidatePath("/dashboard");
+  redirect(`/dashboard/pipeline/${leadId}`);
+}
+
 export async function updateLeadStageAction(
   leadId: string,
   formData: FormData
@@ -62,6 +86,7 @@ export async function updateLeadStageAction(
   );
 
   revalidatePath("/dashboard/pipeline");
+  revalidatePath(`/dashboard/pipeline/${leadId}`);
   revalidatePath("/dashboard");
 }
 
@@ -120,4 +145,6 @@ export async function deleteLeadAction(formData: FormData) {
 
   revalidatePath("/dashboard/pipeline");
   revalidatePath("/dashboard");
+  // Desde la ficha del lead, quedarse en la página borrada daría 404.
+  redirect("/dashboard/pipeline");
 }

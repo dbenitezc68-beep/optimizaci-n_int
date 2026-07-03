@@ -5,14 +5,7 @@ import { formatCents, formatDate } from "@/lib/money";
 import { Badge, Card, PageHeader, inputClass } from "@/components/ui";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
 import { deleteProjectAction, updateProjectStatusAction } from "../actions";
-
-const STATUS_OPTIONS = [
-  { value: "PLANNED", label: "Planificado" },
-  { value: "IN_PROGRESS", label: "En curso" },
-  { value: "PAUSED", label: "Pausado" },
-  { value: "COMPLETED", label: "Completado" },
-  { value: "CANCELLED", label: "Cancelado" },
-];
+import { PROJECT_STATUS_OPTIONS } from "@/lib/domain";
 
 export default async function ProjectDetailPage({
   params,
@@ -68,7 +61,7 @@ export default async function ProjectDetailPage({
             className="flex items-center gap-2"
           >
             <select name="status" defaultValue={project.status} className={inputClass}>
-              {STATUS_OPTIONS.map((s) => (
+              {PROJECT_STATUS_OPTIONS.map((s) => (
                 <option key={s.value} value={s.value}>
                   {s.label}
                 </option>

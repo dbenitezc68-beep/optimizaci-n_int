@@ -1,15 +1,7 @@
 "use client";
 
 import { inputClass } from "@/components/ui";
-
-const STAGES: { value: string; label: string }[] = [
-  { value: "NEW", label: "Nuevo" },
-  { value: "CONTACTED", label: "Contactado" },
-  { value: "PROPOSAL", label: "Propuesta" },
-  { value: "NEGOTIATION", label: "Negociación" },
-  { value: "WON", label: "Ganado" },
-  { value: "LOST", label: "Perdido" },
-];
+import { LEAD_STAGE_OPTIONS } from "@/lib/domain";
 
 export function LeadStageSelect({
   action,
@@ -26,7 +18,7 @@ export function LeadStageSelect({
         onChange={(e) => e.currentTarget.form?.requestSubmit()}
         className={`${inputClass} py-1.5 text-xs`}
       >
-        {STAGES.map((s) => (
+        {LEAD_STAGE_OPTIONS.map((s) => (
           <option key={s.value} value={s.value}>
             {s.label}
           </option>

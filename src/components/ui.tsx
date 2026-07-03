@@ -1,5 +1,12 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
+import {
+  LEAD_STAGE_LABELS,
+  PAYMENT_STATUS_LABELS,
+  PROJECT_STATUS_LABELS,
+  SUBSCRIPTION_STATUS_LABELS,
+  TASK_STATUS_LABELS,
+} from "@/lib/domain";
 
 export function Card({
   children,
@@ -92,28 +99,11 @@ const BADGE_STYLES: Record<string, string> = {
 };
 
 const STATUS_LABELS: Record<string, string> = {
-  PLANNED: "Planificado",
-  IN_PROGRESS: "En curso",
-  PAUSED: "Pausado",
-  COMPLETED: "Completado",
-  CANCELLED: "Cancelado",
-  TODO: "Pendiente",
-  DONE: "Hecho",
-  NEW: "Nuevo",
-  CONTACTED: "Contactado",
-  PROPOSAL: "Propuesta",
-  NEGOTIATION: "Negociación",
-  WON: "Ganado",
-  LOST: "Perdido",
-  PENDING: "Pendiente",
-  PAID: "Pagado",
-  FAILED: "Fallido",
-  REFUNDED: "Reembolsado",
-  ACTIVE: "Activa",
-  TRIALING: "Prueba",
-  PAST_DUE: "Impago",
-  CANCELED: "Cancelada",
-  INCOMPLETE: "Incompleta",
+  ...PROJECT_STATUS_LABELS,
+  ...TASK_STATUS_LABELS,
+  ...LEAD_STAGE_LABELS,
+  ...PAYMENT_STATUS_LABELS,
+  ...SUBSCRIPTION_STATUS_LABELS,
 };
 
 export function Badge({ status }: { status: string }) {

@@ -1,13 +1,6 @@
 import { inputClass, labelClass, Button } from "@/components/ui";
+import { PROJECT_STATUS_OPTIONS } from "@/lib/domain";
 import type { Project } from "@/generated/prisma/client";
-
-const STATUS_OPTIONS = [
-  { value: "PLANNED", label: "Planificado" },
-  { value: "IN_PROGRESS", label: "En curso" },
-  { value: "PAUSED", label: "Pausado" },
-  { value: "COMPLETED", label: "Completado" },
-  { value: "CANCELLED", label: "Cancelado" },
-];
 
 function toInputDate(date: Date | null | undefined) {
   if (!date) return "";
@@ -102,7 +95,7 @@ export function ProjectForm({
             defaultValue={project?.status ?? "PLANNED"}
             className={inputClass}
           >
-            {STATUS_OPTIONS.map((s) => (
+            {PROJECT_STATUS_OPTIONS.map((s) => (
               <option key={s.value} value={s.value}>
                 {s.label}
               </option>

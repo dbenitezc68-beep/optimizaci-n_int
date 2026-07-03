@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { formatCents } from "@/lib/money";
+import { LEAD_STAGE_OPTIONS } from "@/lib/domain";
 import { Badge, Card, PageHeader } from "@/components/ui";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
 import { LeadStageSelect } from "./lead-stage-select";
@@ -10,21 +11,12 @@ import {
   updateLeadStageAction,
 } from "./actions";
 
-const STAGES: { value: string; label: string }[] = [
-  { value: "NEW", label: "Nuevo" },
-  { value: "CONTACTED", label: "Contactado" },
-  { value: "PROPOSAL", label: "Propuesta" },
-  { value: "NEGOTIATION", label: "Negociación" },
-  { value: "WON", label: "Ganado" },
-  { value: "LOST", label: "Perdido" },
-];
-
 export default async function PipelinePage() {
   const leads = await prisma.lead.findMany({
     orderBy: { createdAt: "desc" },
   });
 
-  const byStage = STAGES.map((stage) => ({
+  const byStage = LEAD_STAGE_OPTIONS.map((stage) => ({
     ...stage,
     leads: leads.filter((l) => l.stage === stage.value),
   }));
@@ -57,9 +49,12 @@ export default async function PipelinePage() {
             <div className="flex flex-col gap-3">
               {stage.leads.map((lead) => (
                 <Card key={lead.id} className="p-4">
-                  <div className="font-medium text-slate-100">
+                  <Link
+                    href={`/dashboard/pipeline/${lead.id}`}
+                    className="font-medium text-slate-100 hover:text-sky-300"
+                  >
                     {lead.name}
-                  </div>
+                  </Link>
                   {lead.company && (
                     <div className="text-xs text-slate-500">
                       {lead.company}
