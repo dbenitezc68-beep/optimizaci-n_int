@@ -2,8 +2,13 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { formatCents, formatDate } from "@/lib/money";
 import { Badge, Card, PageHeader, Button } from "@/components/ui";
+import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
 import { isStripeConfigured } from "@/lib/stripe";
-import { syncStripeAction } from "./actions";
+import {
+  deleteManualPaymentAction,
+  markManualPaymentPaidAction,
+  syncStripeAction,
+} from "./actions";
 
 export default async function PaymentsPage({
   searchParams,
@@ -39,9 +44,15 @@ export default async function PaymentsPage({
     <div>
       <PageHeader
         title="Pagos"
-        description="Pagos, suscripciones y facturas sincronizadas desde Stripe."
+        description="Cobros de la empresa: Stripe (sincronizado) y pagos manuales (transferencia, efectivo…)."
         actions={
           <>
+            <Link
+              href="/dashboard/payments/new-manual"
+              className="inline-flex items-center justify-center rounded-lg border border-slate-700 px-3.5 py-2 text-sm font-semibold text-slate-300 hover:border-sky-500 hover:text-sky-300"
+            >
+              + Pago manual
+            </Link>
             <Link
               href="/dashboard/payments/new-link"
               className="inline-flex items-center justify-center rounded-lg border border-slate-700 px-3.5 py-2 text-sm font-semibold text-slate-300 hover:border-sky-500 hover:text-sky-300"
@@ -122,7 +133,7 @@ export default async function PaymentsPage({
         </h2>
         {payments.length === 0 ? (
           <p className="px-5 pb-5 pt-2 text-sm text-slate-500">
-            Sin pagos sincronizados todavía.
+            Sin pagos todavía.
           </p>
         ) : (
           <table className="mt-3 w-full text-sm">
@@ -132,29 +143,60 @@ export default async function PaymentsPage({
                 <th className="px-5 py-2">Descripción</th>
                 <th className="px-5 py-2">Fecha</th>
                 <th className="px-5 py-2">Importe</th>
+                <th className="px-5 py-2">Origen</th>
                 <th className="px-5 py-2">Estado</th>
+                <th className="px-5 py-2"></th>
               </tr>
             </thead>
             <tbody>
-              {payments.map((p) => (
-                <tr key={p.id} className="border-b border-slate-800/60 last:border-0">
-                  <td className="px-5 py-2 text-slate-300">
-                    {p.client?.name ?? "—"}
-                  </td>
-                  <td className="px-5 py-2 text-slate-400">
-                    {p.description ?? "—"}
-                  </td>
-                  <td className="px-5 py-2 text-slate-400">
-                    {formatDate(p.createdAt)}
-                  </td>
-                  <td className="px-5 py-2 font-medium text-slate-200">
-                    {formatCents(p.amountCents, p.currency.toUpperCase())}
-                  </td>
-                  <td className="px-5 py-2">
-                    <Badge status={p.status} />
-                  </td>
-                </tr>
-              ))}
+              {payments.map((p) => {
+                const isManual = !p.stripePaymentIntentId && !p.stripeChargeId;
+                return (
+                  <tr key={p.id} className="border-b border-slate-800/60 last:border-0">
+                    <td className="px-5 py-2 text-slate-300">
+                      {p.client?.name ?? "—"}
+                    </td>
+                    <td className="px-5 py-2 text-slate-400">
+                      {p.description ?? "—"}
+                    </td>
+                    <td className="px-5 py-2 text-slate-400">
+                      {formatDate(p.paidAt ?? p.createdAt)}
+                    </td>
+                    <td className="px-5 py-2 font-medium text-slate-200">
+                      {formatCents(p.amountCents, p.currency.toUpperCase())}
+                    </td>
+                    <td className="px-5 py-2 text-xs text-slate-500">
+                      {isManual ? "Manual" : "Stripe"}
+                    </td>
+                    <td className="px-5 py-2">
+                      <Badge status={p.status} />
+                    </td>
+                    <td className="px-5 py-2">
+                      {isManual && (
+                        <div className="flex items-center justify-end gap-3">
+                          {p.status === "PENDING" && (
+                            <form action={markManualPaymentPaidAction}>
+                              <input type="hidden" name="paymentId" value={p.id} />
+                              <button
+                                type="submit"
+                                className="text-xs font-medium text-emerald-400 hover:text-emerald-300"
+                              >
+                                Marcar cobrado
+                              </button>
+                            </form>
+                          )}
+                          <form action={deleteManualPaymentAction}>
+                            <input type="hidden" name="paymentId" value={p.id} />
+                            <ConfirmSubmitButton confirmMessage="¿Eliminar este pago manual?">
+                              <span className="text-xs">Eliminar</span>
+                            </ConfirmSubmitButton>
+                          </form>
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         )}

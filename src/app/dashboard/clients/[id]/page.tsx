@@ -35,6 +35,12 @@ export default async function ClientDetailPage({
         actions={
           <>
             <Link
+              href={`/dashboard/payments/new-manual?clientId=${client.id}`}
+              className="inline-flex items-center justify-center rounded-lg border border-slate-700 px-3.5 py-2 text-sm font-semibold text-slate-300 hover:border-sky-500 hover:text-sky-300"
+            >
+              + Registrar pago
+            </Link>
+            <Link
               href={`/dashboard/payments/new-link?clientId=${client.id}`}
               className="inline-flex items-center justify-center rounded-lg border border-slate-700 px-3.5 py-2 text-sm font-semibold text-slate-300 hover:border-sky-500 hover:text-sky-300"
             >
