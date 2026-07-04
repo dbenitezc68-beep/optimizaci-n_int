@@ -7,6 +7,12 @@ import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/auth";
 import { LEAD_STAGES } from "@/lib/domain";
 import {
+  getLeadFinderDbPath,
+  importLeadsFromLeadFinder,
+  isLeadFinderConfigured,
+  type LeadFinderScore,
+} from "@/lib/leadfinder";
+import {
   optionalEmail,
   optionalEurosToCents,
   optionalText,
@@ -130,6 +136,40 @@ export async function convertLeadToClientAction(formData: FormData) {
   revalidatePath("/dashboard/clients");
   revalidatePath("/dashboard");
   redirect(`/dashboard/clients/${client.id}`);
+}
+
+export async function importFromLeadFinderAction(formData: FormData) {
+  await requireUser();
+
+  if (!getLeadFinderDbPath()) {
+    redirectWithError(
+      "/dashboard/pipeline/import",
+      "Configura LEADFINDER_DB_PATH en .env con la ruta al leadfinder.db"
+    );
+  }
+  if (!isLeadFinderConfigured()) {
+    redirectWithError(
+      "/dashboard/pipeline/import",
+      `No se encuentra el archivo indicado en LEADFINDER_DB_PATH: ${getLeadFinderDbPath()}`
+    );
+  }
+
+  const minScore = String(formData.get("minScore") ?? "alta");
+  if (!["alta", "media", "baja"].includes(minScore)) {
+    redirectWithError("/dashboard/pipeline/import", "Nivel de interés no válido");
+  }
+
+  const result = await tryMutation(
+    () => importLeadsFromLeadFinder(minScore as LeadFinderScore),
+    "/dashboard/pipeline/import",
+    "No se pudo importar desde LeadFinder. Comprueba que el archivo es una base de datos válida."
+  );
+
+  revalidatePath("/dashboard/pipeline");
+  revalidatePath("/dashboard");
+  redirect(
+    `/dashboard/pipeline?imported=${result.imported}&skipped=${result.skipped}`
+  );
 }
 
 export async function deleteLeadAction(formData: FormData) {

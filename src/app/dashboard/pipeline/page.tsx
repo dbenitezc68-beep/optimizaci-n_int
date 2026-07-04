@@ -11,7 +11,12 @@ import {
   updateLeadStageAction,
 } from "./actions";
 
-export default async function PipelinePage() {
+export default async function PipelinePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ imported?: string; skipped?: string }>;
+}) {
+  const { imported, skipped } = await searchParams;
   const leads = await prisma.lead.findMany({
     orderBy: { createdAt: "desc" },
   });
@@ -27,14 +32,32 @@ export default async function PipelinePage() {
         title="Pipeline de ventas"
         description={`${leads.length} leads en total`}
         actions={
-          <Link
-            href="/dashboard/pipeline/new"
-            className="inline-flex items-center justify-center rounded-lg bg-sky-500 px-3.5 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-400"
-          >
-            + Nuevo lead
-          </Link>
+          <>
+            <Link
+              href="/dashboard/pipeline/import"
+              className="inline-flex items-center justify-center rounded-lg border border-slate-700 px-3.5 py-2 text-sm font-semibold text-slate-300 hover:border-sky-500 hover:text-sky-300"
+            >
+              Importar de LeadFinder
+            </Link>
+            <Link
+              href="/dashboard/pipeline/new"
+              className="inline-flex items-center justify-center rounded-lg bg-sky-500 px-3.5 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-400"
+            >
+              + Nuevo lead
+            </Link>
+          </>
         }
       />
+
+      {imported !== undefined && (
+        <p className="mb-4 rounded-lg border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-2.5 text-sm text-emerald-300">
+          Importación completada: {imported} leads nuevos
+          {skipped && Number(skipped) > 0
+            ? `, ${skipped} omitidos por estar ya importados`
+            : ""}
+          .
+        </p>
+      )}
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 xl:grid-cols-6">
         {byStage.map((stage) => (

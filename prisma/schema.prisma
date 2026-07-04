@@ -113,6 +113,8 @@ model Lead {
   stage       LeadStage @default(NEW)
   valueCents  Int?
   notes       String?
+  // Clave estable "source:source_id" de LeadFinder para importar sin duplicar
+  leadfinderKey String? @unique
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 

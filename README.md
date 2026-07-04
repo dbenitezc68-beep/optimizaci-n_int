@@ -40,7 +40,8 @@ Desde **Ajustes** en el panel puedes ver si las claves están configuradas y los
 
 - **Clientes**: ficha con contacto, notas, procesos, tareas y pagos asociados.
 - **Procesos**: proyectos/servicios por cliente con estado, presupuesto y fechas.
-- **Pipeline**: leads por etapa (nuevo → contactado → propuesta → negociación → ganado/perdido), con conversión directa a cliente.
+- **Pipeline**: leads por etapa (nuevo → contactado → propuesta → negociación → ganado/perdido), con ficha de detalle/edición y conversión directa a cliente.
+- **Importación desde LeadFinder**: botón "Importar de LeadFinder" en el pipeline. Configura `LEADFINDER_DB_PATH` en `.env` con la ruta al `leadfinder.db` del motor de prospección; la importación es de solo lectura, filtra por nivel de interés, excluye descartados/cerrados y nunca duplica (clave estable por negocio).
 - **Tareas**: tareas internas asociables a cliente y/o proceso.
 - **Pagos**: sincronización manual con Stripe (pagos, suscripciones, facturas), creación de links de pago desde el panel, y MRR/ingresos calculados automáticamente en el resumen.
 - **Webhooks**: `/api/stripe/webhook` mantiene los datos al día en tiempo real (pagos, suscripciones, facturas).
