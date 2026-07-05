@@ -2,7 +2,12 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { PageHeader, Card } from "@/components/ui";
 
-export default async function ClientsPage() {
+export default async function ClientsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ imported?: string; skipped?: string; invalid?: string }>;
+}) {
+  const { imported, skipped, invalid } = await searchParams;
   const clients = await prisma.client.findMany({
     orderBy: { createdAt: "desc" },
     include: {
@@ -16,14 +21,35 @@ export default async function ClientsPage() {
         title="Clientes"
         description={`${clients.length} clientes registrados`}
         actions={
-          <Link
-            href="/dashboard/clients/new"
-            className="inline-flex items-center justify-center rounded-lg bg-sky-500 px-3.5 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-400"
-          >
-            + Nuevo cliente
-          </Link>
+          <>
+            <Link
+              href="/dashboard/clients/import"
+              className="inline-flex items-center justify-center rounded-lg border border-slate-700 px-3.5 py-2 text-sm font-semibold text-slate-300 hover:border-sky-500 hover:text-sky-300"
+            >
+              Importar CSV
+            </Link>
+            <Link
+              href="/dashboard/clients/new"
+              className="inline-flex items-center justify-center rounded-lg bg-sky-500 px-3.5 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-400"
+            >
+              + Nuevo cliente
+            </Link>
+          </>
         }
       />
+
+      {imported !== undefined && (
+        <p className="mb-4 rounded-lg border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-2.5 text-sm text-emerald-300">
+          Importación completada: {imported} clientes nuevos
+          {skipped && Number(skipped) > 0
+            ? `, ${skipped} omitidos por email ya existente`
+            : ""}
+          {invalid && Number(invalid) > 0
+            ? `, ${invalid} filas descartadas por datos inválidos`
+            : ""}
+          .
+        </p>
+      )}
 
       {clients.length === 0 ? (
         <Card>

@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 
-function monthlyFactor(interval: string) {
+export function monthlyFactor(interval: string) {
   switch (interval) {
     case "year":
       return 1 / 12;

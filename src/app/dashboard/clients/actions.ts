@@ -13,6 +13,9 @@ import {
   requiredText,
   tryMutation,
 } from "@/lib/forms";
+import { importClientsFromCsv } from "@/lib/client-import";
+
+const MAX_CSV_BYTES = 2 * 1024 * 1024;
 
 const clientSchema = z.object({
   name: requiredText("El nombre es obligatorio"),
@@ -55,6 +58,37 @@ export async function updateClientAction(clientId: string, formData: FormData) {
   revalidatePath("/dashboard/clients");
   revalidatePath(`/dashboard/clients/${clientId}`);
   redirect(`/dashboard/clients/${clientId}`);
+}
+
+export async function importClientsAction(formData: FormData) {
+  await requireUser();
+
+  const file = formData.get("file");
+  if (!(file instanceof File) || file.size === 0) {
+    redirectWithError("/dashboard/clients/import", "Selecciona un archivo CSV");
+  }
+  if (file.size > MAX_CSV_BYTES) {
+    redirectWithError(
+      "/dashboard/clients/import",
+      "El archivo supera el máximo de 2 MB"
+    );
+  }
+
+  const text = await file.text();
+  const result = await tryMutation(
+    () => importClientsFromCsv(text),
+    "/dashboard/clients/import",
+    "No se pudo procesar el CSV. Comprueba el formato del archivo."
+  );
+  if ("error" in result) {
+    redirectWithError("/dashboard/clients/import", result.error);
+  }
+
+  revalidatePath("/dashboard/clients");
+  revalidatePath("/dashboard");
+  redirect(
+    `/dashboard/clients?imported=${result.created}&skipped=${result.skippedExisting}&invalid=${result.invalid}`
+  );
 }
 
 export async function deleteClientAction(formData: FormData) {
