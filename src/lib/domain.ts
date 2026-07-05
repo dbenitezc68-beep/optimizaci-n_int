@@ -1,4 +1,6 @@
 import type {
+  ActivityStatus,
+  ActivityType,
   LeadStage,
   ProjectStatus,
   TaskStatus,
@@ -29,6 +31,14 @@ export const TASK_STATUSES = [
   "IN_PROGRESS",
   "DONE",
 ] as const satisfies readonly TaskStatus[];
+
+export const ACTIVITY_TYPES = [
+  "NOTE",
+  "CALL",
+  "MEETING",
+  "INCIDENT",
+  "DELIVERABLE",
+] as const satisfies readonly ActivityType[];
 
 export const PROJECT_STATUS_LABELS: Record<ProjectStatus, string> = {
   PLANNED: "Planificado",
@@ -68,6 +78,19 @@ export const SUBSCRIPTION_STATUS_LABELS: Record<string, string> = {
   INCOMPLETE: "Incompleta",
 };
 
+export const ACTIVITY_TYPE_LABELS: Record<ActivityType, string> = {
+  NOTE: "Nota",
+  CALL: "Llamada",
+  MEETING: "Reunión",
+  INCIDENT: "Incidencia",
+  DELIVERABLE: "Entregable",
+};
+
+export const ACTIVITY_STATUS_LABELS: Record<ActivityStatus, string> = {
+  OPEN: "Abierta",
+  RESOLVED: "Resuelta",
+};
+
 const toOptions = <T extends string>(
   values: readonly T[],
   labels: Record<T, string>
@@ -79,3 +102,7 @@ export const PROJECT_STATUS_OPTIONS = toOptions(
 );
 export const LEAD_STAGE_OPTIONS = toOptions(LEAD_STAGES, LEAD_STAGE_LABELS);
 export const TASK_STATUS_OPTIONS = toOptions(TASK_STATUSES, TASK_STATUS_LABELS);
+export const ACTIVITY_TYPE_OPTIONS = toOptions(
+  ACTIVITY_TYPES,
+  ACTIVITY_TYPE_LABELS
+);

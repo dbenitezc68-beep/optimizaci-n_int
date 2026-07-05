@@ -4,21 +4,29 @@ import { prisma } from "@/lib/prisma";
 import { formatCents, formatDate } from "@/lib/money";
 import { Badge, Card, PageHeader, inputClass } from "@/components/ui";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
+import { ActivityTimeline } from "@/components/activity-timeline";
 import { deleteProjectAction, updateProjectStatusAction } from "../actions";
 import { PROJECT_STATUS_OPTIONS } from "@/lib/domain";
 
 export default async function ProjectDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
   const { id } = await params;
+  const { error } = await searchParams;
 
   const project = await prisma.project.findUnique({
     where: { id },
     include: {
       client: { select: { id: true, name: true } },
       tasks: { orderBy: { createdAt: "desc" } },
+      activities: {
+        orderBy: { date: "desc" },
+        include: { project: { select: { id: true, name: true } } },
+      },
     },
   });
 
@@ -123,6 +131,14 @@ export default async function ProjectDetailPage({
           </div>
         )}
       </Card>
+
+      <ActivityTimeline
+        activities={project.activities}
+        clientId={project.client.id}
+        projectId={project.id}
+        returnTo={`/dashboard/projects/${project.id}`}
+        error={error}
+      />
     </div>
   );
 }

@@ -84,6 +84,7 @@ model Client {
   subscriptions Subscription[]
   invoices      Invoice[]
   paymentLinks  PaymentLink[]
+  activities    Activity[]
 }
 
 model Project {
@@ -100,7 +101,8 @@ model Project {
   clientId String
   client   Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
 
-  tasks Task[]
+  tasks      Task[]
+  activities Activity[]
 }
 
 model Lead {
@@ -202,6 +204,39 @@ model PaymentLink {
 
   clientId String?
   client   Client? @relation(fields: [clientId], references: [id])
+}
+
+enum ActivityType {
+  NOTE
+  CALL
+  MEETING
+  INCIDENT
+  DELIVERABLE
+}
+
+enum ActivityStatus {
+  OPEN
+  RESOLVED
+}
+
+// Registro de seguimiento post-venta: notas, llamadas, reuniones,
+// incidencias (con estado) y entregables (con enlace), anclados al
+// cliente y opcionalmente a un proceso.
+model Activity {
+  id        String          @id @default(cuid())
+  type      ActivityType    @default(NOTE)
+  title     String
+  detail    String?
+  link      String?
+  status    ActivityStatus?
+  date      DateTime        @default(now())
+  createdAt DateTime        @default(now())
+
+  clientId String
+  client   Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
 }
 
 model WebhookEvent {

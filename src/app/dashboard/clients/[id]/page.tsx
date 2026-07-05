@@ -5,14 +5,18 @@ import { formatCents, formatDate } from "@/lib/money";
 import { monthlyFactor } from "@/lib/metrics";
 import { Badge, Card, PageHeader, StatCard } from "@/components/ui";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
+import { ActivityTimeline } from "@/components/activity-timeline";
 import { deleteClientAction } from "../actions";
 
 export default async function ClientDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
   const { id } = await params;
+  const { error } = await searchParams;
 
   const [client, originLead] = await Promise.all([
     prisma.client.findUnique({
@@ -24,12 +28,20 @@ export default async function ClientDetailPage({
         subscriptions: { orderBy: { createdAt: "desc" } },
         invoices: { orderBy: { createdAt: "desc" } },
         paymentLinks: { orderBy: { createdAt: "desc" } },
+        activities: {
+          orderBy: { date: "desc" },
+          include: { project: { select: { id: true, name: true } } },
+        },
       },
     }),
     prisma.lead.findFirst({ where: { convertedClientId: id } }),
   ]);
 
   if (!client) notFound();
+
+  const openIncidents = client.activities.filter(
+    (a) => a.type === "INCIDENT" && a.status === "OPEN"
+  ).length;
 
   // Resumen financiero del expediente: todo el estado económico del cliente
   // de un vistazo, sin salir de esta página.
@@ -82,6 +94,15 @@ export default async function ClientDetailPage({
           </>
         }
       />
+
+      {openIncidents > 0 && (
+        <p className="mb-4 rounded-lg border border-red-500/25 bg-red-500/10 px-3.5 py-2.5 text-sm text-red-300">
+          {openIncidents === 1
+            ? "Hay 1 incidencia abierta con este cliente."
+            : `Hay ${openIncidents} incidencias abiertas con este cliente.`}{" "}
+          Revísalas en el seguimiento.
+        </p>
+      )}
 
       <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Total cobrado" value={formatCents(paidCents)} />
@@ -256,6 +277,14 @@ export default async function ClientDetailPage({
           )}
         </Card>
       </div>
+
+      <ActivityTimeline
+        activities={client.activities}
+        clientId={client.id}
+        projects={client.projects.map((p) => ({ id: p.id, name: p.name }))}
+        returnTo={`/dashboard/clients/${client.id}`}
+        error={error}
+      />
 
       <Card className="mt-6 overflow-x-auto p-0">
         <h2 className="px-5 pt-5 text-sm font-semibold text-slate-200">

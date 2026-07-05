@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
 import {
+  ACTIVITY_STATUS_LABELS,
   LEAD_STAGE_LABELS,
   PAYMENT_STATUS_LABELS,
   PROJECT_STATUS_LABELS,
@@ -96,6 +97,9 @@ const BADGE_STYLES: Record<string, string> = {
   PAST_DUE: "bg-amber-500/15 text-amber-300",
   CANCELED: "bg-red-500/15 text-red-300",
   INCOMPLETE: "bg-slate-700/40 text-slate-300",
+  // activity (incidencias)
+  OPEN: "bg-red-500/15 text-red-300",
+  RESOLVED: "bg-emerald-500/15 text-emerald-300",
 };
 
 const STATUS_LABELS: Record<string, string> = {
@@ -104,6 +108,7 @@ const STATUS_LABELS: Record<string, string> = {
   ...LEAD_STAGE_LABELS,
   ...PAYMENT_STATUS_LABELS,
   ...SUBSCRIPTION_STATUS_LABELS,
+  ...ACTIVITY_STATUS_LABELS,
 };
 
 export function Badge({ status }: { status: string }) {

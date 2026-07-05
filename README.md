@@ -40,6 +40,7 @@ Desde **Ajustes** en el panel puedes ver si las claves están configuradas y los
 
 - **Clientes**: expediente completo — resumen financiero (cobrado, pendiente, recurrente mensual, procesos activos), contacto con enlaces directos, origen (lead convertido o alta directa), procesos, tareas, suscripciones e historial económico unificado (pagos Stripe/manuales, facturas y links de pago con fechas). **Importación masiva por CSV** (cabeceras en español o inglés, separador autodetectado, dedup por email — reimportar no duplica).
 - **Procesos**: proyectos/servicios por cliente con estado, presupuesto y fechas.
+- **Seguimiento post-venta**: registro de actividad en el expediente del cliente y en cada proceso — notas, llamadas, reuniones, incidencias (con estado abierta/resuelta y aviso en el expediente) y entregables con enlace, todo fechado.
 - **Pipeline**: leads por etapa (nuevo → contactado → propuesta → negociación → ganado/perdido), con ficha de detalle/edición y conversión directa a cliente.
 - **Importación desde LeadFinder**: botón "Importar de LeadFinder" en el pipeline. Configura `LEADFINDER_DB_PATH` en `.env` con la ruta al `leadfinder.db` del motor de prospección; la importación es de solo lectura, filtra por nivel de interés, excluye descartados/cerrados y nunca duplica (clave estable por negocio).
 - **Tareas**: tareas internas asociables a cliente y/o proceso.
