@@ -1,11 +1,24 @@
 import Link from "next/link";
 import { getDashboardOverview } from "@/lib/metrics";
+import { getAttentionItems, type AttentionSeverity } from "@/lib/attention";
 import { formatCents, formatDate } from "@/lib/money";
 import { Badge, Card, PageHeader, StatCard } from "@/components/ui";
 import { RevenueChart } from "@/components/revenue-chart";
 
+const SEVERITY_DOT: Record<AttentionSeverity, string> = {
+  1: "bg-red-400",
+  2: "bg-amber-400",
+  3: "bg-sky-400",
+};
+
+const MAX_ATTENTION_ITEMS = 15;
+
 export default async function DashboardOverviewPage() {
-  const data = await getDashboardOverview();
+  const [data, attention] = await Promise.all([
+    getDashboardOverview(),
+    getAttentionItems(),
+  ]);
+  const visibleAttention = attention.slice(0, MAX_ATTENTION_ITEMS);
 
   return (
     <div>
@@ -13,6 +26,56 @@ export default async function DashboardOverviewPage() {
         title="Resumen"
         description="Vista general de procesos, pipeline y pagos de INTEREMPREX."
       />
+
+      <Card className="mb-6">
+        <h2 className="mb-3 text-sm font-semibold text-slate-200">
+          Requiere tu atención
+          {attention.length > 0 && (
+            <span className="ml-2 rounded-full bg-slate-800 px-2 py-0.5 text-xs font-medium text-slate-300">
+              {attention.length}
+            </span>
+          )}
+        </h2>
+        {attention.length === 0 ? (
+          <p className="text-sm text-slate-500">
+            Nada requiere atención hoy. Todo en orden.
+          </p>
+        ) : (
+          <>
+            <ol className="space-y-2">
+              {visibleAttention.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={item.href}
+                    className="flex items-start gap-3 rounded-lg border border-slate-800 px-3 py-2 text-sm hover:border-sky-700"
+                  >
+                    <span
+                      className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${SEVERITY_DOT[item.severity]}`}
+                    />
+                    <span className="flex-1">
+                      <span className="font-medium text-slate-200">
+                        {item.title}
+                      </span>
+                      <span className="ml-2 text-xs text-slate-500">
+                        {item.detail}
+                      </span>
+                    </span>
+                    <span className="shrink-0 rounded-full bg-slate-800 px-2 py-0.5 text-xs text-slate-400">
+                      {item.category}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+            {attention.length > MAX_ATTENTION_ITEMS && (
+              <p className="mt-3 text-xs text-slate-500">
+                Y {attention.length - MAX_ATTENTION_ITEMS} elementos más de
+                seguimiento.
+              </p>
+            )}
+          </>
+        )}
+      </Card>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
