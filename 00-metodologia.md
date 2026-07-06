@@ -108,6 +108,12 @@ Indicador permanente, complementario al FDI, activo desde la Fase 4. Mientras el
 
 Documento permanente: `priorizacion.md`. A partir de la Fase 4, toda incidencia, deuda técnica, mejora o riesgo detectado se clasifica en cinco dimensiones (impacto, esfuerzo, urgencia, dependencia, riesgo de no actuar), cada una Alta/Media/Baja salvo que exista un dato real que permita mayor precisión. El objetivo es que ninguna decisión de qué atender primero se tome solo por intuición — incluida la del propio proceso de trabajo de esta metodología.
 
+## Modo Optimización Total (estándar permanente desde el 2026-07-03)
+
+Sustituye el modelo de "una fase, un cierre, una aprobación" por auditoría adversarial continua: el objetivo de cada revisión es intentar demostrar que algo está mal, no confirmar que está bien. Ninguna conclusión se protege solo por haber sido aprobada — si aparece evidencia objetiva en contra, se documenta, se explica el impacto, se proponen alternativas y se estima el coste de cambiar, y se decide explícitamente si compensa. Cada revisión aplica siete criterios (coherencia, escalabilidad a 100/1.000/10.000 clientes, automatización, riesgo, simplicidad, coste, valor empresarial) y pensamiento de segundo orden (consecuencias a medio/largo plazo, efectos secundarios, nuevas dependencias).
+
+**Contrapeso obligatorio, no opcional**: el criterio de valor empresarial ("¿esto aumenta el valor real de INTEREMPREX o solo hace la documentación más grande?") se aplica también al propio proceso de auditoría. Si una ronda de revisión no encuentra más que reafirmaciones o marcos nuevos sin evidencia que los sustente, no se crea aparato nuevo por crearlo — se dice explícitamente que la ronda no encontró nada que justifique más estructura.
+
 ## Nivel de exigencia
 
 Diseñar como si la empresa tuviera que seguir funcionando dentro de diez años sin rehacer su estructura. Buscar siempre la mejor solución disponible, no la primera que sea válida.

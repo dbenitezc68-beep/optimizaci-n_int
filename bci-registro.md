@@ -29,6 +29,12 @@ Registro vivo del Business Criticality Index. Escala y reglas definidas en [`00-
 | Cierre de ventas | 4 | Sin él no entra ingreso nuevo, pero los clientes actuales de Motor B siguen operando — grave, no crítico en el sentido de detener el negocio existente. |
 | Ejecución de un "proyecto tipo" de implementación | 3 | Su ausencia ralentiza la entrega, no la detiene — depende de la capacidad 1, ya evaluada arriba. |
 
+## Fallo de diseño detectado (auditoría adversarial, Modo Optimización Total)
+
+La escala 1-5 no define **cuánto dura** "temporal". Una pérdida de `interemprex-dashboard` de 1 hora y una de 1 mes no son el mismo evento, y hoy ambas puntúan igual (5) porque la escala no tiene dimensión de tiempo. Esto no se corrige rehaciendo la tabla (no hay evidencia de que el número cambie para ninguna fila) — se corrige con una regla de uso adicional:
+
+**Regla añadida**: el valor de BCI registrado asume una pérdida de referencia de **hasta una semana**. Pérdidas más cortas pueden justificar un valor menor en la práctica; pérdidas más largas que una semana se tratan como un incidente de continuidad de negocio (ver R13 en `03-modelo-negocio.md`), no como un evento BCI ordinario — la escala 1-5 no está diseñada para eventos de esa duración. Ningún valor de la tabla se cambia con esta corrección; se acota qué significa realmente el número ya asignado.
+
 ---
 
 **Qué modifica**: no fija decisiones — registra el impacto de la pérdida temporal de cada capacidad, sistema y proceso documentado.

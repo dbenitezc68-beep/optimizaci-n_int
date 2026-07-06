@@ -1,6 +1,6 @@
 # 06 — Legal y Cumplimiento
 
-Estado: **propuesto, pendiente de aprobación.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`. No modifica ninguna fase ya cerrada (01-05, metodología, FDI, BCI, priorización) — las usa como base y añade sobre ellas.
+Estado: **v2, propuesto, pendiente de aprobación.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`. No modifica ninguna fase ya cerrada (01-05, metodología, FDI, BCI, priorización) — las usa como base y añade sobre ellas. La v2 incorpora la auditoría adversarial de Modo Optimización Total: 2 riesgos nuevos (L10, L11) y una corrección de terminología señalada, sin cambiar ninguna decisión sustantiva de la v1.
 
 ## Aviso de alcance (léase antes que el resto del documento)
 
@@ -131,6 +131,8 @@ INTEREMPREX trata datos personales en tres sistemas (`leadfinder`, `interemprex-
 | L7 | Incumplimiento de bloqueo real de cookies (LSSI-CE) | Medio | No verificado | Media |
 | L8 | Falta de aviso legal completo en la web | Bajo-medio | No verificado | Media |
 | L9 | Incertidumbre fiscal sobre facturación electrónica (Verifactu/Crea y Crece) | Medio (regulatorio, no de protección de datos) | Requiere asesoría fiscal, no legal de datos | Media |
+| L10 | Sin disparador definido para saber cuándo `leadfinder` cruza el umbral de "tratamiento a gran escala" y exige una EIPD (Art. 35 RGPD) | Alto (futuro, si escala) | Baja hoy — depende del volumen | Media (crece con el crecimiento de la empresa) |
+| L11 | Activar Motor D sin re-verificar la base legal de los datos de origen (conclusión de la sección 3 depende de que D siga latente) | Alto (si ocurre) | Nula hoy — D sigue latente | Media (gate ausente, no un problema activo) |
 
 **Integración explícita** (no se crea ninguna metodología nueva):
 - **FDI** (`fdi-registro.md`): se añade una fila — "Documentar y mantener el cumplimiento legal (LIA, avisos, DPAs)" queda como "Exclusivo del fundador" hasta que exista un proceso escrito; este mismo documento ya es un paso hacia "Totalmente documentado".
@@ -184,6 +186,16 @@ Ver tabla L1-L9 en la sección 10 — es la sección de riesgos de esta fase, no
 - **Deuda operativa**: alta en esta fase — 9 de 15 filas de la matriz están en ❌ o ⚠️. Es el resultado esperado de una primera auditoría real, no un error de construcción.
 - **FDI**: el propio proceso de mantener el cumplimiento legal se registra como "Exclusivo del fundador" hasta que exista un procedimiento escrito de revisión periódica — se declara honestamente en vez de omitirse.
 - **Coherencia con la constitución**: verificada — el principio de "no inventar datos" se aplicó también al terreno legal (marcar ⚠️/❌ en vez de asumir cumplimiento), y el principio de compliance "no es opcional ni para más adelante" (`02-principios-fundacionales.md`, punto 4) es la razón de ser de esta fase completa.
+
+## Auditoría adversarial (Modo Optimización Total, 2026-07-03)
+
+Aplicando el mandato de intentar refutar esta fase en vez de confirmarla, se encontraron tres fallos reales que sobrevivieron a la redacción original — ninguno invalida el documento, pero lo dejarían incompleto ante una revisión externa real:
+
+1. **Falta la Evaluación de Impacto en Protección de Datos (EIPD/DPIA, RGPD Art. 35)** — prueba de escalabilidad a 10.000 clientes. La recomendación de "documentar un LIA" (sección 2) es proporcional al volumen de hoy (unas decenas de leads por ejecución), pero el RGPD exige una EIPD cuando el tratamiento es "a gran escala" y sistemático. Si `leadfinder` escala con la empresa, cruzar ese umbral es cuestión de volumen, no de intención, y hoy no hay ningún disparador definido para saber cuándo ocurre. **Se añade como L10** en la sección 10, con la misma metodología que L1-L9.
+2. **Motor D no tiene una puerta de re-verificación legal.** La conclusión de la sección 3 (el uso de datos de OSM es "obra producida", no "base de datos derivada") depende de que INTEREMPREX no redistribuya la base de leads como producto. `04-arquitectura-oferta.md` (decisión 3, ya cerrada) define cuándo se activa Motor D — uso interno demostrado + capacidad operativa — pero esa condición **no incluye** revisar si la conclusión legal de esta sección sigue siendo válida en el nuevo escenario. Es una dependencia oculta entre dos documentos cerrados que nunca se habían cruzado. No se modifica `04-arquitectura-oferta.md` (evidencia insuficiente para cambiar una decisión ya aprobada, solo para señalar un hueco) — se añade **L11**: "activar Motor D sin re-verificar la base legal de los datos de origen".
+3. **Riesgo de terminología en `03-modelo-negocio.md`**: la fila de R9 dice "Resuelto: se crea una fase propia". Un lector futuro (incluido el propio fundador dentro de meses) podría leer "Resuelto" como "ya está arreglado", cuando esta fase demuestra lo contrario — R9 pasó de 1 riesgo a 11 (L1-L11), la mayoría sin corregir. No se reescribe `03-modelo-negocio.md` (es una fase cerrada y el cambio es cosmético, no sustantivo) — se deja constancia aquí de que "resuelto" se refería a la asignación de una fase, no al estado del riesgo.
+
+**Contrapeso obligatorio aplicado**: esta auditoría no generó ningún documento ni marco nuevo — las tres correcciones caben como filas nuevas en registros ya existentes (`priorizacion.md`, esta misma sección). Crear un archivo aparte para tres hallazgos habría sido exactamente el tipo de "documentación por documentación" que el propio Modo Optimización Total prohíbe.
 
 ## Preguntas que necesitan aprobación
 

@@ -36,6 +36,8 @@ Registro vivo. Escala y reglas definidas en [`00-metodologia.md`](./00-metodolog
 | L7 — Bloqueo real de cookies no verificado | Media | Baja-media | Baja | Baja | Media | `06-legal-cumplimiento.md` |
 | L8 — Aviso legal de la web no verificado/incompleto | Baja-media | Baja | Baja | Baja | Media | `06-legal-cumplimiento.md` |
 | L9 — Incertidumbre fiscal (facturación electrónica, Verifactu/Crea y Crece) | Media (regulatorio, no de datos) | N/A — requiere asesoría externa | Baja | Baja | Media | `06-legal-cumplimiento.md` |
+| L10 — Sin disparador definido para cuándo `leadfinder` exige una EIPD/DPIA (Art. 35 RGPD) | Alto si se cruza el umbral | Baja (solo definir el disparador, no ejecutar la EIPD todavía) | Baja hoy | Media | Media (crece con el crecimiento de la empresa) | `06-legal-cumplimiento.md` (hallazgo de auditoría adversarial) |
+| L11 — Motor D sin puerta de re-verificación legal antes de activarse | Alto si ocurre | Baja (solo añadir la condición a la puerta de activación) | Nula — D sigue latente | Media (cruza `04-arquitectura-oferta.md` y `06-legal-cumplimiento.md`) | Baja hoy | `06-legal-cumplimiento.md` (hallazgo de auditoría adversarial) |
 
 ## Prioridad baja
 
