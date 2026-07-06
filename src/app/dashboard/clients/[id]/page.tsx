@@ -3,9 +3,11 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { formatCents, formatDate } from "@/lib/money";
 import { monthlyFactor } from "@/lib/metrics";
+import { getAttentionItems } from "@/lib/attention";
 import { Badge, Card, PageHeader, StatCard } from "@/components/ui";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
 import { ActivityTimeline } from "@/components/activity-timeline";
+import { AttentionList } from "@/components/attention-list";
 import { deleteClientAction } from "../actions";
 
 export default async function ClientDetailPage({
@@ -18,7 +20,7 @@ export default async function ClientDetailPage({
   const { id } = await params;
   const { error } = await searchParams;
 
-  const [client, originLead] = await Promise.all([
+  const [client, originLead, recommendations] = await Promise.all([
     prisma.client.findUnique({
       where: { id },
       include: {
@@ -35,13 +37,10 @@ export default async function ClientDetailPage({
       },
     }),
     prisma.lead.findFirst({ where: { convertedClientId: id } }),
+    getAttentionItems({ clientId: id }),
   ]);
 
   if (!client) notFound();
-
-  const openIncidents = client.activities.filter(
-    (a) => a.type === "INCIDENT" && a.status === "OPEN"
-  ).length;
 
   // Resumen financiero del expediente: todo el estado económico del cliente
   // de un vistazo, sin salir de esta página.
@@ -95,13 +94,16 @@ export default async function ClientDetailPage({
         }
       />
 
-      {openIncidents > 0 && (
-        <p className="mb-4 rounded-lg border border-red-500/25 bg-red-500/10 px-3.5 py-2.5 text-sm text-red-300">
-          {openIncidents === 1
-            ? "Hay 1 incidencia abierta con este cliente."
-            : `Hay ${openIncidents} incidencias abiertas con este cliente.`}{" "}
-          Revísalas en el seguimiento.
-        </p>
+      {recommendations.length > 0 && (
+        <Card className="mb-6">
+          <h2 className="mb-3 text-sm font-semibold text-slate-200">
+            Recomendaciones para este cliente
+            <span className="ml-2 rounded-full bg-slate-800 px-2 py-0.5 text-xs font-medium text-slate-300">
+              {recommendations.length}
+            </span>
+          </h2>
+          <AttentionList items={recommendations} />
+        </Card>
       )}
 
       <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

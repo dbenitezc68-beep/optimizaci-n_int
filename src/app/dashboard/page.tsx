@@ -1,15 +1,10 @@
 import Link from "next/link";
 import { getDashboardOverview } from "@/lib/metrics";
-import { getAttentionItems, type AttentionSeverity } from "@/lib/attention";
+import { getAttentionItems } from "@/lib/attention";
 import { formatCents, formatDate } from "@/lib/money";
 import { Badge, Card, PageHeader, StatCard } from "@/components/ui";
 import { RevenueChart } from "@/components/revenue-chart";
-
-const SEVERITY_DOT: Record<AttentionSeverity, string> = {
-  1: "bg-red-400",
-  2: "bg-amber-400",
-  3: "bg-sky-400",
-};
+import { AttentionList } from "@/components/attention-list";
 
 const MAX_ATTENTION_ITEMS = 15;
 
@@ -18,7 +13,6 @@ export default async function DashboardOverviewPage() {
     getDashboardOverview(),
     getAttentionItems(),
   ]);
-  const visibleAttention = attention.slice(0, MAX_ATTENTION_ITEMS);
 
   return (
     <div>
@@ -41,39 +35,7 @@ export default async function DashboardOverviewPage() {
             Nada requiere atención hoy. Todo en orden.
           </p>
         ) : (
-          <>
-            <ol className="space-y-2">
-              {visibleAttention.map((item) => (
-                <li key={item.id}>
-                  <Link
-                    href={item.href}
-                    className="flex items-start gap-3 rounded-lg border border-slate-800 px-3 py-2 text-sm hover:border-sky-700"
-                  >
-                    <span
-                      className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${SEVERITY_DOT[item.severity]}`}
-                    />
-                    <span className="flex-1">
-                      <span className="font-medium text-slate-200">
-                        {item.title}
-                      </span>
-                      <span className="ml-2 text-xs text-slate-500">
-                        {item.detail}
-                      </span>
-                    </span>
-                    <span className="shrink-0 rounded-full bg-slate-800 px-2 py-0.5 text-xs text-slate-400">
-                      {item.category}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ol>
-            {attention.length > MAX_ATTENTION_ITEMS && (
-              <p className="mt-3 text-xs text-slate-500">
-                Y {attention.length - MAX_ATTENTION_ITEMS} elementos más de
-                seguimiento.
-              </p>
-            )}
-          </>
+          <AttentionList items={attention} max={MAX_ATTENTION_ITEMS} />
         )}
       </Card>
 
