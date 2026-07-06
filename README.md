@@ -64,6 +64,16 @@ npm run db:backup    # backup verificado de la base de datos en backups/
 npm run db:studio    # Prisma Studio (explorar la base de datos)
 ```
 
+## Operación diaria (Windows)
+
+Ejecuta una vez:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/setup-windows.ps1
+```
+
+Esto compila el build de producción y crea dos accesos directos: **INTEREMPREX** en el Escritorio (arranca el servidor si hace falta y abre el panel) y un arranque automático en la carpeta Inicio (el servidor queda disponible en `http://localhost:3000` al iniciar sesión en Windows, y se hace un backup automático si el último tiene más de 20 horas). Para desinstalar, borra ambos accesos directos. Tras actualizar el código, vuelve a ejecutar el script para recompilar.
+
 ## Backups
 
 `npm run db:backup` crea una copia consistente de la base de datos (API de backup online de SQLite, segura aunque la app esté en marcha), verifica su integridad (`PRAGMA integrity_check`) y conserva las últimas 14 copias en `backups/` (fuera de git). La carpeta vive en el mismo disco que la base: copia periódicamente su contenido a otro medio (nube o disco externo) para tener un backup real ante fallo de disco.
