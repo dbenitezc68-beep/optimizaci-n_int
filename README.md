@@ -39,7 +39,7 @@ Cada fase termina con aprobación explícita antes de empezar la siguiente. No s
 - [x] **Fase 2 — Modelo de negocio** → [`03-modelo-negocio.md`](./03-modelo-negocio.md) — aprobado (v7)
 - [x] **Fase 3 — Arquitectura de la oferta** → [`04-arquitectura-oferta.md`](./04-arquitectura-oferta.md) — aprobado (v2)
 - [x] **Fase 4 — Catálogo de servicios (arquitectura comercial)** → [`05-catalogo-servicios.md`](./05-catalogo-servicios.md) — aprobado (v2), estándar permanente; cada servicio responde 10 preguntas obligatorias; hallazgo confirmado: "Gestión del crecimiento" de Motor B solo tiene capacidad parcial; pendiente abierta en `priorizacion.md`: cuándo construir esa capacidad
-- [ ] **Fase 5 — Legal y Cumplimiento** (nueva, insertada aquí a petición explícita del 2026-07-02) — RGPD, LOPDGDD, encargos de tratamiento, contratos, condiciones generales, privacidad, cookies, uso de IA, licencias, propiedad intelectual, scraping y fuentes de datos, riesgos regulatorios. Ver razonamiento de ubicación más abajo.
+- [ ] **Fase 5 — Legal y Cumplimiento** → [`06-legal-cumplimiento.md`](./06-legal-cumplimiento.md) — pendiente de aprobación definitiva; marco normativo (RGPD, LOPDGDD, LSSI-CE, ODbL), matriz de cumplimiento, 9 riesgos legales (L1-L9). **No sustituye revisión legal profesional.** Ver razonamiento de ubicación más abajo.
 - [ ] Fase 6 — Customer Journey
 - [ ] Fase 7 — Sistema comercial
 - [ ] Fase 8 — Operaciones — **debe existir `arquitectura-empresarial.md` antes de darse por cerrada** (ver más abajo)

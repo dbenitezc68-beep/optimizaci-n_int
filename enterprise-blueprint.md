@@ -49,7 +49,7 @@ KPIs
 | 3 | Modelo de negocio | `03-modelo-negocio.md` (v7) | Visión, Constitución | Cerrado |
 | 4 | Arquitectura de la oferta | `04-arquitectura-oferta.md` (v2) | Modelo de negocio | Cerrado |
 | 5 | Catálogo | [`05-catalogo-servicios.md`](./05-catalogo-servicios.md) (v2) — arquitectura comercial completa, apoyada en `capacidades-core.md` y `flywheel-comercial.md` | Arquitectura de la oferta, Capacidades Core | Cerrado — estándar permanente |
-| 6 | Legal | *(futuro, `06-legal-cumplimiento.md`)* — hechos preliminares ya en `auditoria-preventiva-leadfinder.md` | Catálogo (licencias/IP), Modelo de negocio (qué datos maneja cada motor) | Pendiente — auditoría de hechos de LeadFinder ya iniciada |
+| 6 | Legal | [`06-legal-cumplimiento.md`](./06-legal-cumplimiento.md) — marco normativo, matriz de cumplimiento, riesgos L1-L9 | Catálogo (licencias/IP), Modelo de negocio (qué datos maneja cada motor) | Pendiente de aprobación definitiva |
 | 7 | Customer Journey | *(futuro)* | Arquitectura de la oferta (empaquetado), Legal (consentimientos/contratos en el journey) | Pendiente |
 | 8 | Sistema comercial | *(futuro)* | Customer Journey, Arquitectura de la oferta (cláusula de empaquetado), Legal (contratos) | Pendiente |
 | 9 | Operaciones | *(futuro)* — requiere `arquitectura-empresarial.md` antes de cerrarse | Sistema comercial (qué se vendió, hay que ejecutarlo), Modelo de negocio (motores) | Pendiente |

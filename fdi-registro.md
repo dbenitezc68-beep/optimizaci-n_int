@@ -15,8 +15,9 @@ Registro vivo del Founder Dependency Index. Escala y reglas definidas en [`00-me
 | Saber qué servicio se vende, a qué nivel y por qué precio | Totalmente documentado | 1 | Fase 4 — Catálogo de servicios | Antes de `05-catalogo-servicios.md` esto vivía solo en la cabeza del fundador (qué se puede vender hoy y qué no); ahora está escrito y es la fuente única de verdad |
 | Decidir qué incidencia/mejora/riesgo se atiende primero | Totalmente documentado | 1 | Fase 4 — mejoras estructurales | Antes de `priorizacion.md` esta decisión era intuitiva y solo del fundador; ahora sigue un criterio de 5 dimensiones escrito y consultable |
 | Calcular el precio de un servicio nuevo o una cotización caso a caso | Totalmente documentado | 1 | Fase 4 — mejoras estructurales | Antes de `modelo-precios.md` esto era criterio personal del fundador; ahora es un procedimiento de 8 pasos, aunque las cifras finales sigan pendientes de datos reales (Fase 14) |
+| Mantener y revisar el cumplimiento legal (LIA, avisos, DPAs) | Exclusivo del fundador | 3 | Fase 5 — Legal y Cumplimiento | `06-legal-cumplimiento.md` documenta qué hay que hacer, pero no existe todavía un proceso periódico de revisión — es la excepción a la mejora general de esta fase, declarada honestamente en vez de omitida |
 
-**FDI medio actual (9 procesos registrados): 1,33 / 3.** Cifra orientativa — la muestra es pequeña y crecerá con cada fase que documente procesos nuevos. No se compara todavía con ningún objetivo numérico porque fijar uno ahora sería inventar una meta sin base histórica.
+**FDI medio actual (10 procesos registrados): 1,5 / 3.** Cifra orientativa — sube respecto a la ronda anterior porque el nuevo proceso de cumplimiento legal entra con dependencia alta del fundador; es un resultado esperado de auditar un área nueva, no un retroceso de las mejoras ya conseguidas en las demás.
 
 ## Cómo se actualiza este registro
 
