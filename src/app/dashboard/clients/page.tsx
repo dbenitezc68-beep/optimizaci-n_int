@@ -5,10 +5,25 @@ import { PageHeader, Card } from "@/components/ui";
 export default async function ClientsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ imported?: string; skipped?: string; invalid?: string }>;
+  searchParams: Promise<{
+    imported?: string;
+    skipped?: string;
+    invalid?: string;
+    q?: string;
+  }>;
 }) {
-  const { imported, skipped, invalid } = await searchParams;
+  const { imported, skipped, invalid, q } = await searchParams;
+  const query = q?.trim() || undefined;
   const clients = await prisma.client.findMany({
+    where: query
+      ? {
+          OR: [
+            { name: { contains: query } },
+            { company: { contains: query } },
+            { email: { contains: query } },
+          ],
+        }
+      : undefined,
     orderBy: { createdAt: "desc" },
     include: {
       _count: { select: { projects: true, tasks: true, payments: true } },
@@ -19,7 +34,11 @@ export default async function ClientsPage({
     <div>
       <PageHeader
         title="Clientes"
-        description={`${clients.length} clientes registrados`}
+        description={
+          query
+            ? `${clients.length} resultados para "${query}"`
+            : `${clients.length} clientes registrados`
+        }
         actions={
           <>
             <Link
@@ -51,11 +70,28 @@ export default async function ClientsPage({
         </p>
       )}
 
+      <form method="get" action="/dashboard/clients" className="mb-4 flex max-w-md gap-2">
+        <input
+          type="search"
+          name="q"
+          defaultValue={query ?? ""}
+          placeholder="Buscar por nombre, empresa o email…"
+          className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3.5 py-2 text-sm text-slate-100 placeholder:text-slate-500 outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+        />
+        <button
+          type="submit"
+          className="rounded-lg border border-slate-700 px-3.5 py-2 text-sm font-semibold text-slate-300 hover:border-sky-500 hover:text-sky-300"
+        >
+          Buscar
+        </button>
+      </form>
+
       {clients.length === 0 ? (
         <Card>
           <p className="text-sm text-slate-400">
-            Todavía no hay clientes. Crea el primero para empezar a asociarle
-            procesos, tareas y pagos.
+            {query
+              ? `Sin resultados para "${query}".`
+              : "Todavía no hay clientes. Crea el primero para empezar a asociarle procesos, tareas y pagos."}
           </p>
         </Card>
       ) : (

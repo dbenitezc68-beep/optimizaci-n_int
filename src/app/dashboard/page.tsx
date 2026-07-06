@@ -68,7 +68,7 @@ export default async function DashboardOverviewPage() {
             Ingresos últimos 6 meses
           </h2>
           <p className="mb-2 text-xs text-slate-500">
-            Pagos cobrados (Stripe) por mes
+            Pagos cobrados por mes (Stripe y manuales)
           </p>
           <RevenueChart data={data.monthlyRevenue} />
         </Card>
