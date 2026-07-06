@@ -4,6 +4,8 @@ Repositorio de documentación estratégica de INTEREMPREX. Aquí vive el plan de
 
 Empieza por [`00-metodologia.md`](./00-metodologia.md) — rige cómo se construye cada documento de este repositorio, es de lectura obligatoria antes de cualquier fase. Después, [`enterprise-blueprint.md`](./enterprise-blueprint.md) — el plano maestro que conecta cada bloque estratégico con el documento que lo desarrolla.
 
+**[`production-readiness-review.md`](./production-readiness-review.md)** — evaluación puntual (no un documento vivo): ¿puede INTEREMPREX vender mañana sin poner en riesgo la empresa? Veredicto: GO CON RESTRICCIONES, con el camino crítico mínimo al primer cliente real. Léase antes de decidir si la prioridad es seguir diseñando o empezar a vender.
+
 **Documentos vivos** (no son fases, se actualizan de forma continua):
 - [`fdi-registro.md`](./fdi-registro.md) — Founder Dependency Index: cuánto depende cada proceso del fundador. Definición en `00-metodologia.md`.
 - [`kpis.md`](./kpis.md) — registro oficial de indicadores de toda la empresa; cada fase añade solo los suyos. Resuelve el bloque KPIs de `enterprise-blueprint.md` sin necesidad de una fase 16.
