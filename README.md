@@ -61,8 +61,13 @@ npm run start        # servidor de producción
 npm run lint         # ESLint
 npm run db:seed      # crear/asegurar el usuario admin
 npm run db:backup    # backup verificado de la base de datos en backups/
+npm run smoke        # smoke test E2E del ciclo de vida completo (ver abajo)
 npm run db:studio    # Prisma Studio (explorar la base de datos)
 ```
+
+## Smoke test
+
+Con el servidor levantado (`npm run dev` o `npm run start`), `npm run smoke` recorre por HTTP el ciclo de vida completo — alta de lead, cualificación, conversión a cliente, búsqueda, proceso, tarea, seguimiento, cobros manuales, renovación y panel de dirección (incluidas las comprobaciones de que el motor de atención no genera ruido). Usa la mejora progresiva de Next, así que valida además que todo funciona sin JavaScript. Es seguro con datos reales: todo lo que crea lleva prefijo `SMOKE` y se elimina al terminar. Ejecútalo tras cualquier cambio antes de dar el sistema por estable.
 
 ## Operación diaria (Windows)
 
