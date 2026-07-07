@@ -114,6 +114,18 @@ Sustituye el modelo de "una fase, un cierre, una aprobación" por auditoría adv
 
 **Contrapeso obligatorio, no opcional**: el criterio de valor empresarial ("¿esto aumenta el valor real de INTEREMPREX o solo hace la documentación más grande?") se aplica también al propio proceso de auditoría. Si una ronda de revisión no encuentra más que reafirmaciones o marcos nuevos sin evidencia que los sustente, no se crea aparato nuevo por crearlo — se dice explícitamente que la ronda no encontró nada que justifique más estructura.
 
+## Jerarquía de decisiones (permanente desde el 2026-07-03)
+
+Ante cualquier decisión, en este orden, sin invertirlo: (1) protección de la empresa, (2) protección del cliente, (3) cumplimiento legal, (4) integridad de los datos, (5) continuidad operativa, (6) rentabilidad, (7) escalabilidad, (8) automatización, (9) crecimiento, (10) documentación. **La documentación es la última prioridad, no la primera** — existe para sostener las nueve anteriores, no como fin en sí misma. Si una ronda de trabajo produce solo documentación sin tocar ninguna de las nueve prioridades por encima, esa ronda se cuestiona antes de continuar, no se da por buena por ser exhaustiva.
+
+## Principio de retorno
+
+Antes de proponer cualquier mejora: ¿produce más valor del que cuesta implementarla? Si no, no se propone. Se aplica también al propio proceso de trabajo — incluida la tentación de crear un documento nuevo para formalizar cómo se trabaja, en vez de simplemente trabajar.
+
+## Validación por evento real
+
+El primer lead, la primera reunión, la primera propuesta, la primera objeción, la primera venta, el primer pago, la primera incidencia, el primer retraso, la primera renovación, el primer upsell, la primera cancelación y el primer cliente perdido son eventos que deben capturarse como aprendizaje en cuanto ocurran (qué hipótesis confirman o invalidan, qué documento actualizan, qué KPI nace, qué riesgo aparece o desaparece) — no se documentan por adelantado porque ninguno ha ocurrido todavía.
+
 ## Nivel de exigencia
 
 Diseñar como si la empresa tuviera que seguir funcionando dentro de diez años sin rehacer su estructura. Buscar siempre la mejor solución disponible, no la primera que sea válida.
