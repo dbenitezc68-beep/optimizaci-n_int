@@ -6,7 +6,7 @@ Registro vivo. Escala y reglas definidas en [`00-metodologia.md`](./00-metodolog
 
 | Elemento | Impacto | Esfuerzo | Urgencia | Dependencia | Riesgo de no actuar | Origen |
 |---|---|---|---|---|---|---|
-| R13 — `interemprex-dashboard` sin repositorio remoto | Alta | Baja | Alta (puede activarse sin aviso) | Alta (bloquea continuidad de Motor B entero) | Alta | `03-modelo-negocio.md` |
+| ~~R13 — `interemprex-dashboard` sin repositorio remoto~~ | Alta | Baja | Alta | Alta | Alta | **Resuelto 2026-07-07** — repositorio privado creado, remoto configurado, push confirmado (`production-readiness-review.md`). Se mantiene la fila tachada en vez de eliminarla, para no perder el registro de que existió. |
 | R9 — Exposición legal activa (scraping de `leadfinder`, datos de cliente en el CRM) | Alta | Media | Alta (exposición ya activa hoy) | Alta (bloquea escalar prospección con confianza) | Alta | `03-modelo-negocio.md`, `auditoria-preventiva-leadfinder.md` — **desarrollado en detalle en `06-legal-cumplimiento.md` como L1-L9** |
 | L1 — Sin LIA (test de interés legítimo) documentado para `leadfinder` | Alta | Media | Alta | Alta (bloquea que R9 se pueda dar por resuelto) | Alta | `06-legal-cumplimiento.md` |
 | L2 — Sin aviso de privacidad para la actividad de prospección | Alta | Baja-media | Alta | Alta | Alta | `06-legal-cumplimiento.md` |
@@ -16,7 +16,7 @@ Registro vivo. Escala y reglas definidas en [`00-metodologia.md`](./00-metodolog
 | Elemento | Impacto | Esfuerzo | Urgencia | Dependencia | Riesgo de no actuar | Origen |
 |---|---|---|---|---|---|---|
 | R2 — Dependencia total del fundador en el cierre de ventas | Alta | Alta | Media | Alta (Fase 7 depende de esto) | Alta | `03-modelo-negocio.md` |
-| R6 — Backups del CRM no verificados | Alta | Baja | Media | Baja | Alta | `03-modelo-negocio.md` |
+| R6 — Backups del CRM no verificados | Alta | Baja | Media | Baja | Alta | **Parcialmente mitigado 2026-07-07** — copia local creada fuera del repo git; falta copiarla fuera de esta máquina para cerrarlo del todo (`production-readiness-review.md`) |
 | Silo LeadFinder ↔ CRM (flywheel) | Alta | Media | Media | Alta (bloquea que el flywheel funcione de verdad) | Alta | `flywheel-comercial.md` |
 | "Aprendizaje interno" sin ningún proceso (flywheel) | Alta (a largo plazo) | Media | Baja hoy | Alta (todo el ciclo de mejora de capacidades depende de esto) | Media-alta | `flywheel-comercial.md` |
 | Precio de Diagnóstico y de Mantenimiento SEO técnico sin fijar | Media | Baja | Media (bloquea vender con criterio) | Media | Media | `05-catalogo-servicios.md` |
@@ -28,7 +28,7 @@ Registro vivo. Escala y reglas definidas en [`00-metodologia.md`](./00-metodolog
 | Elemento | Impacto | Esfuerzo | Urgencia | Dependencia | Riesgo de no actuar | Origen |
 |---|---|---|---|---|---|---|
 | R5 — SQLite single-tenant en `interemprex-dashboard` | Alta (futura) | Media | Baja (disparadores no activos hoy) | Media | Media | `03-modelo-negocio.md` |
-| Credencial por defecto en `leadfinder` (`admin`/`changeme`) | Media | Muy baja | Baja hoy / Alta si se despliega | Baja | Bajo hoy | `auditoria-preventiva-leadfinder.md` |
+| ~~Credencial por defecto en `leadfinder` (`admin`/`changeme`)~~ | Media | Muy baja | Baja | Baja | Bajo | **Resuelto 2026-07-07** — valores aleatorios generados, `.env` verificado gitignorado (`production-readiness-review.md`) |
 | Capacidad de Gestión del crecimiento incompleta (SEO/SEM/Ads/Email) | Media (ingreso no capturado) | Alta | Baja | Media | Media | `capacidades-core.md`, `05-catalogo-servicios.md` |
 | R11 — Dependencia de terceros críticos (Stripe, Overpass, Vercel) | Media-alta | Baja (mitigación, no eliminación) | Baja | Media | Media | `03-modelo-negocio.md` |
 | L4 — Falta de atribución a OpenStreetMap (incumplimiento confirmado de la licencia ODbL) | Media | Muy baja | Media | Baja | Media | `auditoria-preventiva-leadfinder.md`, `06-legal-cumplimiento.md` |

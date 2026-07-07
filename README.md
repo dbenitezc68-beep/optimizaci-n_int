@@ -6,6 +6,8 @@ Empieza por [`00-metodologia.md`](./00-metodologia.md) — rige cómo se constru
 
 **[`production-readiness-review.md`](./production-readiness-review.md)** — evaluación puntual (no un documento vivo): ¿puede INTEREMPREX vender mañana sin poner en riesgo la empresa? Veredicto: GO CON RESTRICCIONES, con el camino crítico mínimo al primer cliente real. Léase antes de decidir si la prioridad es seguir diseñando o empezar a vender.
 
+**[`contrato-minimo-venta.md`](./contrato-minimo-venta.md)** — plantilla lista para usar en la primera venta (Motor A + mínimo de Motor B). Único documento nuevo que exige el camino crítico del PRR. Dos campos quedan pendientes de rellenar antes de la primera firma real (identificación fiscal de INTEREMPREX — ver L8 en `06-legal-cumplimiento.md`).
+
 **Documentos vivos** (no son fases, se actualizan de forma continua):
 - [`fdi-registro.md`](./fdi-registro.md) — Founder Dependency Index: cuánto depende cada proceso del fundador. Definición en `00-metodologia.md`.
 - [`kpis.md`](./kpis.md) — registro oficial de indicadores de toda la empresa; cada fase añade solo los suyos. Resuelve el bloque KPIs de `enterprise-blueprint.md` sin necesidad de una fase 16.
