@@ -37,7 +37,7 @@ Documento vivo, no una fase. Inventario oficial de todo lo técnico verificado h
 
 ## Bases de datos
 
-- **`interemprex-dashboard`**: SQLite (`dev.db`) vía Prisma con adaptador `better-sqlite3`. Riesgo R5 (single-tenant) ya documentado en `03-modelo-negocio.md`.
+- **`interemprex-dashboard`**: SQLite (`dev.db`) vía Prisma con adaptador `better-sqlite3`. Riesgo R5 (single-tenant) ya documentado en `03-modelo-negocio.md`. **Backup automático diario desde 2026-07-09** — ver Automatizaciones y Servicios cloud, abajo.
 - **`leadfinder`**: SQLite (`leadfinder.db`, esquema `sqlite://` confirmado en `.env` real) vía SQLAlchemy. Mismo patrón de riesgo que R5, documentado en `auditoria-preventiva-leadfinder.md`.
 - **Panel de cumplimiento**: sin base de datos — JSON plano (`interemprex.json`), regenerado bajo demanda.
 
@@ -68,6 +68,7 @@ Documento vivo, no una fase. Inventario oficial de todo lo técnico verificado h
 1. **Recolección de leads** (`leadfinder`) — vía `scripts/run_collector` o tarea programada del sistema operativo; puede activarse también con `ENABLE_INPROCESS_SCHEDULER=true` (hoy en `false`).
 2. **Sincronización de pagos/MRR** (`interemprex-dashboard`) — webhooks de Stripe en `/api/stripe/webhook`.
 3. **Generación de auditoría de leads con IA** (`leadfinder`) — bajo demanda, no programada, ver `capacidades-ia.md`.
+4. **Backup diario de `dev.db`** (`interemprex-dashboard`, desde 2026-07-09) — tarea programada de Windows (`INTEREMPREX-CRM-Backup`, diaria 02:00, con reintento si el equipo estaba apagado), ejecuta `interemprex-dashboard/scripts/backup-db.js`: backup vía la API nativa de SQLite (no copia de archivo), verificado con `integrity_check` tras cada ejecución, retención de las 30 copias más recientes. Detalle completo y procedimiento de recuperación en `production-readiness-review.md`.
 
 **Hallazgo relevante, no buscado explícitamente**: **`leadfinder` y `interemprex-dashboard` no están conectados entre sí.** Son dos sistemas independientes — un lead capturado y puntuado en `leadfinder` no pasa automáticamente al pipeline de `interemprex-dashboard`; hay que moverlo a mano (o exportar/importar CSV). El motor de prospección propio y el CRM propio, las dos piezas más mencionadas como ventaja competitiva en `01-posicionamiento.md`, hoy son silos. Es una oportunidad de automatización real para la Fase 9, no un defecto de diseño — se registra aquí para que no se pierda.
 
@@ -75,6 +76,7 @@ Documento vivo, no una fase. Inventario oficial de todo lo técnico verificado h
 
 - Vercel (hosting estático, confirmado para `bbabogados`).
 - Railway (preparado, no confirmado activo, para `leadfinder`).
+- **Google Drive (modo Streaming, cuenta personal del fundador)** — destino del backup diario de `interemprex-dashboard/dev.db`, desde 2026-07-09. Montado como unidad `G:\Mi unidad` en la máquina del fundador, no como carpeta local sincronizada — detalle en `production-readiness-review.md`.
 - Sin evidencia de uso de AWS/GCP/Azure en ningún proyecto revisado.
 
 ## Entornos
@@ -88,12 +90,12 @@ Documento vivo, no una fase. Inventario oficial de todo lo técnico verificado h
 | Sistema | Variables relevantes | Estado verificado el 2026-07-02 |
 |---|---|---|
 | `interemprex-dashboard/.env` | `DATABASE_URL`, `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET` | Existe, contenido no inspeccionado (no hacía falta para ninguna pregunta abierta) |
-| `leadfinder/.env` | `DATABASE_URL`, `OVERPASS_USER_AGENT`, `GOOGLE_PLACES_API_KEY`, `ANTHROPIC_API_KEY`, `SECRET_KEY`, `DASHBOARD_USERNAME`, `DASHBOARD_PASSWORD` | **`DASHBOARD_USERNAME`, `DASHBOARD_PASSWORD` y `SECRET_KEY` siguen siendo el valor de ejemplo (`admin` / `changeme` / `cambia-esto-en-produccion`)** — ver `auditoria-preventiva-leadfinder.md`, verificación de riesgo inmediato. No es incidencia urgente hoy (entorno local, sin evidencia de despliegue), pero es corrección de coste cero pendiente antes de cualquier despliegue futuro. |
+| `leadfinder/.env` | `DATABASE_URL`, `OVERPASS_USER_AGENT`, `GOOGLE_PLACES_API_KEY`, `ANTHROPIC_API_KEY`, `SECRET_KEY`, `DASHBOARD_USERNAME`, `DASHBOARD_PASSWORD` | **Resuelto 2026-07-07**: `DASHBOARD_PASSWORD` y `SECRET_KEY` corregidos a valores aleatorios (ver `production-readiness-review.md`); `DASHBOARD_USERNAME` sigue siendo `admin` deliberadamente (no era el riesgo señalado). |
 | `interemprex` (web pública) | Clave de acceso de Web3Forms | Embebida en el HTML por diseño del servicio (no es secreta) |
 
 ## Dependencias entre sistemas
 
-- `interemprex-dashboard` → depende de Stripe (pagos) y de su propia base SQLite local.
+- `interemprex-dashboard` → depende de Stripe (pagos), de su propia base SQLite local, y desde 2026-07-09 de Google Drive (cuenta personal del fundador) para el backup diario — ver Servicios cloud.
 - `leadfinder` → depende de OpenStreetMap Overpass (obligatoria), Google Places (opcional, inactiva), Anthropic/Claude (opcional, bajo demanda).
 - `interemprex` (web) → depende de Web3Forms para el formulario de contacto. **No está conectada a `interemprex-dashboard` ni a `leadfinder`** — un contacto desde la web no crea automáticamente un lead o cliente en el CRM.
 - `leadfinder` ↔ `interemprex-dashboard` → **sin conexión** (ver hallazgo en Automatizaciones).

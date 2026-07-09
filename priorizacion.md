@@ -16,7 +16,7 @@ Registro vivo. Escala y reglas definidas en [`00-metodologia.md`](./00-metodolog
 | Elemento | Impacto | Esfuerzo | Urgencia | Dependencia | Riesgo de no actuar | Origen |
 |---|---|---|---|---|---|---|
 | R2 — Dependencia total del fundador en el cierre de ventas | Alta | Alta | Media | Alta (Fase 7 depende de esto) | Alta | `03-modelo-negocio.md` |
-| R6 — Backups del CRM no verificados | Alta | Baja | Media | Baja | Alta | **Parcialmente mitigado 2026-07-07** — copia local creada fuera del repo git; falta copiarla fuera de esta máquina para cerrarlo del todo (`production-readiness-review.md`) |
+| ~~R6 — Backups del CRM no verificados~~ | Alta | Baja | Media | Baja | Alta | **Resuelto 2026-07-09** — sistema de backup automático diario, verificado (integridad, tablas, tamaño) y con retención de 30 copias, fuera de esta máquina (Google Drive). Diseño, validación y procedimiento de recuperación completos en `production-readiness-review.md` |
 | Silo LeadFinder ↔ CRM (flywheel) | Alta | Media | Media | Alta (bloquea que el flywheel funcione de verdad) | Alta | `flywheel-comercial.md` |
 | "Aprendizaje interno" sin ningún proceso (flywheel) | Alta (a largo plazo) | Media | Baja hoy | Alta (todo el ciclo de mejora de capacidades depende de esto) | Media-alta | `flywheel-comercial.md` |
 | Precio de Diagnóstico y de Mantenimiento SEO técnico sin fijar | Media | Baja | Media (bloquea vender con criterio) | Media | Media | `05-catalogo-servicios.md` |
@@ -38,6 +38,7 @@ Registro vivo. Escala y reglas definidas en [`00-metodologia.md`](./00-metodolog
 | L9 — Incertidumbre fiscal (facturación electrónica, Verifactu/Crea y Crece) | Media (regulatorio, no de datos) | N/A — requiere asesoría externa | Baja | Baja | Media | `06-legal-cumplimiento.md` |
 | L10 — Sin disparador definido para cuándo `leadfinder` exige una EIPD/DPIA (Art. 35 RGPD) | Alto si se cruza el umbral | Baja (solo definir el disparador, no ejecutar la EIPD todavía) | Baja hoy | Media | Media (crece con el crecimiento de la empresa) | `06-legal-cumplimiento.md` (hallazgo de auditoría adversarial) |
 | L11 — Motor D sin puerta de re-verificación legal antes de activarse | Alto si ocurre | Baja (solo añadir la condición a la puerta de activación) | Nula — D sigue latente | Media (cruza `04-arquitectura-oferta.md` y `06-legal-cumplimiento.md`) | Baja hoy | `06-legal-cumplimiento.md` (hallazgo de auditoría adversarial) |
+| `interemprex-dashboard/.env` sin ninguna copia fuera de esta máquina (`AUTH_SECRET`, claves de Stripe) | Alta si esta máquina falla (la app no arranca sin él, aunque `dev.db` esté restaurado) | Media — no es el mismo mecanismo que R6, necesita un gestor de contraseñas, no una carpeta de Drive en texto plano | Baja hoy | Baja | Media | `production-readiness-review.md` (hallazgo de la reauditoría del sistema de backup, 2026-07-09) |
 
 ## Prioridad baja
 
