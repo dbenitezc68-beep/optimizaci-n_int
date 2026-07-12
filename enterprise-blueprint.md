@@ -49,7 +49,7 @@ KPIs
 | 3 | Modelo de negocio | `03-modelo-negocio.md` (v7) | Visión, Constitución | Cerrado |
 | 4 | Arquitectura de la oferta | `04-arquitectura-oferta.md` (v2) | Modelo de negocio | Cerrado |
 | 5 | Catálogo | [`05-catalogo-servicios.md`](./05-catalogo-servicios.md) (v2) — arquitectura comercial completa, apoyada en `capacidades-core.md` y `flywheel-comercial.md` | Arquitectura de la oferta, Capacidades Core | Cerrado — estándar permanente |
-| 6 | Legal | [`06-legal-cumplimiento.md`](./06-legal-cumplimiento.md) — marco normativo, matriz de cumplimiento, riesgos L1-L9 | Catálogo (licencias/IP), Modelo de negocio (qué datos maneja cada motor) | Pendiente de aprobación definitiva |
+| 6 | Legal | [`06-legal-cumplimiento.md`](./06-legal-cumplimiento.md) — marco normativo, matriz de cumplimiento, riesgos L1-L11 | Catálogo (licencias/IP), Modelo de negocio (qué datos maneja cada motor) | Pendiente de aprobación definitiva |
 | 7 | Customer Journey | [`07-customer-journey.md`](./07-customer-journey.md) — v1 operativa, 16 etapas con validación de ejecutabilidad | Arquitectura de la oferta (empaquetado), Legal (consentimientos/contratos en el journey) | Cerrado — v1 operativa, pendiente de validar etapas 12-16 con el primer cliente real |
 | 8 | Sistema comercial | *(futuro)* | Customer Journey, Arquitectura de la oferta (cláusula de empaquetado), Legal (contratos) | Pendiente |
 | 9 | Operaciones | *(futuro)* — requiere `arquitectura-empresarial.md` antes de cerrarse | Sistema comercial (qué se vendió, hay que ejecutarlo), Modelo de negocio (motores) | Pendiente |
@@ -58,7 +58,7 @@ KPIs
 | 12 | Tecnología | *(futuro)* — ya tiene tareas asignadas: backups (R6), disparadores de SQLite (R5), base técnica del motor D | Automatizaciones, IA (qué stack las soporta), Modelo de negocio (motor D) | Pendiente |
 | 13 | Marketing | *(futuro)* | Visión (mensaje), Catálogo (qué se promociona), Customer Journey (embudo) | Pendiente |
 | 14 | Finanzas | *(futuro)* | Todos los bloques anteriores — es donde se calculan cifras reales de todo lo diseñado | Pendiente |
-| 15 | KPIs | [`kpis.md`](./kpis.md) — documento vivo, no fase numerada | Todos los bloques anteriores; cada fase añade solo los indicadores que le corresponden | Abierto — se actualiza en cada fase, 7 indicadores registrados hoy, 1 con dato real (FDI) |
+| 15 | KPIs | [`kpis.md`](./kpis.md) — documento vivo, no fase numerada | Todos los bloques anteriores; cada fase añade solo los indicadores que le corresponden | Abierto — se actualiza en cada fase, 9 indicadores registrados hoy, 2 con dato real (FDI medio, % de líneas de catálogo con capacidad Core completa) |
 
 ## Capas de salida (no son bloques de decisión, son consecuencia de la cadena)
 
@@ -71,7 +71,7 @@ La cadena de arriba es la dependencia entre *documentos*. El flywheel es la depe
 
 ## Gap de KPIs — resuelto
 
-El roadmap de 15 fases no incluye una fase dedicada a "KPIs". Se resolvió sin crear una Fase 16: `kpis.md` es un documento vivo (como `fdi-registro.md`) que cada fase alimenta con los indicadores que le corresponden, en vez de esperar a un cierre único. Ya tiene 7 indicadores registrados desde las fases existentes.
+El roadmap de 15 fases no incluye una fase dedicada a "KPIs". Se resolvió sin crear una Fase 16: `kpis.md` es un documento vivo (como `fdi-registro.md`) que cada fase alimenta con los indicadores que le corresponden, en vez de esperar a un cierre único. Ya tiene 9 indicadores registrados desde las fases existentes.
 
 ---
 

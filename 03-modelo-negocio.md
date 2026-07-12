@@ -56,7 +56,7 @@ Coherente con `01-posicionamiento.md` y `02-principios-fundacionales.md`. Donde 
 
 - **Segmentos de clientes**: pymes españolas con procesos operativos manuales, sin digitalizar, con capacidad de pago sostenible y voluntad de dar acceso real a sus sistemas. Sin nicho de sector cerrado en el mensaje público (decisión de Fase 1); foco táctico de prospección se decide en Fase 7.
 - **Propuesta de valor**: software propio implementado directamente sobre los sistemas reales del cliente — no plantilla adaptada, no promesa sin respaldo. Prueba demostrable (dashboard, leadfinder) en vez de casos inventados.
-- **Canales**: leadfinder (pipeline propio), referidos desde clientes en motor B, web propia (pendiente de reescritura, Fase 12). El resto del mix de canales (redes, contenido, etc.) se define en Fase 12 — no se inventa aquí.
+- **Canales**: leadfinder (pipeline propio), referidos desde clientes en motor B, web propia (pendiente de reescritura, Fase 13, Página web) [corregido 2026-07-12: la numeración original decía "Fase 12", que hoy es Marketing]. El resto del mix de canales (redes, contenido, etc.) se define en Fase 12 — no se inventa aquí.
 - **Relación con clientes**: implementación directa y colaborativa, no consultoría de informe y adiós. Soporte continuo vía motor B. Transparencia explícita sobre qué parte del trabajo es automatización/IA y qué parte es trabajo humano (principio constitucional 4).
 - **Fuentes de ingresos**: los tres motores activos — A (etapas Diagnóstico e Implementación), B (líneas Operación técnica y Gestión del crecimiento), C — más Motor D, latente.
 - **Recursos clave**: el stack de software propio (dashboard, leadfinder), el conocimiento técnico del fundador, la prueba pública de capacidad técnica (una vez corregida la web).
@@ -100,19 +100,19 @@ Sin datos históricos reales, la probabilidad se estima de forma cualitativa (Al
 
 **Prioridad alta — impacto alto, probabilidad media o no verificada:**
 
-6. **R5 — Tecnológico. Base de datos SQLite / single-tenant en `interemprex-dashboard`.** Ver plan de transición con criterios objetivos, abajo.
-7. **R6 — Tecnológico/operativo. Sin evidencia de estrategia de backup o continuidad para el dashboard.** No se ha encontrado documentación de copias de seguridad automatizadas para los datos de clientes, pipeline y pagos — a diferencia del panel de cumplimiento (`gestion-interemprex`), que sí tiene una copia de seguridad simple documentada. Probabilidad no verificada, impacto alto si ocurriera (pérdida de datos de clientes y pagos). **Se mantiene abierta sin cambio técnico**: se añade como punto de control obligatorio al diseñar la arquitectura tecnológica definitiva en Fase 11, no se actúa antes.
-8. **R9 — Legal. Cumplimiento no auditado en profundidad**: la web tiene política de privacidad, pero no se ha revisado el tratamiento real de datos en el dashboard, ni la base legal de que `leadfinder` recopile datos de negocios de terceros vía scraping de OpenStreetMap. Impacto alto (sanciones AEPD), probabilidad media. **Resuelto**: se crea una fase propia — Fase 5, Legal y Cumplimiento — en vez de integrarlo en Operaciones. La exposición ya activa hoy (scraping en marcha, dashboard con datos reales de clientes) no espera a que llegue esa fase en orden: se trata como verificación preliminar urgente, no como parte del alcance completo de la Fase 5.
+7. **R5 — Tecnológico. Base de datos SQLite / single-tenant en `interemprex-dashboard`.** Ver plan de transición con criterios objetivos, abajo.
+8. **R6 — Tecnológico/operativo. Sin evidencia de estrategia de backup o continuidad para el dashboard.** No se ha encontrado documentación de copias de seguridad automatizadas para los datos de clientes, pipeline y pagos — a diferencia del panel de cumplimiento (`gestion-interemprex`), que sí tiene una copia de seguridad simple documentada. Probabilidad no verificada, impacto alto si ocurriera (pérdida de datos de clientes y pagos). **Se mantiene abierta sin cambio técnico**: se añade como punto de control obligatorio al diseñar la arquitectura tecnológica definitiva en Fase 11, no se actúa antes.
+9. **R9 — Legal. Cumplimiento no auditado en profundidad**: la web tiene política de privacidad, pero no se ha revisado el tratamiento real de datos en el dashboard, ni la base legal de que `leadfinder` recopile datos de negocios de terceros vía scraping de OpenStreetMap. Impacto alto (sanciones AEPD), probabilidad media. **Resuelto**: se crea una fase propia — Fase 5, Legal y Cumplimiento — en vez de integrarlo en Operaciones. La exposición ya activa hoy (scraping en marcha, dashboard con datos reales de clientes) no espera a que llegue esa fase en orden: se trata como verificación preliminar urgente, no como parte del alcance completo de la Fase 5.
 
 **Prioridad media:**
 
-9. **R4 — Financiero. Que la tarifa de lanzamiento se convierta de facto en permanente por falta de disciplina** en aplicar el tope ya fijado en Fase 1.
-10. **R8 — Operativo. Duplicidad de sistemas de gestión interna**: `interemprex-dashboard` (CRM completo, en uso) y `dashboard-interemprex.html` / `interemprex.json` (panel de cumplimiento, vacío desde su creación) cubren propósitos parcialmente solapados sin una diferenciación de uso decidida. Documentado en detalle en [`duplicidad-paneles-gestion.md`](./duplicidad-paneles-gestion.md) — por instrucción explícita, la resolución (fusionar, eliminar o mantener) se decide en Fase 8, no aquí.
-11. **R11 — Dependencia tecnológica de terceros.** Stripe (pagos del motor B), Overpass/OpenStreetMap (única fuente de datos de leadfinder — cambios en su política de acceso afectan directamente a la prospección), Vercel (hosting de al menos un cliente en producción). Impacto medio-alto si alguno cambia condiciones; probabilidad baja-media a corto plazo, real a 5 años.
+10. **R4 — Financiero. Que la tarifa de lanzamiento se convierta de facto en permanente por falta de disciplina** en aplicar el tope ya fijado en Fase 1.
+11. **R8 — Operativo. Duplicidad de sistemas de gestión interna**: `interemprex-dashboard` (CRM completo, en uso) y `dashboard-interemprex.html` / `interemprex.json` (panel de cumplimiento, vacío desde su creación) cubren propósitos parcialmente solapados sin una diferenciación de uso decidida. Documentado en detalle en [`duplicidad-paneles-gestion.md`](./duplicidad-paneles-gestion.md) — por instrucción explícita, la resolución (fusionar, eliminar o mantener) se decide en Fase 8, no aquí.
+12. **R11 — Dependencia tecnológica de terceros.** Stripe (pagos del motor B), Overpass/OpenStreetMap (única fuente de datos de leadfinder — cambios en su política de acceso afectan directamente a la prospección), Vercel (hosting de al menos un cliente en producción). Impacto medio-alto si alguno cambia condiciones; probabilidad baja-media a corto plazo, real a 5 años.
 
 **Prioridad baja (mitigada, seguir vigilando):**
 
-12. **R7 — Operativo. Sin proceso documentado de ejecución de un "proyecto tipo".** Ya identificado en v1, dependencia hacia Fase 8.
+13. **R7 — Operativo. Sin proceso documentado de ejecución de un "proyecto tipo".** Ya identificado en v1, dependencia hacia Fase 8.
 
 ### R5 — Plan de transición de SQLite con criterios objetivos (no fecha)
 
@@ -122,16 +122,6 @@ No se fija una fecha porque hoy, con 2 clientes piloto, ningún disparador real 
 - **Disparador funcional**: si se decide activar el motor D para terceros, la migración deja de ser opcional — un producto vendido a otras empresas exige aislamiento de datos por tenant que un fichero SQLite único no garantiza con seguridad.
 - **Disparador de infraestructura**: si el dashboard se despliega en una plataforma sin disco persistente (el propio README de `leadfinder` ya advierte del mismo problema para su base SQLite), la migración pasa de mejora a requisito de funcionamiento.
 - **Disparador de carga de lectura**: si los informes de MRR/pipeline empiezan a tardar de forma perceptible por volumen histórico acumulado.
-
-### R13 — Procedimiento para incorporar `interemprex-dashboard` al ecosistema Git (no se ejecuta todavía)
-
-Por instrucción explícita: no se despliega ni se sube nada ahora. Se documenta únicamente el procedimiento, para ejecutarlo cuando corresponda:
-
-1. Verificar que `.gitignore` excluye `dev.db`, `.env` y cualquier credencial antes de tocar nada — el repositorio no debe subir datos reales de clientes ni secretos de Stripe.
-2. Crear el repositorio remoto en GitHub (privado, dado que contiene lógica de negocio y, potencialmente, estructura de datos de clientes reales).
-3. Añadir el remoto al repositorio git local ya existente (`interemprex-dashboard` ya es un repo git local, solo le falta el remoto — no hay que inicializar nada desde cero).
-4. Primer push, verificando antes con `git status` y una revisión manual de qué se va a subir (mismo cuidado que se aplicó al crear `optimizaci-n_int`).
-5. A partir de ahí, mismo hábito de commits frecuentes que el resto de repos del ecosistema.
 
 ### R13 — Clasificación de impacto
 

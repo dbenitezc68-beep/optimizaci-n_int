@@ -7,7 +7,7 @@ Documento vivo, no una fase. Inventario oficial de todo lo técnico verificado h
 | Repo | Remoto GitHub | Contenido |
 |---|---|---|
 | `interemprex` | `github.com/dbenitezc68-beep/interemprex` | Web pública de INTEREMPREX |
-| `interemprex-dashboard` | **sin remoto configurado** — repo git solo local | CRM interno |
+| `interemprex-dashboard` | `github.com/dbenitezc68-beep/interemprex-dashboard` (privado) | CRM interno |
 | `leadfinder` | `github.com/dbenitezc68-beep/leadfinder` | Motor de prospección |
 | `bbabogados` | `github.com/dbenitezc68-beep/bbabogados` | Cliente piloto (abogados) |
 | `costafloragardens` | `github.com/dbenitezc68-beep/costafloragardens` | Cliente piloto (jardinería) |
@@ -16,7 +16,7 @@ Documento vivo, no una fase. Inventario oficial de todo lo técnico verificado h
 
 **Detectados, no analizados**: `moondial`, `sistema-gestor-cartera` — existen en el directorio raíz del monorepo, no se ha verificado su relación con INTEREMPREX. `sistema-gestor-cartera` coincide con la skill `gestor-cartera-deportiva.md`, que por su nombre parece un proyecto personal no relacionado. No se documentan en detalle porque no se ha confirmado que pertenezcan al alcance de este proyecto.
 
-**Incidencia crítica de continuidad de negocio (R13, ver `03-modelo-negocio.md`)**: `interemprex-dashboard` — el sistema que sostiene el motor de ingresos real (B, operación continua, con Stripe) — no tiene remoto en GitHub. Es la única pieza crítica de negocio sin respaldo fuera de la máquina local. Procedimiento de corrección documentado, sin ejecutar todavía por instrucción explícita.
+**Incidencia crítica de continuidad de negocio (R13, ver `03-modelo-negocio.md`) — resuelta el 2026-07-07**: `interemprex-dashboard` — el sistema que sostiene el motor de ingresos real (B, operación continua, con Stripe) — no tenía remoto en GitHub. Corregido: repositorio privado creado, remoto configurado, push confirmado (incluía 53 archivos que llevaban meses sin ningún historial de versiones, no solo el scaffold inicial). Backup diario automático y verificado desde 2026-07-09. Detalle completo en `production-readiness-review.md` (sección "Sistema de backup del CRM").
 
 ## Aplicaciones
 

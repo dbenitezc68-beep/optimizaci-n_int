@@ -8,7 +8,7 @@ Este documento no es una opinión jurídica ni sustituye la revisión de un abog
 
 ## Resumen ejecutivo
 
-INTEREMPREX trata datos personales en tres sistemas (`leadfinder`, `interemprex-dashboard`, el formulario de la web pública) bajo un marco normativo de cuatro normas principales (RGPD, LOPDGDD, LSSI-CE, ePrivacy/cookies) más obligaciones contractuales (Stripe, Anthropic) y de licencia (OpenStreetMap ODbL). El hallazgo central: **ningún sistema tiene hoy una política de conservación de datos, y la actividad de mayor volumen (prospección vía `leadfinder`) no tiene documentado ni un test de interés legítimo ni un canal de ejercicio de derechos** — no porque se haya hecho algo indebido, sino porque nunca se ha auditado hasta esta fase. Se identifican 9 riesgos legales (L1-L9), se construye la matriz de cumplimiento completa, y se integran con `priorizacion.md`, `fdi-registro.md` y `bci-registro.md` sin crear ninguna metodología nueva.
+INTEREMPREX trata datos personales en tres sistemas (`leadfinder`, `interemprex-dashboard`, el formulario de la web pública) bajo un marco normativo de cuatro normas principales (RGPD, LOPDGDD, LSSI-CE, ePrivacy/cookies) más obligaciones contractuales (Stripe, Anthropic) y de licencia (OpenStreetMap ODbL). El hallazgo central: **ningún sistema tiene hoy una política de conservación de datos, y la actividad de mayor volumen (prospección vía `leadfinder`) no tiene documentado ni un test de interés legítimo ni un canal de ejercicio de derechos** — no porque se haya hecho algo indebido, sino porque nunca se ha auditado hasta esta fase. Se identifican 11 riesgos legales (L1-L11 — L1-L9 en la v1, L10 y L11 añadidos en la auditoría adversarial de la v2), se construye la matriz de cumplimiento completa, y se integran con `priorizacion.md`, `fdi-registro.md` y `bci-registro.md` sin crear ninguna metodología nueva.
 
 ## 1. Marco normativo
 
@@ -118,7 +118,7 @@ INTEREMPREX trata datos personales en tres sistemas (`leadfinder`, `interemprex-
 | Base jurídica y confidencialidad de datos exportados a IA | RGPD Art. 28, 44-49 (si aplica transferencia) | Medio | ❌ No documentado | Sección 8 | Alta | Documentar y confirmar con Anthropic |
 | Régimen de contacto comercial (email/SMS vs. teléfono/postal) | LSSI-CE Art. 21, listas de exclusión | Medio | ⚠️ No aplica todavía (sin campaña activa) | Sección 7 | Media | Diseñar antes de activar prospección de contacto directo |
 
-## 10. Riesgos legales (L1-L9) — misma metodología del proyecto, sin crear una nueva
+## 10. Riesgos legales (L1-L11) — misma metodología del proyecto, sin crear una nueva
 
 | # | Riesgo | Impacto | Probabilidad | Prioridad (`priorizacion.md`) |
 |---|---|---|---|---|
@@ -154,7 +154,7 @@ INTEREMPREX trata datos personales en tres sistemas (`leadfinder`, `interemprex-
 
 ## Riesgos detectados
 
-Ver tabla L1-L9 en la sección 10 — es la sección de riesgos de esta fase, no se duplica aquí.
+Ver tabla L1-L11 en la sección 10 — es la sección de riesgos de esta fase, no se duplica aquí.
 
 ## Dependencias con otras fases
 
@@ -206,7 +206,7 @@ Aplicando el mandato de intentar refutar esta fase en vez de confirmarla, se enc
 
 ---
 
-**Qué modifica**: crea el marco legal y de cumplimiento completo de INTEREMPREX — normativa aplicable, análisis por sistema, matriz de cumplimiento y registro de riesgos legales (L1-L9), integrado con FDI/BCI/priorización sin metodología nueva.
+**Qué modifica**: crea el marco legal y de cumplimiento completo de INTEREMPREX — normativa aplicable, análisis por sistema, matriz de cumplimiento y registro de riesgos legales (L1-L11), integrado con FDI/BCI/priorización sin metodología nueva.
 
 **Qué documentos dependen de este**: Fase 6 (Customer Journey), Fase 7 (Sistema comercial), Fase 10 (IA, revisión secundaria) y Fase 13 (Página web) heredan directamente sus hallazgos y tareas pendientes.
 

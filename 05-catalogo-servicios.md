@@ -237,6 +237,8 @@ No se encontró una solución objetivamente mejor que la planteada — se simpli
 
 **¿Alguna nueva dependencia aumenta el FDI innecesariamente?** No — al contrario: las cuatro mejoras mueven tres procesos más de tácito a documentado (priorizar, calcular precio, clasificar criticidad), registrados en `fdi-registro.md`. El FDI medio de la empresa baja de 1,43 a 1,33 sobre 3 con esta ronda.
 
+*Nota de contexto histórico (añadida 2026-07-12, sin reescribir esta fase cerrada): 1,33/3 era el valor vigente en el momento de este cierre. El valor de FDI medio actual siempre vive en `fdi-registro.md` — hoy 1,9/3 sobre 14 procesos, tras las incorporaciones de las Fases 5 y 6. Esta cifra histórica no se actualiza porque documenta una decisión ya tomada en su momento, no el estado presente de la empresa.*
+
 ## Preguntas que necesitan aprobación
 
 1. **Resuelta** — arquitectura completa (10 preguntas por servicio) aprobada, incluida la retirada de Gestión del crecimiento Niveles 2-3 de la oferta activa.

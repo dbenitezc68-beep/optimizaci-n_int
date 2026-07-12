@@ -20,7 +20,7 @@ Usar esta plantilla es preferible a vender sin contrato — es el criterio que j
 - NIF/CIF: **[PENDIENTE]**
 - Domicilio: **[PENDIENTE]**
 - Forma jurídica: **[PENDIENTE — autónomo / sociedad]**
-- Contacto: WhatsApp +34 656 718 916 · Extremadura, España (datos ya públicos en `interemprex/index.html`)
+- Contacto: **[CANAL DE CONTACTO — a rellenar en cada contrato]** *(retirado del repositorio el 2026-07-12 por higiene de datos personales — un número de teléfono real no debe vivir en un documento de plantilla versionado; se rellena directamente en cada contrato individual, no aquí)*
 
 **Cliente** (parte contratante)
 - Razón social / nombre: **[A RELLENAR]**
@@ -55,7 +55,7 @@ Cualquier servicio fuera de esta tabla (Motor C, Motor B línea Gestión del cre
 ## 3. Precio y forma de pago
 
 - Precio de Motor A: el marcado en la tabla anterior, pago único. **[Confirmar si sigue vigente la tarifa de lanzamiento de `01-posicionamiento.md` en la fecha de la firma — tope: 3 clientes desde 2026-07-02 o hasta 2026-09-30, lo que ocurra antes.]**
-- Precio de Motor B: el marcado en la tabla anterior, facturación mensual recurrente desde la fecha de entrega de Motor A.
+- Precio de Motor B: el marcado en la tabla anterior, facturación mensual recurrente desde la validación/conformidad de la entrega de Motor A — no desde la fecha de entrega en sí. Si el Cliente no manifiesta objeciones en un plazo de **[A RELLENAR — p. ej. 7 días]** desde la publicación del entregable, este se considera aceptado y Motor B arranca igualmente (aceptación tácita). Este disparador es el mismo que usa `07-customer-journey.md` (Etapa 12, Validación) — no son dos reglas distintas.
 - Forma de pago: **[A RELLENAR — p. ej. 50 % al inicio / 50 % a la entrega, vía Stripe]**.
 - Facturación: sujeta a la normativa fiscal aplicable a INTEREMPREX en la fecha de emisión — ver aviso de alcance (L9). No se detalla aquí un procedimiento fijo hasta resolver ese punto con asesoría fiscal.
 
@@ -100,8 +100,8 @@ Este contrato se rige por la legislación española. Para cualquier controversia
 
 ---
 
-**Qué modifica**: crea la plantilla mínima de contrato para cerrar una venta de Motor A + Motor B — no fija precios nuevos (reutiliza `precios-y-packs.md`), no cambia ninguna decisión de catálogo o arquitectura ya aprobada, solo las convierte en cláusulas firmables.
+**Qué modifica**: crea la plantilla mínima de contrato para cerrar una venta de Motor A + Motor B — no fija precios nuevos (reutiliza `precios-y-packs.md`), no cambia ninguna decisión de catálogo o arquitectura ya aprobada, solo las convierte en cláusulas firmables. Actualizado 2026-07-12: la sección 3 alinea el disparador de facturación de Motor B con la Etapa 12 (Validación) de `07-customer-journey.md` — arranca en la conformidad o aceptación tácita, no en la fecha de entrega; la sección 1 retira el número de teléfono real por higiene de datos personales.
 
 **Qué documentos dependen de este**: ninguno todavía — es un documento operativo terminal, no una base para fases futuras. La futura Fase 7 (Sistema comercial) debería evolucionarlo a plantilla codificada/automatizable, no partir de cero.
 
-**Qué documentos deben revisarse si este cambia**: `05-catalogo-servicios.md` y `precios-y-packs.md` si cambian los niveles o precios ofrecidos; `04-arquitectura-oferta.md` si cambia la regla de empaquetado obligatorio; `06-legal-cumplimiento.md` si se resuelven L3, L8 o L9, porque las notas de transparencia de las secciones 1, 3 y 6 dejarían de aplicar y deberían eliminarse, no mantenerse por inercia.
+**Qué documentos deben revisarse si este cambia**: `05-catalogo-servicios.md` y `precios-y-packs.md` si cambian los niveles o precios ofrecidos; `04-arquitectura-oferta.md` si cambia la regla de empaquetado obligatorio; `06-legal-cumplimiento.md` si se resuelven L3, L8 o L9, porque las notas de transparencia de las secciones 1, 3 y 6 dejarían de aplicar y deberían eliminarse, no mantenerse por inercia; `07-customer-journey.md` (Etapa 12) si cambia el disparador de facturación de Motor B, para que ambos documentos sigan describiendo la misma regla.

@@ -14,7 +14,7 @@ Empresa de tecnología, no agencia de marketing. Diseñamos e implementamos soft
 
 Soluciones personalizadas sobre una base de software propia: automatización de procesos, agentes e IA aplicada, integraciones y APIs, dashboards a medida, y la infraestructura que lo sostiene todo. Implementación directa sobre los sistemas reales del cliente, no plantilla adaptada.
 
-El listado completo de servicios con precio, cliente ideal y margen va en la Fase 3 (Catálogo de servicios) — aquí solo entra la categoría, no el inventario de herramientas.
+El listado completo de servicios con precio, cliente ideal y margen va en la Fase 4 (Catálogo de servicios) [corregido 2026-07-12: la numeración original decía "Fase 3", desfasada tras insertar Legal como Fase 5] — aquí solo entra la categoría, no el inventario de herramientas.
 
 ## Por qué somos diferentes
 
@@ -32,7 +32,7 @@ Pymes españolas con procesos manuales (Excel disperso, sin CRM, sin pipeline de
 
 ## Mercado
 
-Horizontal en el mensaje público: "procesos operativos complejos, cualquier sector" — no se ancla la marca a un nicho todavía. Foco táctico privado en 1-2 sectores se decide en Fase 6 (Automatizaciones/prospección), porque leadfinder necesita categorías OSM concretas para operar; es una decisión de configuración, no de copy.
+Horizontal en el mensaje público: "procesos operativos complejos, cualquier sector" — no se ancla la marca a un nicho todavía. Foco táctico privado en 1-2 sectores se decide en Fase 9 (Automatizaciones/prospección) [corregido 2026-07-12: la numeración original decía "Fase 6", que hoy es Customer Journey; Automatizaciones es la Fase 9], porque leadfinder necesita categorías OSM concretas para operar; es una decisión de configuración, no de copy.
 
 Evidencia real actual: un despacho de abogados (bbabogados) y una empresa de jardinería (costafloragardens) — ninguno de los dos encaja limpiamente con "procesos operativos complejos" ni con la tesis original de import/export del copy antiguo. Dato honesto: hoy no hay todavía evidencia que respalde un nicho concreto.
 

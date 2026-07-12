@@ -29,7 +29,7 @@ Una empresa de tecnología pequeña y de alto margen, apalancada en software pro
 - No inventar datos, bajo ninguna circunstancia. (Ya era la regla de `gestion-interemprex`; aquí deja de ser una regla de una skill y pasa a ser principio de empresa.)
 - Transparencia con el cliente sobre qué parte del trabajo es automatización/IA y qué parte es trabajo humano directo.
 - El cliente es dueño de sus datos y sistemas.
-- El cumplimiento legal (RGPD, facturación, contratos) no es "para más adelante" — se resuelve en la Fase 11 (Documentación), no se pospone indefinidamente.
+- El cumplimiento legal (RGPD, facturación, contratos) no es "para más adelante" — se resuelve en la Fase 5, Legal y Cumplimiento (`06-legal-cumplimiento.md`) [corregido 2026-07-12: la numeración original citaba una "Fase 11 (Documentación)" que no existe en el roadmap actual], no se pospone indefinidamente.
 
 ## 5. Cómo tomaremos decisiones cuando haya varias opciones
 
