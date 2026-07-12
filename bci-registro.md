@@ -28,6 +28,13 @@ Registro vivo del Business Criticality Index. Escala y reglas definidas en [`00-
 |---|---|---|
 | Cierre de ventas | 4 | Sin él no entra ingreso nuevo, pero los clientes actuales de Motor B siguen operando — grave, no crítico en el sentido de detener el negocio existente. |
 | Ejecución de un "proyecto tipo" de implementación | 3 | Su ausencia ralentiza la entrega, no la detiene — depende de la capacidad 1, ya evaluada arriba. |
+| Contrato (firma, Fase 6 Etapa 7) | **5** | Sin contrato firmado no hay base legal para cobrar ni cláusula de empaquetado fijada — el núcleo del modelo de ingresos. Es, junto con Pago y Renovación, de las etapas más difíciles de revertir de todo el Customer Journey. |
+| Pago inicial (Fase 6 Etapa 8) | **5** | Toca dinero real, difícil de revertir (reembolsos, contracargos); coincide con el BCI de la capacidad Core de pagos (5). |
+| Validación / arranque de Motor B (Fase 6 Etapa 12) | 4 | Es el disparador exacto del punto de mayor riesgo de fuga del ciclo de vida (Mes 1-2) — si se omite, se pierde el ingreso recurrente sin que nada lo fuerce hoy. |
+| Soporte a clientes activos (Fase 6 Etapa 13) | 4 | No cae ningún sistema, pero con solo 2-3 clientes piloto, perder uno por falta de respuesta representa una fracción muy alta del MRR total. |
+| Renovación de Motor B (Fase 6 Etapa 14) | **5** | Es el momento donde se decide si el ingreso recurrente continúa o se pierde por omisión — máximo nivel, igual que Contrato y Pago. |
+| Upselling (Fase 6 Etapa 15) | 2 | Si se detiene, no hay riesgo inmediato: Motor A ya está cobrado y Motor B sigue facturando independientemente — solo se retrasa una oportunidad de crecimiento. |
+| Cierre de ciclo / aprendizaje (Fase 6 Etapa 16) | 3 | No hay pérdida de ingreso inmediata, pero se pierde la alimentación del flywheel (casos de éxito, referidos) — el canal más fiable del negocio hoy, dado que los 2 pilotos reales llegaron por referido. |
 
 ## Fallo de diseño detectado (auditoría adversarial, Modo Optimización Total)
 

@@ -50,7 +50,7 @@ KPIs
 | 4 | Arquitectura de la oferta | `04-arquitectura-oferta.md` (v2) | Modelo de negocio | Cerrado |
 | 5 | Catálogo | [`05-catalogo-servicios.md`](./05-catalogo-servicios.md) (v2) — arquitectura comercial completa, apoyada en `capacidades-core.md` y `flywheel-comercial.md` | Arquitectura de la oferta, Capacidades Core | Cerrado — estándar permanente |
 | 6 | Legal | [`06-legal-cumplimiento.md`](./06-legal-cumplimiento.md) — marco normativo, matriz de cumplimiento, riesgos L1-L9 | Catálogo (licencias/IP), Modelo de negocio (qué datos maneja cada motor) | Pendiente de aprobación definitiva |
-| 7 | Customer Journey | *(futuro)* | Arquitectura de la oferta (empaquetado), Legal (consentimientos/contratos en el journey) | Pendiente |
+| 7 | Customer Journey | [`07-customer-journey.md`](./07-customer-journey.md) — v1 operativa, 16 etapas con validación de ejecutabilidad | Arquitectura de la oferta (empaquetado), Legal (consentimientos/contratos en el journey) | Cerrado — v1 operativa, pendiente de validar etapas 12-16 con el primer cliente real |
 | 8 | Sistema comercial | *(futuro)* | Customer Journey, Arquitectura de la oferta (cláusula de empaquetado), Legal (contratos) | Pendiente |
 | 9 | Operaciones | *(futuro)* — requiere `arquitectura-empresarial.md` antes de cerrarse | Sistema comercial (qué se vendió, hay que ejecutarlo), Modelo de negocio (motores) | Pendiente |
 | 10 | Automatizaciones | *(futuro)* | Operaciones (qué procesos existen), `fdi-registro.md` (qué automatizar primero) | Pendiente |

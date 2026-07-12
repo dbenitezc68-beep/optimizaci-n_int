@@ -10,6 +10,7 @@ Registro vivo. Escala y reglas definidas en [`00-metodologia.md`](./00-metodolog
 | R9 — Exposición legal activa (scraping de `leadfinder`, datos de cliente en el CRM) | Alta | Media | Alta (exposición ya activa hoy) | Alta (bloquea escalar prospección con confianza) | Alta | `03-modelo-negocio.md`, `auditoria-preventiva-leadfinder.md` — **desarrollado en detalle en `06-legal-cumplimiento.md` como L1-L9** |
 | L1 — Sin LIA (test de interés legítimo) documentado para `leadfinder` | Alta | Media | Alta | Alta (bloquea que R9 se pueda dar por resuelto) | Alta | `06-legal-cumplimiento.md` |
 | L2 — Sin aviso de privacidad para la actividad de prospección | Alta | Baja-media | Alta | Alta | Alta | `06-legal-cumplimiento.md` |
+| Contrato mínimo bloqueado por 2 campos en blanco (identificación fiscal de INTEREMPREX, duración de empaquetado de Motor B), sin fecha límite autoimpuesta | Alta (bloquea firmar con cualquier cliente nuevo) | Muy baja (horas de decisión del fundador, no trabajo de fase) | Alta (tarifa de lanzamiento cierra 2026-09-30 o al 3er cliente; ya hay 2 pilotos) | Alta (bloquea en cascada Pago, Inicio del proyecto y activación de Motor B) | Alta | `07-customer-journey.md` (hallazgo de la auditoría adversarial, Etapa 7) |
 
 ## Prioridad alta
 
@@ -22,6 +23,7 @@ Registro vivo. Escala y reglas definidas en [`00-metodologia.md`](./00-metodolog
 | Precio de Diagnóstico y de Mantenimiento SEO técnico sin fijar | Media | Baja | Media (bloquea vender con criterio) | Media | Media | `05-catalogo-servicios.md` |
 | L3 — Sin canal de ejercicio de derechos para datos de prospección | Media-alta | Media | Media | Media | Media-alta | `06-legal-cumplimiento.md` |
 | L6 — Exportación de datos a Anthropic sin base documentada | Media | Baja-media | Media | Media | Media-alta | `06-legal-cumplimiento.md` |
+| Alertas de fuga de Motor B sin construir ("Project completado sin Subscription activa", "Subscription cerca de renovar sin señal") | Alta (protege el ingreso recurrente, "el ingreso real" del negocio) | Baja (reutiliza datos y el patrón de scheduler ya usado en leadfinder) | Media (sin caso real todavía, pero el coste de construirlo es bajo) | Media | Alta | `07-customer-journey.md` (Etapas 12 y 14, reclasificado como prioridad inmediata de Fase 7, no genérica) |
 
 ## Prioridad media
 
