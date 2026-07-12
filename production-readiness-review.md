@@ -1,5 +1,7 @@
 # Production Readiness Review — INTEREMPREX
 
+Actualizado: 2026-07-09 *(última fecha evidenciada en el propio documento — no tocado en la ronda de correcciones del 2026-07-12)*
+
 Evaluación puntual (no un documento vivo — se repite cuando cambien las condiciones de fondo, no se actualiza línea a línea como `fdi-registro.md`). Responde a una única pregunta con evidencia, no con opinión: **¿podría INTEREMPREX empezar a vender mañana sin poner en riesgo la empresa?**
 
 Toda la evidencia de este documento ya existía en el repositorio (`03-modelo-negocio.md`, `05-catalogo-servicios.md`, `06-legal-cumplimiento.md`, `inventario-tecnologico.md`, `priorizacion.md`). Esta review no descubre datos nuevos — los reorganiza para responder una pregunta binaria de negocio, no una pregunta de arquitectura.

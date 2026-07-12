@@ -1,5 +1,7 @@
 # Fase 1 — Posicionamiento
 
+Actualizado: 2026-07-12
+
 Estado: **aprobado**, pendiente de implementar en `interemprex/index.html` y `interemprex/precios-y-packs.md`.
 
 ## Titular

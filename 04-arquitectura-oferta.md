@@ -1,5 +1,7 @@
 # 04 — Arquitectura de la oferta
 
+Actualizado: 2026-07-12 (línea de fecha añadida, contenido sin cambios)
+
 Estado: **v2, cerrada y aprobada.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md` y `03-modelo-negocio.md`. La v1 fijó el empaquetado obligatorio, la reutilización modular y la verificación de cobertura; la v2 ajusta la terminología (etapas de Motor A, líneas de Motor B, no motores nuevos) e incorpora la re-auditoría final exigida antes del cierre.
 
 ## Resumen ejecutivo

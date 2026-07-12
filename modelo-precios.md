@@ -1,5 +1,7 @@
 # Modelo de precios — procedimiento, no cifras
 
+Actualizado: 2026-07-12 (línea de fecha añadida, contenido sin cambios)
+
 Este documento define **cómo se calculará** el precio de cada servicio, no cuánto cuesta cada uno. Ningún número de este documento es un precio — donde aparece una cifra en `05-catalogo-servicios.md` hoy, viene de `precios-y-packs.md` (investigación de mercado real) y de la tarifa de lanzamiento de `01-posicionamiento.md`, no de este modelo. Este modelo se activa en Fase 7 (para cotizaciones caso a caso) y en Fase 14 (para recalcular el catálogo completo con datos reales de coste).
 
 ## Por qué no basta con comparar contra el mercado

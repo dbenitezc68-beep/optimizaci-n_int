@@ -1,5 +1,7 @@
 # Flywheel empresarial — estado objetivo
 
+Actualizado: 2026-07-12 (línea de fecha añadida, contenido sin cambios)
+
 Objetivo arquitectónico del **ciclo completo de creación de valor** de INTEREMPREX — no solo el pipeline comercial. **No se implementa ninguna integración en este documento** — es el mapa de a dónde debe llegar el sistema, contrastado contra lo que ya existe hoy, para que cada fase futura sepa qué pieza está construyendo. Este documento forma parte de `enterprise-blueprint.md` — es el detalle del ciclo que conecta los bloques "Sistema comercial", "Operaciones", "Automatizaciones" y "KPIs" de la cadena estratégica.
 
 ## El flujo

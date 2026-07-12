@@ -1,5 +1,7 @@
 # 00 — Metodología de trabajo
 
+Actualizado: 2026-07-12
+
 Estado: **aprobada, permanente.** Rige la construcción de cada fase de este proyecto desde el 2026-07-02. Ninguna fase se entrega sin cumplir esto. Este documento tiene la misma autoridad que `02-principios-fundacionales.md`: aquél define qué tipo de empresa es INTEREMPREX (contenido), este define cómo se construye cada decisión sobre ella (proceso).
 
 ## Objetivo del proyecto
@@ -122,6 +124,21 @@ Ante cualquier decisión, en este orden, sin invertirlo: (1) protección de la e
 
 Antes de proponer cualquier mejora: ¿produce más valor del que cuesta implementarla? Si no, no se propone. Se aplica también al propio proceso de trabajo — incluida la tentación de crear un documento nuevo para formalizar cómo se trabaja, en vez de simplemente trabajar.
 
+## Modo ligero — ADR (propuesta pendiente de aprobación del fundador)
+
+**Estado: propuesta, no vigente todavía.** Se documenta aquí siguiendo la misma regla que el resto de cambios a esta metodología (mismo nivel de autoridad que `02-principios-fundacionales.md`): no se activa por escribirse, se activa cuando el fundador la aprueba explícitamente.
+
+**Qué propone**: para decisiones reversibles y de bajo impacto — no estructurales, no estratégicas, no las que la Jerarquía de decisiones sitúa en los puntos (1)-(5) — no usar el formato completo de fase (8 secciones + 3 de control de cambios). En su lugar, un registro de una entrada de 5 líneas en un archivo nuevo, `decisiones-adr.md`: **decisión, motivo, alternativa descartada, impacto en FDI si lo hay, fecha.**
+
+**Por qué se propone (justificación desde la propia metodología, no una preferencia nueva)**:
+- **Principio de retorno**: escribir 8 secciones para decidir, por ejemplo, qué nombre dar a una carpeta de backups no produce más valor del que cuesta — el propio Principio de retorno ya prohíbe eso, esto solo lo hace operativo con un formato concreto en vez de dejarlo al criterio caso a caso.
+- **Jerarquía de decisiones**: la documentación es la prioridad (10), la última. Forzar el formato completo de fase a una decisión reversible invierte esa jerarquía en la práctica, aunque no en la intención.
+- **Modo Optimización Total, contrapeso obligatorio**: ya exige preguntarse si una ronda de trabajo aumenta el valor real o solo hace la documentación más grande. Un ADR de 5 líneas es la aplicación mínima de ese contrapeso a decisiones pequeñas, en vez de exigir criterio caso a caso cada vez.
+
+**Qué NO cambia si se aprueba**: las decisiones estructurales o estratégicas (arquitectura, motores, catálogo, riesgos críticos, cualquier cosa en los puntos (1)-(5) de la Jerarquía) siguen exigiendo el formato completo de fase. El modo ligero no sustituye nada de lo ya vigente — añade una vía más corta solo para lo que hoy no tiene ninguna, y que en la práctica se estaba decidiendo sin dejar ningún rastro.
+
+**Archivo**: [`decisiones-adr.md`](./decisiones-adr.md), creado vacío con la plantilla, con una nota explícita de que no se usa hasta que esta sección quede aprobada.
+
 ## Validación por evento real
 
 El primer lead, la primera reunión, la primera propuesta, la primera objeción, la primera venta, el primer pago, la primera incidencia, el primer retraso, la primera renovación, el primer upsell, la primera cancelación y el primer cliente perdido son eventos que deben capturarse como aprendizaje en cuanto ocurran (qué hipótesis confirman o invalidan, qué documento actualizan, qué KPI nace, qué riesgo aparece o desaparece) — no se documentan por adelantado porque ninguno ha ocurrido todavía.
@@ -132,7 +149,7 @@ Diseñar como si la empresa tuviera que seguir funcionando dentro de diez años 
 
 ---
 
-**Qué modifica**: define el proceso obligatorio de trabajo para todo el proyecto — rol, criterios de decisión, pruebas de escalabilidad, auditoría de cierre, FDI, BCI, sistema de priorización y formato de cada documento.
+**Qué modifica**: define el proceso obligatorio de trabajo para todo el proyecto — rol, criterios de decisión, pruebas de escalabilidad, auditoría de cierre, FDI, BCI, sistema de priorización y formato de cada documento. Actualizado 2026-07-12: añade la propuesta "Modo ligero (ADR)", pendiente de aprobación del fundador, sin activarse todavía.
 
 **Qué documentos dependen de este**: todos los documentos del repositorio, sin excepción — es el documento de mayor autoridad sobre el proceso, al mismo nivel que `02-principios-fundacionales.md` sobre el contenido.
 

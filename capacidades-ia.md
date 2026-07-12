@@ -1,5 +1,7 @@
 # Capacidades de IA — INTEREMPREX
 
+Actualizado: 2026-07-12 (línea de fecha añadida, contenido sin cambios)
+
 Documento vivo, no una fase. Registro oficial de toda capacidad relacionada con inteligencia artificial detectada en el ecosistema, exista donde exista en el código. Regla: ninguna capacidad de IA se queda oculta dentro de un archivo sin registrar aquí.
 
 ## 1. Generación de auditoría de leads con IA (`leadfinder`)

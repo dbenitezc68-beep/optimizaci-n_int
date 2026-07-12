@@ -1,5 +1,7 @@
 # optimizaci-n_int — Estrategia INTEREMPREX
 
+Actualizado: 2026-07-12
+
 Repositorio de documentación estratégica de INTEREMPREX. Aquí vive el plan de negocio, fase a fase, con las decisiones tomadas y el porqué de cada una. El código sigue viviendo en sus propios repos — este es el índice y la memoria de las decisiones, no el producto.
 
 Empieza por [`00-metodologia.md`](./00-metodologia.md) — rige cómo se construye cada documento de este repositorio, es de lectura obligatoria antes de cualquier fase. Después, [`enterprise-blueprint.md`](./enterprise-blueprint.md) — el plano maestro que conecta cada bloque estratégico con el documento que lo desarrolla.
@@ -87,3 +89,17 @@ Antes de cerrar la Fase 8 (Operaciones) debe existir `arquitectura-empresarial.m
 ## Principio del proceso
 
 Ningún dato de negocio (precios, cifras, resultados de cliente, proyecciones financieras) se inventa. Si el dato no existe todavía, se marca explícitamente como pendiente en vez de rellenarse con un placeholder que parezca real.
+
+## Validación de coherencia
+
+`scripts/validar_repo.py` recorre todo el repositorio y comprueba automáticamente cinco cosas que antes solo se detectaban a mano: (a) que toda referencia "Fase N (Nombre)" coincide con el roadmap de arriba, (b) que el FDI medio citado fuera de `fdi-registro.md` coincide con el valor real de su tabla o está marcado como histórico, (c) que el número de KPIs que `enterprise-blueprint.md` atribuye a `kpis.md` coincide con sus filas reales, (d) que ningún riesgo R*/L* aparece como resuelto en un documento y como abierto en otro, y (e) que ningún enlace relativo `./archivo.md` apunta a un archivo inexistente.
+
+Solo usa la librería estándar de Python (3.8+), sin dependencias que instalar:
+
+```
+python scripts/validar_repo.py
+```
+
+Sale con código 0 si todo pasa, 1 si encuentra algo. La comprobación (d) es heurística (busca palabras clave de estado en la misma línea que menciona el riesgo) — puede señalar algún falso positivo en frases con negación ("nunca declara resuelto...") o notación de rango ("L1-L11"); revisar manualmente antes de dar por buena una corrección basada solo en su salida.
+
+Para engancharlo como comprobación previa a cada commit (opcional, no configurado por defecto): crear `.git/hooks/pre-commit` con `#!/bin/sh` seguido de `python scripts/validar_repo.py` y darle permiso de ejecución.

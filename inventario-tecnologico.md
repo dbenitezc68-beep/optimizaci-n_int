@@ -1,5 +1,7 @@
 # Inventario tecnológico — INTEREMPREX
 
+Actualizado: 2026-07-12
+
 Documento vivo, no una fase. Inventario oficial de todo lo técnico verificado hasta ahora. Se actualiza cada vez que una fase descubre o crea un sistema, dominio, API, proveedor o dependencia nueva — no se rellena de una vez y se olvida.
 
 ## Repositorios

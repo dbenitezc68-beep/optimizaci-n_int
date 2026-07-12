@@ -1,5 +1,7 @@
 # Mini auditoría preventiva — LeadFinder
 
+Actualizado: 2026-07-02 *(última fecha evidenciada en el propio documento — no tocado en la ronda de correcciones del 2026-07-12)*
+
 Documento de hechos, no de conclusiones legales. Responde al riesgo R9 registrado en `03-modelo-negocio.md`. Por instrucción explícita del 2026-07-02: **no propone solución legal** — es la base fáctica sobre la que Fase 5 (Legal y Cumplimiento) trabajará cuando llegue en su orden. Hechos verificados leyendo el código real de `leadfinder`, no supuestos.
 
 ## Fuentes de datos

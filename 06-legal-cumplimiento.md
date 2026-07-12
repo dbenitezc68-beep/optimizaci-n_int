@@ -1,5 +1,7 @@
 # 06 — Legal y Cumplimiento
 
+Actualizado: 2026-07-12
+
 Estado: **v2, propuesto, pendiente de aprobación.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`. No modifica ninguna fase ya cerrada (01-05, metodología, FDI, BCI, priorización) — las usa como base y añade sobre ellas. La v2 incorpora la auditoría adversarial de Modo Optimización Total: 2 riesgos nuevos (L10, L11) y una corrección de terminología señalada, sin cambiar ninguna decisión sustantiva de la v1.
 
 ## Aviso de alcance (léase antes que el resto del documento)

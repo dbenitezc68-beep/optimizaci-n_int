@@ -1,5 +1,7 @@
 # Contrato mínimo de venta — plantilla
 
+Actualizado: 2026-07-12
+
 Estado: **plantilla operativa, lista para usar.** Único documento nuevo que exige el camino crítico de [`production-readiness-review.md`](./production-readiness-review.md) (punto 5 de las restricciones críticas) — elimina un riesgo objetivo real: cerrar una venta sin nada firmado. No es una fase de la metodología (`00-metodologia.md`) ni añade un framework nuevo: es la plantilla mínima suficiente para firmar la primera venta, y las siguientes, dentro del alcance ya aprobado (Motor A + mínimo de Motor B, `04-arquitectura-oferta.md` y `05-catalogo-servicios.md`).
 
 ## Aviso de alcance (léase antes de usar)

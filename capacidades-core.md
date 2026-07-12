@@ -1,5 +1,7 @@
 # Capacidades Core — INTEREMPREX
 
+Actualizado: 2026-07-12 (estado de R13 corregido a resuelto)
+
 No es un catálogo de servicios — es el inventario oficial de **capacidades reales** (tecnología, conocimiento y procesos ya construidos) sobre las que se construye todo servicio y toda ventaja estratégica de INTEREMPREX. Regla desde aquí: **ningún servicio se define sin apoyarse en una o varias capacidades de este documento.** Si un servicio no tiene ninguna capacidad Core detrás, no es un servicio vendible todavía — es una ambición, y se marca como tal.
 
 ## Capacidades reales (con evidencia verificada)
@@ -28,7 +30,9 @@ No es un catálogo de servicios — es el inventario oficial de **capacidades re
 - **Motores donde participa**: Motor B (ambas líneas, como sistema de gestión interno); candidato natural de Motor D si se productiza en el futuro.
 - **Procesos donde interviene**: eslabones "CRM" y "Pipeline" del flywheel empresarial.
 - **Reutilización**: hoy uso interno único — no se ha reutilizado todavía en ningún cliente.
-- **Nivel de madurez**: media-alta — funcional, con dos incidencias abiertas (R5 base single-tenant, R13 sin repositorio remoto — ver `03-modelo-negocio.md`).
+- **Nivel de madurez**: media-alta — funcional, con una incidencia abierta (R5, base single-tenant — ver `03-modelo-negocio.md`).
+  *(R13 ya no aparece en esta lista.)*
+  *(Nota de estado 2026-07-12: R13, sin repositorio remoto, quedó resuelto el 2026-07-07 — ver `production-readiness-review.md`.)*
 - **Dependencia del fundador (FDI)**: alta. FDI = "Exclusivo del fundador" (registrado como "desarrollo y mantenimiento del stack propio").
 - **Potencial de automatización**: alto en su función (sincroniza pagos solo, vía webhooks); bajo en su propio mantenimiento.
 - **Impacto estratégico**: es la capacidad de mayor riesgo de continuidad (R13) y, a la vez, la prueba central de la promesa de posicionamiento "empresa de tecnología, no agencia" (`01-posicionamiento.md`).
@@ -121,7 +125,7 @@ Con los seis bloques de "Cadena de dependencia" ya definidos, el mapa completo e
 
 ---
 
-**Qué modifica**: no fija decisiones de negocio — es el inventario de capacidades reales, la base obligatoria sobre la que se construye toda la arquitectura comercial (`05-catalogo-servicios.md`), ahora con BCI y cadena de dependencia por capacidad.
+**Qué modifica**: no fija decisiones de negocio — es el inventario de capacidades reales, la base obligatoria sobre la que se construye toda la arquitectura comercial (`05-catalogo-servicios.md`), ahora con BCI y cadena de dependencia por capacidad. Actualizado 2026-07-12: corregido el estado de R13 en la capacidad 2 (CRM) — resuelto el 2026-07-07, ya no es una incidencia abierta.
 
 **Qué documentos dependen de este**: `05-catalogo-servicios.md` depende directamente — cada servicio debe referenciar una capacidad de aquí. `flywheel-comercial.md` referencia las capacidades 1, 2, 3 y 5 desde sus eslabones. `enterprise-blueprint.md` cita este documento como el eslabón "Mejora de capacidades" del ciclo de valor. `priorizacion.md` usa la cadena de dependencia como una de sus dimensiones.
 

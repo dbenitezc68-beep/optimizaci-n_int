@@ -1,5 +1,7 @@
 # Enterprise Blueprint — INTEREMPREX
 
+Actualizado: 2026-07-12
+
 El plano maestro del proyecto. No es un índice de archivos (eso es `README.md`) — es la cadena de dependencia estratégica: cada bloque solo tiene sentido si el bloque anterior ya está resuelto, y cambiar un bloque obliga a revisar todo lo que cuelga de él hacia abajo. Toda la documentación futura debe poder ubicarse en este mapa.
 
 ## Capa transversal (no es un bloque, rige a todos)
@@ -55,10 +57,12 @@ KPIs
 | 9 | Operaciones | *(futuro)* — requiere `arquitectura-empresarial.md` antes de cerrarse | Sistema comercial (qué se vendió, hay que ejecutarlo), Modelo de negocio (motores) | Pendiente |
 | 10 | Automatizaciones | *(futuro)* | Operaciones (qué procesos existen), `fdi-registro.md` (qué automatizar primero) | Pendiente |
 | 11 | IA | *(futuro)* | Automatizaciones (una automatización con IA es un caso particular) | Pendiente |
-| 12 | Tecnología | *(futuro)* — ya tiene tareas asignadas: backups (R6), disparadores de SQLite (R5), base técnica del motor D | Automatizaciones, IA (qué stack las soporta), Modelo de negocio (motor D) | Pendiente |
+| 12 | Tecnología | *(futuro)* — ya tiene tareas asignadas: disparadores de SQLite (R5), base técnica del motor D | Automatizaciones, IA (qué stack las soporta), Modelo de negocio (motor D) | Pendiente |
 | 13 | Marketing | *(futuro)* | Visión (mensaje), Catálogo (qué se promociona), Customer Journey (embudo) | Pendiente |
 | 14 | Finanzas | *(futuro)* | Todos los bloques anteriores — es donde se calculan cifras reales de todo lo diseñado | Pendiente |
 | 15 | KPIs | [`kpis.md`](./kpis.md) — documento vivo, no fase numerada | Todos los bloques anteriores; cada fase añade solo los indicadores que le corresponden | Abierto — se actualiza en cada fase, 9 indicadores registrados hoy, 2 con dato real (FDI medio, % de líneas de catálogo con capacidad Core completa) |
+
+*Nota de estado (añadida 2026-07-12): la tarea de backups del bloque 12 (Tecnología), antes referenciada aquí como R6, quedó resuelta el 2026-07-09, fuera de esta fase y antes de que exista — ver `production-readiness-review.md`. Se retiró de la lista de tareas asignadas al bloque 12 por esa razón, no porque el bloque Tecnología haya avanzado.*
 
 ## Capas de salida (no son bloques de decisión, son consecuencia de la cadena)
 

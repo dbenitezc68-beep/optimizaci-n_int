@@ -1,5 +1,7 @@
 # BCI — Registro de criticidad empresarial
 
+Actualizado: 2026-07-12 (línea de fecha añadida, contenido sin cambios)
+
 Registro vivo del Business Criticality Index. Escala y reglas definidas en [`00-metodologia.md`](./00-metodologia.md). No es una fase — se actualiza cada vez que se documenta una capacidad, sistema o proceso nuevo.
 
 ## Capacidades Core (`capacidades-core.md`)

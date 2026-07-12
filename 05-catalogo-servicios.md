@@ -1,5 +1,7 @@
 # 05 — Catálogo de servicios (arquitectura comercial)
 
+Actualizado: 2026-07-12
+
 Estado: **v2, cerrada y aprobada — estándar permanente.** Construido según `00-metodologia.md`, validado contra `02-principios-fundacionales.md`, `03-modelo-negocio.md`, `04-arquitectura-oferta.md` y `capacidades-core.md`. No es un listado de servicios — es una arquitectura: cada servicio responde diez preguntas obligatorias, ninguno existe aislado de una capacidad Core, un proceso del flywheel y una vía de crecimiento hacia otro servicio. La v2 incorpora cuatro mejoras estructurales permanentes al sistema documental completo (`priorizacion.md`, BCI, cadena de dependencia en `capacidades-core.md`, `modelo-precios.md`) y cierra con la re-auditoría exigida antes de la aprobación definitiva.
 
 ## Resumen ejecutivo
@@ -237,7 +239,7 @@ No se encontró una solución objetivamente mejor que la planteada — se simpli
 
 **¿Alguna nueva dependencia aumenta el FDI innecesariamente?** No — al contrario: las cuatro mejoras mueven tres procesos más de tácito a documentado (priorizar, calcular precio, clasificar criticidad), registrados en `fdi-registro.md`. El FDI medio de la empresa baja de 1,43 a 1,33 sobre 3 con esta ronda.
 
-*Nota de contexto histórico (añadida 2026-07-12, sin reescribir esta fase cerrada): 1,33/3 era el valor vigente en el momento de este cierre. El valor de FDI medio actual siempre vive en `fdi-registro.md` — hoy 1,9/3 sobre 14 procesos, tras las incorporaciones de las Fases 5 y 6. Esta cifra histórica no se actualiza porque documenta una decisión ya tomada en su momento, no el estado presente de la empresa.*
+*Nota de contexto histórico (añadida 2026-07-12, sin reescribir esta fase cerrada): 1,33/3 era el valor vigente en el momento de este cierre. El valor de FDI medio actual siempre vive en `fdi-registro.md` — hoy 2,0/3 sobre 14 procesos, tras las incorporaciones de las Fases 5 y 6. Esta cifra histórica no se actualiza porque documenta una decisión ya tomada en su momento, no el estado presente de la empresa.*
 
 ## Preguntas que necesitan aprobación
 

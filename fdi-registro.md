@@ -1,5 +1,7 @@
 # FDI — Registro de procesos
 
+Actualizado: 2026-07-12 (línea de fecha añadida, contenido sin cambios)
+
 Registro vivo del Founder Dependency Index. Escala y reglas definidas en [`00-metodologia.md`](./00-metodologia.md). No es una fase — es un rastro continuo que se actualiza cada vez que una fase documenta, crea o modifica un proceso. No tiene número de fase porque no representa una decisión puntual, sino un estado que cambia con el tiempo.
 
 ## Registro
@@ -21,7 +23,7 @@ Registro vivo del Founder Dependency Index. Escala y reglas definidas en [`00-me
 | Detección y venta de Upselling (Motor C sobre cliente activo) | Exclusivo del fundador | 3 | Fase 6 — Customer Journey (Etapa 15) | Requiere cruzar conocimiento técnico, histórico de soporte y contexto comercial; sin ningún caso real todavía |
 | Cierre de ciclo / captura de aprendizaje (caso de éxito o cancelación) | Exclusivo del fundador | 3 | Fase 6 — Customer Journey (Etapa 16) | Coincide con el hallazgo ya registrado en `flywheel-comercial.md`: "Aprendizaje interno" no existe como proceso en ningún sitio, ni siquiera documentado como hábito |
 
-**FDI medio actual (14 procesos registrados): 1,9 / 3.** Sube respecto a la ronda anterior porque la Fase 6 documenta con honestidad 4 procesos comerciales que antes ni siquiera estaban registrados como "Exclusivo del fundador" — vivían sin nombre. No es un retroceso: es la misma lógica que ya se aplicó con la Fase 5 (auditar un área nueva sube la media antes de poder bajarla).
+**FDI medio actual (14 procesos registrados): 2,0 / 3.** *(Corregido 2026-07-12: el valor anterior, 1,9/3, no coincidía con la suma real de las puntuaciones de la tabla — 28 ÷ 14 = 2,0. Error de cálculo, no un cambio de datos.)* Sube respecto a la ronda anterior porque la Fase 6 documenta con honestidad 4 procesos comerciales que antes ni siquiera estaban registrados como "Exclusivo del fundador" — vivían sin nombre. No es un retroceso: es la misma lógica que ya se aplicó con la Fase 5 (auditar un área nueva sube la media antes de poder bajarla).
 
 ## Cómo se actualiza este registro
 

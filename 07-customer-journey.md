@@ -1,5 +1,7 @@
 # 07 — Customer Journey (v1 operativa)
 
+Actualizado: 2026-07-12
+
 Estado: **v1, operativa, lista para el primer cliente real.** Construido según `00-metodologia.md`, validado contra `01-posicionamiento.md`, `03-modelo-negocio.md`, `04-arquitectura-oferta.md`, `05-catalogo-servicios.md`, `06-legal-cumplimiento.md`, `capacidades-core.md`, `flywheel-comercial.md`, `contrato-minimo-venta.md`, `production-readiness-review.md`, `fdi-registro.md`, `bci-registro.md` y el modelo de datos real de `interemprex-dashboard`. No es el Customer Journey perfecto — es el mínimo profesional y ejecutable con lo que existe hoy. Construido con un workflow de 16 agentes (5 de redacción, 4 de integración documental, 7 de auditoría adversarial), sintetizado y editado a mano después.
 
 ## Resumen ejecutivo

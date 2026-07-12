@@ -1,5 +1,7 @@
 # Duplicidad de paneles de gestión interna — documentación de hechos
 
+Actualizado: 2026-07-02 *(última fecha evidenciada en el propio documento — no tocado en la ronda de correcciones del 2026-07-12)*
+
 Ver riesgo R8 en [`03-modelo-negocio.md`](./03-modelo-negocio.md). Por instrucción explícita del 2026-07-02, este documento **solo describe hechos verificables — no propone eliminar, fusionar ni mantener ninguno de los dos sistemas.** Esa decisión se toma en Fase 8 (Operaciones), con esta documentación como base.
 
 ## Panel 1 — `interemprex-dashboard`

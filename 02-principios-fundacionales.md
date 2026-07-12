@@ -1,5 +1,7 @@
 # 02 — Principios fundacionales
 
+Actualizado: 2026-07-12
+
 Estado: **propuesto, pendiente de aprobación.**
 
 Esta es la constitución de INTEREMPREX. Cada fase posterior (modelo de negocio, catálogo, arquitectura de la oferta...) se juzga contra este documento, no al revés: si una decisión futura contradice un principio de aquí, se cambia la decisión o se cambia el principio explícitamente — nunca se ignora en silencio.
