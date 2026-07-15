@@ -1,6 +1,6 @@
 # optimizaci-n_int — Estrategia INTEREMPREX
 
-Actualizado: 2026-07-12
+Actualizado: 2026-07-15
 
 Repositorio de documentación estratégica de INTEREMPREX. Aquí vive el plan de negocio, fase a fase, con las decisiones tomadas y el porqué de cada una. El código sigue viviendo en sus propios repos — este es el índice y la memoria de las decisiones, no el producto.
 
@@ -8,7 +8,7 @@ Empieza por [`00-metodologia.md`](./00-metodologia.md) — rige cómo se constru
 
 **[`production-readiness-review.md`](./production-readiness-review.md)** — evaluación puntual (no un documento vivo): ¿puede INTEREMPREX vender mañana sin poner en riesgo la empresa? Veredicto: GO CON RESTRICCIONES, con el camino crítico mínimo al primer cliente real. Léase antes de decidir si la prioridad es seguir diseñando o empezar a vender.
 
-**[`contrato-minimo-venta.md`](./contrato-minimo-venta.md)** — plantilla lista para usar en la primera venta (Motor A + mínimo de Motor B). Único documento nuevo que exige el camino crítico del PRR. Dos campos quedan pendientes de rellenar antes de la primera firma real (identificación fiscal de INTEREMPREX — ver L8 en `06-legal-cumplimiento.md`).
+**[`contrato-minimo-venta.md`](./contrato-minimo-venta.md)** — plantilla lista para usar en la primera venta (Motor A + mínimo de Motor B). Único documento nuevo que exige el camino crítico del PRR. Duración de Motor B y plazo de aceptación tácita ya resueltos (ADR-002/ADR-003, `decisiones-adr.md`). Un campo queda pendiente de rellenar antes de la primera firma real: identificación fiscal de INTEREMPREX — ver `alta-autonomo.md` y L8 en `06-legal-cumplimiento.md`.
 
 **[`07-customer-journey.md`](./07-customer-journey.md)** — Fase 6, v1 operativa: el recorrido completo del cliente (16 etapas, Descubrimiento→Cierre) con validación de si cada una es ejecutable mañana. Recomendación de cierre: ejecutar el primer cliente real antes de abrir Fase 7 — el documento explica por qué.
 
@@ -24,6 +24,8 @@ Empieza por [`00-metodologia.md`](./00-metodologia.md) — rige cómo se constru
 - [`bci-registro.md`](./bci-registro.md) — Business Criticality Index: impacto de la pérdida temporal de cada capacidad, sistema o proceso. Complementario al FDI. Definición en `00-metodologia.md`.
 - [`priorizacion.md`](./priorizacion.md) — toda incidencia/deuda técnica/riesgo clasificado en 5 dimensiones (impacto, esfuerzo, urgencia, dependencia, riesgo de no actuar); consolida lo detectado en fases anteriores.
 - [`modelo-precios.md`](./modelo-precios.md) — el procedimiento de 8 factores para calcular precios (no cifras); se aplica en Fase 7 y Fase 14.
+- [`decisiones-adr.md`](./decisiones-adr.md) — registro de decisiones reversibles y de bajo impacto en formato de 5 líneas (modo ligero, aprobado 2026-07-15). Definición en `00-metodologia.md`.
+- [`alta-autonomo.md`](./alta-autonomo.md) — situación fiscal real de INTEREMPREX (no dada de alta) y plan confirmado por el fundador (SEXPE + alta como autónomo, septiembre 2026). Desbloquea la sección 1 de `contrato-minimo-venta.md`.
 
 ## Ecosistema real (verificado, no aspiracional)
 

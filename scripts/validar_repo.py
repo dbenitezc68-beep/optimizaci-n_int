@@ -206,6 +206,48 @@ OPEN_WORDS = (
     "sin cambio", "sin ejecutar", "no ejecutar", "sin ejecutarse",
 )
 
+# Excepciones conocidas y documentadas para la comprobación (d), revisadas
+# a mano el 2026-07-15. Cada una es un falso positivo real de la
+# comprobación heurística (no una incoherencia del repositorio) — se
+# exime aquí para que el validador pase limpio y cualquier aviso NUEVO
+# en (d) sea señal real, no ruido conocido.
+#
+# Cómo añadir una excepción nueva: solo después de revisar a mano cada
+# línea que el script señale para ese identificador de riesgo (ejecutar
+# el script, leer cada archivo:línea reportado) y confirmar que NINGUNA
+# de las líneas describe una incoherencia real entre documentos — si
+# aunque sea una lo es, corregir el documento en vez de eximir el
+# identificador. Añadir la clave (ej. "R5") a RISK_EXCEPTIONS con una
+# frase que explique la causa heurística concreta (negación no
+# detectada, notación de rango, ambigüedad ya documentada en otro
+# sitio) — nunca un motivo genérico tipo "falso positivo" sin más.
+RISK_EXCEPTIONS = {
+    "L1": "Negación no detectada por la comprobación por palabra clave: frases como "
+          "\"nunca declara resuelto L1/L2/L4/L5/L8/L9\" (07-customer-journey.md) o "
+          "\"bloquea que R9 se pueda dar por resuelto\" (priorizacion.md) contienen la "
+          "palabra 'resuelto' pero afirman justo lo contrario.",
+    "L2": "Misma causa que L1 — comparten las mismas frases con negación.",
+    "L4": "Misma causa que L1 — comparten las mismas frases con negación.",
+    "L5": "Misma causa que L1 (07-customer-journey.md:371, \"nunca declara resuelto ... L5 ...\").",
+    "L8": "Mezcla de dos temas en la misma línea: \"redactar un contrato mínimo\" se marca "
+          "resuelto en el mismo texto que cita \"(L8)\" como campo todavía pendiente — el "
+          "estado 'resuelto' es de la tarea del contrato, no de L8.",
+    "L9": "Misma causa que L5 (07-customer-journey.md:371).",
+    "L11": "Notación de rango \"L1-L11\" leída como mención individual de L11, en la misma "
+           "línea (06-legal-cumplimiento.md:198) que cita entre comillas la palabra "
+           "\"Resuelto\" al explicar por qué esa palabra es ambigua para R9 — no es una "
+           "afirmación de que L11 esté resuelto.",
+    "R13": "Una única línea residual (03-modelo-negocio.md, changelog de versiones: \"la v6 "
+           "añadió R13 ... la v3 ... trasladó R9\") describe qué hizo cada versión "
+           "históricamente, no el estado actual — el resto de menciones (10 de 11) ya "
+           "describen correctamente R13 como resuelto.",
+    "R9": "Ambigüedad ya documentada y decidida explícitamente en 06-legal-cumplimiento.md "
+          "(sección \"Auditoría adversarial\", hallazgo 3): \"R9 — Resuelto\" en "
+          "03-modelo-negocio.md se refiere a la asignación de una fase, no al estado del "
+          "riesgo. Decisión ya tomada de no reescribir esa fase cerrada por ser un cambio "
+          "cosmético, no sustantivo.",
+}
+
 
 def check_risk_consistency(files):
     mentions = defaultdict(list)
@@ -226,11 +268,16 @@ def check_risk_consistency(files):
                 for risk_id in ids_in_line:
                     mentions[risk_id].append((f.name, line_no, status))
     problems = []
+    exempted = []
     for risk_id, occurrences in sorted(mentions.items()):
         statuses = {s for _, _, s in occurrences}
-        if len(statuses) > 1:
+        if len(statuses) <= 1:
+            continue
+        if risk_id in RISK_EXCEPTIONS:
+            exempted.append((risk_id, RISK_EXCEPTIONS[risk_id]))
+        else:
             problems.append((risk_id, occurrences))
-    return problems
+    return problems, exempted
 
 
 # ---------------------------------------------------------------------
@@ -308,7 +355,7 @@ def main():
         print(f"\n✅ (c) enterprise-blueprint.md coincide con el número real de filas de kpis.md ({kpi_count}).")
 
     # (d)
-    risk_problems = check_risk_consistency(files)
+    risk_problems, risk_exempted = check_risk_consistency(files)
     if risk_problems:
         exit_code = 1
         print(f"\n❌ (d) Riesgos con estado aparentemente contradictorio entre documentos: {len(risk_problems)}")
@@ -318,7 +365,11 @@ def main():
             for fname, line_no, status in occurrences:
                 print(f"       {fname}:{line_no} -> {status}")
     else:
-        print("\n✅ (d) Ningún riesgo (R*/L*) aparece con estados contradictorios entre documentos (comprobación heurística).")
+        print("\n✅ (d) Ningún riesgo (R*/L*) con estado contradictorio sin explicar entre documentos (comprobación heurística).")
+    if risk_exempted:
+        print(f"   (info, no falla: {len(risk_exempted)} exceptuados como falsos positivos conocidos — ver RISK_EXCEPTIONS en este script)")
+        for risk_id, reason in risk_exempted:
+            print(f"   - {risk_id}: {reason}")
 
     # (e)
     link_problems = check_relative_links(files)

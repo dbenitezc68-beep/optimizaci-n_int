@@ -1,6 +1,6 @@
 # 00 — Metodología de trabajo
 
-Actualizado: 2026-07-12
+Actualizado: 2026-07-15
 
 Estado: **aprobada, permanente.** Rige la construcción de cada fase de este proyecto desde el 2026-07-02. Ninguna fase se entrega sin cumplir esto. Este documento tiene la misma autoridad que `02-principios-fundacionales.md`: aquél define qué tipo de empresa es INTEREMPREX (contenido), este define cómo se construye cada decisión sobre ella (proceso).
 
@@ -124,9 +124,9 @@ Ante cualquier decisión, en este orden, sin invertirlo: (1) protección de la e
 
 Antes de proponer cualquier mejora: ¿produce más valor del que cuesta implementarla? Si no, no se propone. Se aplica también al propio proceso de trabajo — incluida la tentación de crear un documento nuevo para formalizar cómo se trabaja, en vez de simplemente trabajar.
 
-## Modo ligero — ADR (propuesta pendiente de aprobación del fundador)
+## Modo ligero — ADR (aprobado el 2026-07-15)
 
-**Estado: propuesta, no vigente todavía.** Se documenta aquí siguiendo la misma regla que el resto de cambios a esta metodología (mismo nivel de autoridad que `02-principios-fundacionales.md`): no se activa por escribirse, se activa cuando el fundador la aprueba explícitamente.
+**Estado: aprobado y vigente desde el 2026-07-15.** El fundador aprobó explícitamente esta sección en esa fecha, siguiendo la misma regla que el resto de cambios a esta metodología (mismo nivel de autoridad que `02-principios-fundacionales.md`): no se activó por escribirse, se activó cuando el fundador la aprobó. El primer registro bajo este modo es ADR-001, en `decisiones-adr.md`.
 
 **Qué propone**: para decisiones reversibles y de bajo impacto — no estructurales, no estratégicas, no las que la Jerarquía de decisiones sitúa en los puntos (1)-(5) — no usar el formato completo de fase (8 secciones + 3 de control de cambios). En su lugar, un registro de una entrada de 5 líneas en un archivo nuevo, `decisiones-adr.md`: **decisión, motivo, alternativa descartada, impacto en FDI si lo hay, fecha.**
 
@@ -137,7 +137,7 @@ Antes de proponer cualquier mejora: ¿produce más valor del que cuesta implemen
 
 **Qué NO cambia si se aprueba**: las decisiones estructurales o estratégicas (arquitectura, motores, catálogo, riesgos críticos, cualquier cosa en los puntos (1)-(5) de la Jerarquía) siguen exigiendo el formato completo de fase. El modo ligero no sustituye nada de lo ya vigente — añade una vía más corta solo para lo que hoy no tiene ninguna, y que en la práctica se estaba decidiendo sin dejar ningún rastro.
 
-**Archivo**: [`decisiones-adr.md`](./decisiones-adr.md), creado vacío con la plantilla, con una nota explícita de que no se usa hasta que esta sección quede aprobada.
+**Archivo**: [`decisiones-adr.md`](./decisiones-adr.md), activo desde el 2026-07-15 — ver el registro de entradas allí.
 
 ## Validación por evento real
 
@@ -149,7 +149,9 @@ Diseñar como si la empresa tuviera que seguir funcionando dentro de diez años 
 
 ---
 
-**Qué modifica**: define el proceso obligatorio de trabajo para todo el proyecto — rol, criterios de decisión, pruebas de escalabilidad, auditoría de cierre, FDI, BCI, sistema de priorización y formato de cada documento. Actualizado 2026-07-12: añade la propuesta "Modo ligero (ADR)", pendiente de aprobación del fundador, sin activarse todavía.
+**Qué modifica**: define el proceso obligatorio de trabajo para todo el proyecto — rol, criterios de decisión, pruebas de escalabilidad, auditoría de cierre, FDI, BCI, sistema de priorización y formato de cada documento. Actualizado 2026-07-12: añade la propuesta "Modo ligero (ADR)", pendiente de aprobación del fundador. Actualizado 2026-07-15: el fundador aprueba el Modo ligero (ADR) — pasa de propuesta a regla vigente.
+
+**Qué documentos deben revisarse si esta sección de Modo ligero cambia**: `decisiones-adr.md` (registro activo desde el 2026-07-15) y cualquier documento que a partir de ahora registre una decisión reversible de bajo impacto allí en vez de como fase completa.
 
 **Qué documentos dependen de este**: todos los documentos del repositorio, sin excepción — es el documento de mayor autoridad sobre el proceso, al mismo nivel que `02-principios-fundacionales.md` sobre el contenido.
 
